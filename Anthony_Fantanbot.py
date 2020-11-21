@@ -42,8 +42,8 @@ def GetUserID(update,context):
     update.message.reply_text(str(user_id) + ": Your user ID")
 
 def SendThicc(update,context):
-    photo = open(file=os.path.join(__location__,'THICC.mp4'),mode='rb')
-    context.bot.sendAnimation(chat_id=vars["CHATID"], animation=photo)
+    photo = open(file=os.path.join(__location__,'Media\THICC.mp4'),mode='rb')
+    context.bot.sendAnimation(chat_id=update.message.chat_id, animation=photo)
 
 def GetNextInQueue():
     with open(os.path.join(__location__,'Queue.json'),'r') as file:
