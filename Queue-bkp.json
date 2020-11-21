@@ -1,0 +1,41 @@
+{
+    "Queue": [
+        {
+            "Title": "Test"
+           ,"Artist": "Artist"
+           ,"ReviewBody": "wooo the review goes here"
+           ,"AlbumRating": 0
+           ,"TrackList": [
+                "name",0
+               ,"name2",0
+           ]
+           ,"AlbumArt": "F:\\Users\\erico\\Pictures\\Git_icon.ico"
+           ,"Blurb": "this will be the next screen text"
+           ,"NextUpText": "woooooooooooooo"
+           ,"DatePosted": ""
+        }
+        ,{
+            "Title": "1983"
+           ,"Artist": "Flying Lotus"
+           ,"ReviewBody": "The first full length album for Flying Flotus. It shows off his talent, but still leaves some room to grow. Overall this album has clear space-y connatations. This album is a mix of finding a groove and then leaving the groove when it starts to get boring. The titular track, _1983_, is a build on the groove, it takes its time to find it and then slowely builds and adds new elements to it over the course of its duration. The complex beat structure with the glitch like fill; makes for a very interesting listen. As soon as you think you understand the tracks, you find something new to enjoy. _Babble_, while not a bad track, I feel is just too short and doesn't really accomplish what it sets out to. One of my few issues with the album is some of the transistions are a little too hard. _Unexpected Delight_ really lives up to its name. The volicity of the backing track makes combined with the haunting vocals by Laura; make for a hypnotic track that doesn't let go of your attention."
+           ,"AlbumRating": 3
+           ,"TrackList": [
+                "1983",3
+               ,"Sao Paulo",3
+               ,"Bad Actors",3
+               ,"Orbit Brazil",3
+               ,"Shifty",3
+               ,"Babble",2
+               ,"Pet Monster Shotglass",3
+               ,"Hello",3
+               ,"Untitled #7",3
+               ,"Unexpected Delight (Feat. Laura Darlington)",4
+               ,"1983 (Daedulus's Odd-Dance Party Remix)",3
+           ]
+           ,"AlbumArt": "Cover.jpg"
+           ,"Blurb": "The first album, arguably one of the greatest showings of his raw talent"
+           ,"NextUpText": "NEXT UP:\n\n200 Million Thousand by The Black Lips\n\nI've never listened to this album in its entirety before"
+           ,"DatePosted": "2020-11-20T10:07:00,000"
+        }
+    ]
+}
