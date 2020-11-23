@@ -135,8 +135,8 @@ def Main():
 
     job_review = job_queue.run_daily(callback=callback_Review,time=datetime.time(hour = 10, minute = 0, second = 0),days=(0,4))
 
-    #if datetime.date.today().isoweekday() == 1 or datetime.date.today().isoweekday() == 5:
-    #    job_review.Enabled = True
+    #if (datetime.date.today().isoweekday() == 1 or datetime.date.today().isoweekday() == 7) and (datetime.datetime.now() == datetime.time(9,30,0)):
+    #    dispatcher.bot.send_message(chat_id=vars["SELFID"],text='One message every minute')
     #else:
     #    job_review.Enabled = False
 

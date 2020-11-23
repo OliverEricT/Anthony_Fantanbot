@@ -1,48 +1,6 @@
 {
   "Queue": [
     {
-      "Title": "200 Million Thousand",
-      "Artist": "The Black Lips",
-      "ReviewBody": "I had never listened to this album all the way through before. Its a great entry to the garage rock genre in my library. On my first listen I found myself really liking the album. I think on the whole it does better than the individual tracks would suggest, which I don't think is uncommon for this genre. What is a misnomer on this album is the songs I gave a 2 star too. While I enjoyed all these tracks I feel like on a shuffle I would most likely skip them. But this album is fuzzy, warm, and a great jam album. Every track gets you in a groove and then just holds you there until it decides its time to move on. _Short Fuse_ is very reminiscient of a [The Hives](../../Hives,%20TheHives_Artist_Review.md) track, but a little more on the lo-fi side. _Meltdown_, the hidden track on the album (based MusicBee filters out the minutes of silence), would have been a lot lower if I couldn't have filterd the white noise out.",
-      "AlbumRating": 4,
-      "TrackList": [
-        "Take My Heart",
-        3,
-        "Drugs",
-        4,
-        "Starting Over",
-        2,
-        "Let It Grow",
-        2,
-        "Trapped In A Basement",
-        3,
-        "Short Fuse",
-        4,
-        "I'll Be With You",
-        2,
-        "Big Black Jesus of Today",
-        3,
-        "Again & Again",
-        4,
-        "Old Man",
-        3,
-        "The Drop I Hold",
-        3,
-        "Body Combat",
-        4,
-        "Elijah",
-        4,
-        "I Saw God",
-        2,
-        "Meltdown (Hidden Track)",
-        4
-      ],
-      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Black Lips, The\\200 Million Thousand\\Cover.jpg",
-      "Blurb": "I've never listened to this album in its entirety before",
-      "NextUpText": "",
-      "DatePosted": ""
-    },
-    {
       "Title": "30 Seconds to Mars",
       "Artist": "30 Seconds to Mars",
       "ReviewBody": "Going into this album, I could really only remember their single off their next album [A Beautiful Life](../A%20Beautiful%20Lie/A_Beautiful_Lie_Album_Review.md), _the Kill_, and its more alternative leanings. This album on the other hand has much more of a progressive blend to its sound than I remember of the next album. The song _Edge of the Earth_ is the first track that makes me realize that this album is something special. They managed to make the sound very open, while still keeping that heaviness associated with metal. _Fallen_ really amps up on the space theme. For a first showing from 30 Seconds to Mars, this is a great showing. While not as much to talk about since the album fits the theme it sets pretty well. Overall this album is fantastic and is definitely going back into the rotation.",
@@ -123,838 +81,813 @@
       "Blurb": "I hate 21 guns, but let's do this",
       "NextUpText": "",
       "DatePosted": ""
-    }
-    ,{
-        "Title": "40oz. to Freedom",
-        "Artist": "Sublime",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Sublime\\40oz. to Freedom\\Cover.jpg",
-        "Blurb": "This is not the one with all the bangers",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "44",
-        "Artist": "The Mayan Factor",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Mayan Factor, The\\44\\Cover.jpg",
-        "Blurb": "Imagine Tool, but Weirder",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "'64-'95",
-        "Artist": "Lemon Jelly",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Lemon Jelly\\'64-'95\\Cover.jpg",
-        "Blurb": "It's drug music!",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "99 Songs of Revolution: Volume 1",
-        "Artist": "Streetlight Manifesto",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Streetlight Manifesto\\99 Songs of Revolution, Vol 1\\Cover.jpg",
-        "Blurb": "woo this album is fucking great",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "#501",
-        "Artist": "MidiCronica",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Samurai Champloo OST\\Samurai Champloo Episode 26 ED Album - #501 - Midicronica\\Cover.jpg",
-        "Blurb": "They did some of the Samurai Champloo music",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "A Beautiful Lie",
-        "Artist": "30 Seconds to Mars",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\30 Seconds To Mars\\30 Seconds To Mars\\Cover.jpg",
-        "Blurb": "More alternative, its probably garbage, but I liked it 10 years ago!",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "A Broken Frame",
-        "Artist": "Depeche Mode",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Depeche Mode\\A Broken Frame\\Cover.jpg",
-        "Blurb": "looking forward to diving back into this band",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "A Deathgrip On Yesterday",
-        "Artist": "Atreyu",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Atreyu\\A Deathgrip On Yesterday\\Cover.jpg",
-        "Blurb": "oh fuck yeah, I haven't listed to this album in like 10 years",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "A Jacknife to a Swan",
-        "Artist": "The Mighty Mighty Bosstones",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Mighty Mighty Bosstones, The\\A Jackknife To A Swan\\Cover.jpg",
-        "Blurb": "Woo more ska!",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "A Lesson in the Abuse of Information Technology",
-        "Artist": "The Menzingers",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Menzingers, The\\A Lesson in the Abuse of Information Technology\\Cover.jpg",
-        "Blurb": "While this isn't my favorite album from them, the album is still pretty good",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "A Picture of Finn Farting",
-        "Artist": "REnard",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Renard\\A Picture of Finn Farting\\Cover.jpg",
-        "Blurb": "Oh boy, some more lapfox trax. Lets hope I like this better than Bandetto",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "A Place Where the Sun is Silent",
-        "Artist": "Alesana",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Alesana\\A Place Where the Sun is Silent\\Cover.jpg",
-        "Blurb": "Now this... this is a Grade-A lowus band. I remember falling off after the first few albums but still really good",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "A Series of Sneaks",
-        "Artist": "Spoon",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Spoon\\A Series of Sneaks\\Cover.jpg",
-        "Blurb": "classic Texas Indie",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "A Thousand Leaves",
-        "Artist": "Sonic Youth",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Sonic Youth\\A Thousand Leaves (1998)\\Cover.jpg",
-        "Blurb": "It's not their best album, but its not bad",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "about",
-        "Artist": "HYI",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\hyi\\about\\Cover.jpg",
-        "Blurb": "I remember this album being hyped up, but I never got around to it",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "Acid Intraveneous",
-        "Artist": "Renard + Adraen",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Renard vs Adraen\\Acid Intravenous\\Cover.jpg",
-        "Blurb": "more Lapfox trax, bring them on",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "The Adolescents",
-        "Artist": "The Adolescents",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Adolescents, The\\The Adolescents\\Cover.jpg",
-        "Blurb": "classic socal punk, this album is fantastic",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "Adore",
-        "Artist": "Smashing Pumpkins",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Smashing Pumpkins\\Adore\\Cover.jpg",
-        "Blurb": "90s classic band, I don't think I actually like them that much",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "Adrenaline",
-        "Artist": "Deftones",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Deftones\\Adrenaline\\Cover.jpg",
-        "Blurb": "I love this band, but I don't remember this album at all",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "Aenima",
-        "Artist": "Tool",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Tool\\Aenima\\Cover.jpg",
-        "Blurb": "WOO MORE TOOL!",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "Against the Grain",
-        "Artist": "Bad Religion",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Bad Religion\\Against The Grain\\Cover.jpg",
-        "Blurb": "90s bad religion, I don't remmber if this stuff is good",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "Airbag/How am I Driving?",
-        "Artist": "Radiohead",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Radiohead\\Airbag_How Am I Driving_\\Cover.jpg",
-        "Blurb": "I think i don't like this album",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "The Alchemy Index, Vols. I, II, III, & IV",
-        "Artist": "Thrice",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Thrice\\The Alchemy Index, Vols. 1 & 2_ Fire & Water\\Cover.jpg",
-        "Blurb": "I actually love these albums, and its 4 eps/ 2 mini albums all in one go",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "All Hope is Gone",
-        "Artist": "Slipknot",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Slipknot\\All Hope Is Gone\\Cover.jpg",
-        "Blurb": "Oh baby, more angry teenager music, but I'm here for it",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "All's Well That Ends Well",
-        "Artist": "Chiodos",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Chiodos\\All's Well That Ends Well (Deluxe Edition)\\Cover.jpg",
-        "Blurb": "Screamy, emo, music",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "Aloha Moon",
-        "Artist": "Magic Wands",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Magic Wands\\Aloha Moon\\Cover.jpg",
-        "Blurb": "I think I've seen them live, I don't remember",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "Alone in a Crowd",
-        "Artist": "Catch 22",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Catch 22\\Alone In A Crowd\\Cover.jpg",
-        "Blurb": "More ska greatness. Its the genre thats the most fun!",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "Amalgamation",
-        "Artist": "Trapt",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Trapt\\Amalgamation\\Cover.jpg",
-        "Blurb": "I don't think this is the album with Headstrong",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "Ambient",
-        "Artist": "Moby",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Moby\\Ambient\\Cover.jpg",
-        "Blurb": "I wonder if this is his ambient album?",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "Amnesiac",
-        "Artist": "Radiohead",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Radiohead\\Amnesiac\\Cover.jpg",
-        "Blurb": "More Radiohead that I haven't listened too lol",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "amo",
-        "Artist": "Bring Me The Horizon",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Bring Me the Horizon\\amo\\Cover.jpg",
-        "Blurb": "OH FUCK YEAH, finally some recent-ish music as well",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "Amplified: A Decade of Reinventing the Cello",
-        "Artist": "Apocalyptica",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Apocalyptica\\Amplified_ A Decade of Reinventing the Cello\\Cover.jpg",
-        "Blurb": "There is a lot of metal covers here",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "Amputechture",
-        "Artist": "The Mars Volta",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Mars Volta, The\\Amputechture\\Cover.jpg",
-        "Blurb": "The Album before Bedlam, probably their best album",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "An American Prayer",
-        "Artist": "The Doors",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Doors, The\\An American Prayer\\Cover.jpg",
-        "Blurb": "I Think this is a spoken word album... ooof",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "Animal Magic",
-        "Artist": "Bonobo",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Bonobo\\Animal Magic\\Cover.jpg",
-        "Blurb": "I've listened to Black Sands the most, but I like Bonobo, very interesting stuff",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "Animal Rights",
-        "Artist": "Moby",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Moby\\Animal Rights\\Cover.jpg",
-        "Blurb": "Dang what is this like the third Moby review?",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "The Anti Mother",
-        "Artist": "Norma Jean",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Norma Jean\\The Anti Mother\\Cover.jpg",
-        "Blurb": "Oof got this album becuase the cover looked cool, the first time I stepped into Hot Topic",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "Antichamber",
-        "Artist": "Siddhartha Barnhoorn",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Various Artists\\Siddhartha Barnhoorn - Antichamber\\Cover.jpg",
-        "Blurb": "This is the soundtrack to a fucking rad game, Antichamber",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "Antics",
-        "Artist": "Interpol",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Interpol\\Antics\\Cover.jpg",
-        "Blurb": "The Second Interpol album, this is not the album with their best known track",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "Anytime At All",
-        "Artist": "Banyan",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Banyan\\Anytime At All\\Cover.jpg",
-        "Blurb": "I think this might be more Janes Addiction, butt rock",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "Appleseed EP",
-        "Artist": "Aesop Rock",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Aesop Rock\\Appleseed EP\\Cover.jpg",
-        "Blurb": "I haven't listened to Aesop Rock in almost 10 years now",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "Aqua Teen Hunger Force Colon Movie Film for Theaters Colon the Soundtrack",
-        "Artist": "Various Artists",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Various Artists\\Aqua Teen Hunger Force Colon Movie Film for Theaters Colon the Soundtrack\\Cover.jpg",
-        "Blurb": "I bought this album soley for the mastodon song",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "Arabia Mountain",
-        "Artist": "The Black Lips",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Black Lips, The\\Arabia Mountain\\Cover.jpg",
-        "Blurb": "Modern Art was the track that got me into The Black Lips",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "Are You Dead Yet?",
-        "Artist": "Children Of Bodom",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Children Of Bodom\\Are You Dead Yet_ [Bonus Track]\\Cover.jpg",
-        "Blurb": "Lol I wrote a Mr. G music review on one of these songs",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "Around the Fur",
-        "Artist": "Deftones",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Deftones\\Around The Fur\\Cover.jpg",
-        "Blurb": "I lovet his album, it's solid",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "The Art of Drowning",
-        "Artist": "AFI",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\AFI\\The Art of Drowning\\Cover.jpg",
-        "Blurb": "Need to make sure I get the rest of the tracks",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "The Artist in the Ambulance",
-        "Artist": "Thrice",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Thrice\\The Artist In The Ambulance\\Cover.jpg",
-        "Blurb": "Wooo this is THE Thrice album",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "Artwork",
-        "Artist": "The Used",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Used, The\\Artwork\\Cover.jpg",
-        "Blurb": "I don't really remember this album, I listened to their earlier albums more",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "As Daylight Dies",
-        "Artist": "Killswitch Engage",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Killswitch Engage\\As Daylight Dies (Special Edition)\\Cover.jpg",
-        "Blurb": "THIS IS MY CURSE!!!!!",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "Ascendancy",
-        "Artist": "Trivium",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Trivium\\Ascendancy [Bonus Tracks]\\Cover.jpg",
-        "Blurb": "While not quite as good as their next album Shogun, this is still pretty solid",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "Astro Coast",
-        "Artist": "Surfer Blood",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Surfer Blood\\Astro Coast\\Cover.jpg",
-        "Blurb": "This album is solid, I haven't listened to it in years",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "Astro Lounge",
-        "Artist": "Smash Mouth",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Smash Mouth\\Astro Lounge\\Cover.jpg",
-        "Blurb": "SOME BODY, ONCE TOLD ME",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "At Play",
-        "Artist": "Deadmau5",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Deadmau5\\At Play\\Cover.jpg",
-        "Blurb": "Get ready for the Deadmua5 block",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "At Play 2",
-        "Artist": "Deadmau5",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Deadmau5\\At Play 2\\Cover.jpg",
-        "Blurb": "More Deadmau5, this might get repetitive",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "Atomizer",
-        "Artist": "Furries in a Blender",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Furries in a Blender\\Atomizer\\Cover.jpg",
-        "Blurb": "Woo More GABBERSTAG",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "Attack & Release",
-        "Artist": "The Black Keys",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Black Keys, The\\Attack & Release\\Cover.jpg",
-        "Blurb": "I Think this is the album right before Brothers",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "Attack On Memory",
-        "Artist": "Cloud Nothings",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Cloud Nothings\\Attack on Memory\\Cover.jpg",
-        "Blurb": "Holy shit this album is fucking fantastic, and I haven't listened to it in forever",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "Avatar: The Last Airbender",
-        "Artist": "The Track Team",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Various Artists\\Avatar The Last Airbender OST\\OST\\Cover.jpg",
-        "Blurb": "Soundtrack for the amazing show",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "Awesomenauts",
-        "Artist": "SonicPicnic",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Various Artists\\Awesomenauts Original Soundtrack\\Cover.jpg",
-        "Blurb": "Soundtrack for the game, damn its a lot of tracks",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "",
-        "Artist": "",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\ \\Cover.jpg",
-        "Blurb": "",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "",
-        "Artist": "",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\ \\Cover.jpg",
-        "Blurb": "",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "",
-        "Artist": "",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\ \\Cover.jpg",
-        "Blurb": "",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "",
-        "Artist": "",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\ \\Cover.jpg",
-        "Blurb": "",
-        "NextUpText": "",
-        "DatePosted": ""
-    }
-    ,{
-        "Title": "",
-        "Artist": "",
-        "ReviewBody": "",
-        "AlbumRating": 0,
-        "TrackList": [
-          
-        ],
-        "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\ \\Cover.jpg",
-        "Blurb": "",
-        "NextUpText": "",
-        "DatePosted": ""
+    },
+    {
+      "Title": "40oz. to Freedom",
+      "Artist": "Sublime",
+      "ReviewBody": "",
+      "AlbumRating": 4,
+      "TrackList": [
+        "Waiting for My Ruca",
+        2,
+        "40oz. to Freedom",
+        3,
+        "Smoke Two Joints",
+        3,
+        "We're Only Gonna Die for Our Arrogance",
+        5,
+        "Don't Push",
+        4,
+        "54-46 That's My Number/Ball and Chain",
+        4,
+        "Badfish",
+        2,
+        "Let's Go Get Stoned",
+        3,
+        "New Thrash",
+        4,
+        "Scarlet Begonias",
+        3,
+        "Live at E's",
+        3,
+        "D.J.s",
+        3,
+        "Chica Me Tipo",
+        4,
+        "Right Back",
+        3,
+        "What Happened",
+        4,
+        "New Song",
+        3,
+        "Ebin",
+        4,
+        "Date Rape",
+        3,
+        "Hope",
+        3,
+        "KRS-One",
+        3,
+        "Rivers of Babylon",
+        2,
+        "Thanx",
+        1
+      ],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Sublime\\40oz. to Freedom\\Cover.jpg",
+      "Blurb": "This is not the one with all the bangers",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "44",
+      "Artist": "The Mayan Factor",
+      "ReviewBody": "",
+      "AlbumRating": 3,
+      "TrackList": [
+        "To Kill a Priest",
+        4,
+        "Terrorist",
+        4,
+        "Propaganda",
+        3,
+        "Hopi Elders",
+        3,
+        "Ventriloquist",
+        3,
+        "Gosia",
+        2,
+        "Yesterdays Son",
+        2,
+        "Bondage",
+        4,
+        "A Red Gone Blue",
+        3,
+        "Jack Nicholson",
+        2,
+        "Recon",
+        2,
+        "Self Storage",
+        3
+      ],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Mayan Factor, The\\44\\Cover.jpg",
+      "Blurb": "Imagine Tool, but Weirder",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "'64-'95",
+      "Artist": "Lemon Jelly",
+      "ReviewBody": "",
+      "AlbumRating": 3,
+      "TrackList": [
+        "It Was...",
+        1,
+        "'88 aka Come Down on Me",
+        3,
+        "'68 aka Only Time",
+        3,
+        "'93 aka Don't Stop Now",
+        2,
+        "'95 aka Make Things Right",
+        3,
+        "'79 aka The Shouty Track",
+        3,
+        "'75 aka Stay With You",
+        4,
+        "'76 aka The Slow Train",
+        4,
+        "'90 aka A Man Like Me",
+        4,
+        "'64 aka Go",
+        5
+      ],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Lemon Jelly\\'64-'95\\Cover.jpg",
+      "Blurb": "It's drug music!",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "99 Songs of Revolution: Volume 1",
+      "Artist": "Streetlight Manifesto",
+      "ReviewBody": "",
+      "AlbumRating": 4,
+      "TrackList": [
+        "Birds Flying Away",3,
+        "Hell",4,
+        "Just",4,
+        "Skyscraper",3,
+        "Punk Rock Girl",4,
+        "Linoleum",2,
+        "Me and Julio Down by the Schoolyard",3,
+        "They Provide the Paint for the Picture-Perfect Masterpiece That You Will Paint on the Insides of Your Eyelids",4,
+        "Red Rubber Ball",3,
+        "The Troubador",4,
+        "Such Great Hieghts",5
+      ],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Streetlight Manifesto\\99 Songs of Revolution, Vol 1\\Cover.jpg",
+      "Blurb": "woo this album is fucking great",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "#501",
+      "Artist": "MidiCronica",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Samurai Champloo OST\\Samurai Champloo Episode 26 ED Album - #501 - Midicronica\\Cover.jpg",
+      "Blurb": "They did some of the Samurai Champloo music",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "A Beautiful Lie",
+      "Artist": "30 Seconds to Mars",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\30 Seconds To Mars\\30 Seconds To Mars\\Cover.jpg",
+      "Blurb": "More alternative, its probably garbage, but I liked it 10 years ago!",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "A Broken Frame",
+      "Artist": "Depeche Mode",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Depeche Mode\\A Broken Frame\\Cover.jpg",
+      "Blurb": "looking forward to diving back into this band",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "A Deathgrip On Yesterday",
+      "Artist": "Atreyu",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Atreyu\\A Deathgrip On Yesterday\\Cover.jpg",
+      "Blurb": "oh fuck yeah, I haven't listed to this album in like 10 years",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "A Jacknife to a Swan",
+      "Artist": "The Mighty Mighty Bosstones",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Mighty Mighty Bosstones, The\\A Jackknife To A Swan\\Cover.jpg",
+      "Blurb": "Woo more ska!",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "A Lesson in the Abuse of Information Technology",
+      "Artist": "The Menzingers",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Menzingers, The\\A Lesson in the Abuse of Information Technology\\Cover.jpg",
+      "Blurb": "While this isn't my favorite album from them, the album is still pretty good",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "A Picture of Finn Farting",
+      "Artist": "REnard",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Renard\\A Picture of Finn Farting\\Cover.jpg",
+      "Blurb": "Oh boy, some more lapfox trax. Lets hope I like this better than Bandetto",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "A Place Where the Sun is Silent",
+      "Artist": "Alesana",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Alesana\\A Place Where the Sun is Silent\\Cover.jpg",
+      "Blurb": "Now this... this is a Grade-A lowus band. I remember falling off after the first few albums but still really good",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "A Series of Sneaks",
+      "Artist": "Spoon",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Spoon\\A Series of Sneaks\\Cover.jpg",
+      "Blurb": "classic Texas Indie",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "A Thousand Leaves",
+      "Artist": "Sonic Youth",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Sonic Youth\\A Thousand Leaves (1998)\\Cover.jpg",
+      "Blurb": "It's not their best album, but its not bad",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "about",
+      "Artist": "HYI",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\hyi\\about\\Cover.jpg",
+      "Blurb": "I remember this album being hyped up, but I never got around to it",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "Acid Intraveneous",
+      "Artist": "Renard + Adraen",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Renard vs Adraen\\Acid Intravenous\\Cover.jpg",
+      "Blurb": "more Lapfox trax, bring them on",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "The Adolescents",
+      "Artist": "The Adolescents",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Adolescents, The\\The Adolescents\\Cover.jpg",
+      "Blurb": "classic socal punk, this album is fantastic",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "Adore",
+      "Artist": "Smashing Pumpkins",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Smashing Pumpkins\\Adore\\Cover.jpg",
+      "Blurb": "90s classic band, I don't think I actually like them that much",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "Adrenaline",
+      "Artist": "Deftones",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Deftones\\Adrenaline\\Cover.jpg",
+      "Blurb": "I love this band, but I don't remember this album at all",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "Aenima",
+      "Artist": "Tool",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Tool\\Aenima\\Cover.jpg",
+      "Blurb": "WOO MORE TOOL!",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "Against the Grain",
+      "Artist": "Bad Religion",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Bad Religion\\Against The Grain\\Cover.jpg",
+      "Blurb": "90s bad religion, I don't remmber if this stuff is good",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "Airbag/How am I Driving?",
+      "Artist": "Radiohead",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Radiohead\\Airbag_How Am I Driving_\\Cover.jpg",
+      "Blurb": "I think i don't like this album",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "The Alchemy Index, Vols. I, II, III, & IV",
+      "Artist": "Thrice",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Thrice\\The Alchemy Index, Vols. 1 & 2_ Fire & Water\\Cover.jpg",
+      "Blurb": "I actually love these albums, and its 4 eps/ 2 mini albums all in one go",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "All Hope is Gone",
+      "Artist": "Slipknot",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Slipknot\\All Hope Is Gone\\Cover.jpg",
+      "Blurb": "Oh baby, more angry teenager music, but I'm here for it",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "All's Well That Ends Well",
+      "Artist": "Chiodos",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Chiodos\\All's Well That Ends Well (Deluxe Edition)\\Cover.jpg",
+      "Blurb": "Screamy, emo, music",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "Aloha Moon",
+      "Artist": "Magic Wands",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Magic Wands\\Aloha Moon\\Cover.jpg",
+      "Blurb": "I think I've seen them live, I don't remember",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "Alone in a Crowd",
+      "Artist": "Catch 22",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Catch 22\\Alone In A Crowd\\Cover.jpg",
+      "Blurb": "More ska greatness. Its the genre thats the most fun!",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "Amalgamation",
+      "Artist": "Trapt",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Trapt\\Amalgamation\\Cover.jpg",
+      "Blurb": "I don't think this is the album with Headstrong",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "Ambient",
+      "Artist": "Moby",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Moby\\Ambient\\Cover.jpg",
+      "Blurb": "I wonder if this is his ambient album?",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "Amnesiac",
+      "Artist": "Radiohead",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Radiohead\\Amnesiac\\Cover.jpg",
+      "Blurb": "More Radiohead that I haven't listened too lol",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "amo",
+      "Artist": "Bring Me The Horizon",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Bring Me the Horizon\\amo\\Cover.jpg",
+      "Blurb": "OH FUCK YEAH, finally some recent-ish music as well",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "Amplified: A Decade of Reinventing the Cello",
+      "Artist": "Apocalyptica",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Apocalyptica\\Amplified_ A Decade of Reinventing the Cello\\Cover.jpg",
+      "Blurb": "There is a lot of metal covers here",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "Amputechture",
+      "Artist": "The Mars Volta",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Mars Volta, The\\Amputechture\\Cover.jpg",
+      "Blurb": "The Album before Bedlam, probably their best album",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "An American Prayer",
+      "Artist": "The Doors",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Doors, The\\An American Prayer\\Cover.jpg",
+      "Blurb": "I Think this is a spoken word album... ooof",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "Animal Magic",
+      "Artist": "Bonobo",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Bonobo\\Animal Magic\\Cover.jpg",
+      "Blurb": "I've listened to Black Sands the most, but I like Bonobo, very interesting stuff",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "Animal Rights",
+      "Artist": "Moby",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Moby\\Animal Rights\\Cover.jpg",
+      "Blurb": "Dang what is this like the third Moby review?",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "The Anti Mother",
+      "Artist": "Norma Jean",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Norma Jean\\The Anti Mother\\Cover.jpg",
+      "Blurb": "Oof got this album becuase the cover looked cool, the first time I stepped into Hot Topic",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "Antichamber",
+      "Artist": "Siddhartha Barnhoorn",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Various Artists\\Siddhartha Barnhoorn - Antichamber\\Cover.jpg",
+      "Blurb": "This is the soundtrack to a fucking rad game, Antichamber",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "Antics",
+      "Artist": "Interpol",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Interpol\\Antics\\Cover.jpg",
+      "Blurb": "The Second Interpol album, this is not the album with their best known track",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "Anytime At All",
+      "Artist": "Banyan",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Banyan\\Anytime At All\\Cover.jpg",
+      "Blurb": "I think this might be more Janes Addiction, butt rock",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "Appleseed EP",
+      "Artist": "Aesop Rock",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Aesop Rock\\Appleseed EP\\Cover.jpg",
+      "Blurb": "I haven't listened to Aesop Rock in almost 10 years now",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "Aqua Teen Hunger Force Colon Movie Film for Theaters Colon the Soundtrack",
+      "Artist": "Various Artists",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Various Artists\\Aqua Teen Hunger Force Colon Movie Film for Theaters Colon the Soundtrack\\Cover.jpg",
+      "Blurb": "I bought this album soley for the mastodon song",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "Arabia Mountain",
+      "Artist": "The Black Lips",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Black Lips, The\\Arabia Mountain\\Cover.jpg",
+      "Blurb": "Modern Art was the track that got me into The Black Lips",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "Are You Dead Yet?",
+      "Artist": "Children Of Bodom",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Children Of Bodom\\Are You Dead Yet_ [Bonus Track]\\Cover.jpg",
+      "Blurb": "Lol I wrote a Mr. G music review on one of these songs",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "Around the Fur",
+      "Artist": "Deftones",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Deftones\\Around The Fur\\Cover.jpg",
+      "Blurb": "I lovet his album, it's solid",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "The Art of Drowning",
+      "Artist": "AFI",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\AFI\\The Art of Drowning\\Cover.jpg",
+      "Blurb": "Need to make sure I get the rest of the tracks",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "The Artist in the Ambulance",
+      "Artist": "Thrice",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Thrice\\The Artist In The Ambulance\\Cover.jpg",
+      "Blurb": "Wooo this is THE Thrice album",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "Artwork",
+      "Artist": "The Used",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Used, The\\Artwork\\Cover.jpg",
+      "Blurb": "I don't really remember this album, I listened to their earlier albums more",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "As Daylight Dies",
+      "Artist": "Killswitch Engage",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Killswitch Engage\\As Daylight Dies (Special Edition)\\Cover.jpg",
+      "Blurb": "THIS IS MY CURSE!!!!!",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "Ascendancy",
+      "Artist": "Trivium",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Trivium\\Ascendancy [Bonus Tracks]\\Cover.jpg",
+      "Blurb": "While not quite as good as their next album Shogun, this is still pretty solid",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "Astro Coast",
+      "Artist": "Surfer Blood",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Surfer Blood\\Astro Coast\\Cover.jpg",
+      "Blurb": "This album is solid, I haven't listened to it in years",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "Astro Lounge",
+      "Artist": "Smash Mouth",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Smash Mouth\\Astro Lounge\\Cover.jpg",
+      "Blurb": "SOME BODY, ONCE TOLD ME",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "At Play",
+      "Artist": "Deadmau5",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Deadmau5\\At Play\\Cover.jpg",
+      "Blurb": "Get ready for the Deadmua5 block",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "At Play 2",
+      "Artist": "Deadmau5",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Deadmau5\\At Play 2\\Cover.jpg",
+      "Blurb": "More Deadmau5, this might get repetitive",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "Atomizer",
+      "Artist": "Furries in a Blender",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Furries in a Blender\\Atomizer\\Cover.jpg",
+      "Blurb": "Woo More GABBERSTAG",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "Attack & Release",
+      "Artist": "The Black Keys",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Black Keys, The\\Attack & Release\\Cover.jpg",
+      "Blurb": "I Think this is the album right before Brothers",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "Attack On Memory",
+      "Artist": "Cloud Nothings",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Cloud Nothings\\Attack on Memory\\Cover.jpg",
+      "Blurb": "Holy shit this album is fucking fantastic, and I haven't listened to it in forever",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "Avatar: The Last Airbender",
+      "Artist": "The Track Team",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Various Artists\\Avatar The Last Airbender OST\\OST\\Cover.jpg",
+      "Blurb": "Soundtrack for the amazing show",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "Awesomenauts",
+      "Artist": "SonicPicnic",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Various Artists\\Awesomenauts Original Soundtrack\\Cover.jpg",
+      "Blurb": "Soundtrack for the game, damn its a lot of tracks",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "",
+      "Artist": "",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\ \\Cover.jpg",
+      "Blurb": "",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "",
+      "Artist": "",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\ \\Cover.jpg",
+      "Blurb": "",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "",
+      "Artist": "",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\ \\Cover.jpg",
+      "Blurb": "",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "",
+      "Artist": "",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\ \\Cover.jpg",
+      "Blurb": "",
+      "NextUpText": "",
+      "DatePosted": ""
+    },
+    {
+      "Title": "",
+      "Artist": "",
+      "ReviewBody": "",
+      "AlbumRating": 0,
+      "TrackList": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\ \\Cover.jpg",
+      "Blurb": "",
+      "NextUpText": "",
+      "DatePosted": ""
     }
   ]
 }
