@@ -42,7 +42,7 @@ def GetUserID(update,context):
     update.message.reply_text(str(user_id) + ": Your user ID")
 
 def SendThicc(update,context):
-    photo = open(file=os.path.join(__location__,'Media\THICC.mp4'),mode='rb')
+    photo = open(file=os.path.join(__location__,'Media\\THICC.mp4'),mode='rb')
     context.bot.sendAnimation(chat_id=update.message.chat_id, animation=photo)
 
 def GetNextInQueue():
@@ -105,16 +105,33 @@ def SendReview(update,context):
 
     UpdateCompleted(reviewJson)
 
+def SendTimedReview(context):
+    #MusicChatID = vars["CHATID"]
+    MusicChatID = vars["SELFID"]
+    reviewJson = GetNextInQueue()
+
+    photo = open(file=reviewJson["AlbumArt"],mode='rb')
+
+    TrackList = FormatTracklist(reviewJson)
+
+    context.bot.send_message(chat_id=MusicChatID, text="#AlbumReview")
+    context.bot.sendPhoto(chat_id=MusicChatID, photo=photo)
+    context.bot.send_message(chat_id=MusicChatID, text=reviewJson["ReviewBody"], parse_mode='Markdown')
+    context.bot.send_message(chat_id=MusicChatID, text=TrackList)
+    context.bot.send_message(chat_id=MusicChatID, text=reviewJson["NextUpText"], parse_mode='Markdown')
+
+    UpdateCompleted(reviewJson)
+
 def error(update, context):
     """Log Errors caused by Updates."""
     logger.warning('Update "%s" caused error "%s"', update, context.error)
 
-def callback_minute(context: CallbackContext):
-    context.bot.send_message(chat_id=vars["SELFID"], 
-                             text='One message every minute')
+def MonFri_job(bot, update):
+    t = datetime.time(10, 00, 00, 000000)
+    update.job_queue.run_daily(callback_Review, t, days=(0,4,), context=update)
 
 def callback_Review(context: CallbackContext):
-    SendReview(update,context)
+    SendTimedReview(context)
 
 def Main():
 
@@ -123,22 +140,13 @@ def Main():
 
     dispatcher = updater.dispatcher
 
-    UserID_handler = CommandHandler('getuserid',GetUserID)
-    Review_handler = CommandHandler('sendreview',SendReview)
-    Thicc_handler = CommandHandler('thicc',SendThicc)
-
-    dispatcher.add_handler(UserID_handler)
-    dispatcher.add_handler(Review_handler)
-    dispatcher.add_handler(Thicc_handler)
+    dispatcher.add_handler(CommandHandler('getuserid',GetUserID))
+    dispatcher.add_handler(CommandHandler('sendreview',SendReview))
+    dispatcher.add_handler(CommandHandler('thicc',SendThicc))
 
     dispatcher.add_error_handler(error)
 
-    job_review = job_queue.run_daily(callback=callback_Review,time=datetime.time(hour = 10, minute = 0, second = 0),days=(0,4))
-
-    #if (datetime.date.today().isoweekday() == 1 or datetime.date.today().isoweekday() == 7) and (datetime.datetime.now() == datetime.time(9,30,0)):
-    #    dispatcher.bot.send_message(chat_id=vars["SELFID"],text='One message every minute')
-    #else:
-    #    job_review.Enabled = False
+    dispatcher.add_handler(CommandHandler('notify', MonFri_job, pass_job_queue=True))
 
     updater.start_polling()
     updater.idle()
