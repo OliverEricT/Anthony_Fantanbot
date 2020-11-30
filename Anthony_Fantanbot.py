@@ -96,31 +96,47 @@ def SendReview(update,context):
     photo = open(file=reviewJson["AlbumArt"],mode='rb')
 
     TrackList = FormatTracklist(reviewJson)
+    rating = BuildRatingBlock(reviewJson)
+
+    msgBody = "*Thoughts*\n{0}\n\n*Track Ratings*\n{1}\n\n*Overall Rating*\n{2}".format(reviewJson["ReviewBody"],TrackList,rating)
 
     context.bot.send_message(chat_id=MusicChatID, text="#AlbumReview")
     context.bot.sendPhoto(chat_id=MusicChatID, photo=photo)
-    context.bot.send_message(chat_id=MusicChatID, text=reviewJson["ReviewBody"], parse_mode='Markdown')
-    context.bot.send_message(chat_id=MusicChatID, text=TrackList)
+    #context.bot.send_message(chat_id=MusicChatID, text=reviewJson["ReviewBody"], parse_mode='Markdown')
+    #context.bot.send_message(chat_id=MusicChatID, text=TrackList)
+    context.bot.send_message(chat_id=MusicChatID, text=msgBody, parse_mode='Markdown')
     context.bot.send_message(chat_id=MusicChatID, text=reviewJson["NextUpText"], parse_mode='Markdown')
 
     UpdateCompleted(reviewJson)
 
 def SendTimedReview(context):
-    #MusicChatID = vars["CHATID"]
-    MusicChatID = vars["SELFID"]
+    MusicChatID = vars["CHATID"]
+    #MusicChatID = vars["SELFID"]
     reviewJson = GetNextInQueue()
 
     photo = open(file=reviewJson["AlbumArt"],mode='rb')
 
     TrackList = FormatTracklist(reviewJson)
+    rating = BuildRatingBlock(reviewJson)
+
+    msgBody = "*Thoughts*\n{0}\n\n*Track Ratings*\n{1}\n\n*Overall Rating*\n{2}".format(reviewJson["ReviewBody"],TrackList,rating)
 
     context.bot.send_message(chat_id=MusicChatID, text="#AlbumReview")
     context.bot.sendPhoto(chat_id=MusicChatID, photo=photo)
-    context.bot.send_message(chat_id=MusicChatID, text=reviewJson["ReviewBody"], parse_mode='Markdown')
-    context.bot.send_message(chat_id=MusicChatID, text=TrackList)
+    #context.bot.send_message(chat_id=MusicChatID, text=reviewJson["ReviewBody"], parse_mode='Markdown')
+    #context.bot.send_message(chat_id=MusicChatID, text=TrackList)
+    #context.bot.send_message(chat_id=MusicChatID, text=reviewJson["NextUpText"], parse_mode='Markdown')
+    context.bot.send_message(chat_id=MusicChatID, text=msgBody, parse_mode='Markdown')
     context.bot.send_message(chat_id=MusicChatID, text=reviewJson["NextUpText"], parse_mode='Markdown')
 
     UpdateCompleted(reviewJson)
+
+def BuildRatingBlock(json):
+    txt = "(personal rating + Songs avg) / 2 = Rating\n"
+
+    txt += "( {0} + {1} ) / 2 = {2}".format(json["AlbumFeelingRating"],json["SongAvg"],json["AlbumRating"])
+
+    return txt
 
 def error(update, context):
     """Log Errors caused by Updates."""
