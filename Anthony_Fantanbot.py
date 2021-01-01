@@ -87,6 +87,13 @@ def FormatTracklist(reviewJson):
 def FormatNextUp(review):
     return "NEXT UP:\n\n{0} by {1}\n\n{2}".format(review["Title"],review["Artist"],review["Blurb"])
 
+def FormatRatingBlock(json):
+    txt = "(personal rating + Songs avg) / 2 = Rating\n"
+
+    txt += "( {0} + {1} ) / 2 = {2}".format(json["AlbumFeelingRating"],json["SongAvg"],json["AlbumRating"])
+
+    return txt
+
 @restricted
 def SendReview(update,context):
     MusicChatID = vars["CHATID"]
@@ -96,7 +103,7 @@ def SendReview(update,context):
     photo = open(file=reviewJson["AlbumArt"],mode='rb')
 
     TrackList = FormatTracklist(reviewJson)
-    rating = BuildRatingBlock(reviewJson)
+    rating = FormatRatingBlock(reviewJson)
 
     msgBody = "*Thoughts*\n{0}\n\n*Track Ratings*\n{1}\n\n*Overall Rating*\n{2}".format(reviewJson["ReviewBody"],TrackList,rating)
 
@@ -117,7 +124,7 @@ def SendTimedReview(context):
     photo = open(file=reviewJson["AlbumArt"],mode='rb')
 
     TrackList = FormatTracklist(reviewJson)
-    rating = BuildRatingBlock(reviewJson)
+    rating = FormatRatingBlock(reviewJson)
 
     msgBody = "*Thoughts*\n{0}\n\n*Track Ratings*\n{1}\n\n*Overall Rating*\n{2}".format(reviewJson["ReviewBody"],TrackList,rating)
 
@@ -131,12 +138,8 @@ def SendTimedReview(context):
 
     UpdateCompleted(reviewJson)
 
-def BuildRatingBlock(json):
-    txt = "(personal rating + Songs avg) / 2 = Rating\n"
-
-    txt += "( {0} + {1} ) / 2 = {2}".format(json["AlbumFeelingRating"],json["SongAvg"],json["AlbumRating"])
-
-    return txt
+def GetReview():
+    pass
 
 def error(update, context):
     """Log Errors caused by Updates."""
