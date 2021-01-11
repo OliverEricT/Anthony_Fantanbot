@@ -74,6 +74,14 @@ def UpdateCompleted(review):
     with open(os.path.join(__location__,'Posted_Reviews.json'),'w') as file:
         json.dump(completed,file,indent=2)
 
+def GetNumCompleted():
+    with open(os.path.join(__location__,'Posted_Reviews.json'),'r') as file:
+        completed = json.load(file)
+
+    count = len(completed["Completed"])
+
+    return count
+
 def FormatTracklist(reviewJson):
     trackList = reviewJson["TrackList"]
 
@@ -102,15 +110,17 @@ def SendReview(update,context):
 
     photo = open(file=reviewJson["AlbumArt"],mode='rb')
 
+    count = GetNumCompleted()
+    reviewJson["id"] = count
+
     TrackList = FormatTracklist(reviewJson)
     rating = FormatRatingBlock(reviewJson)
 
-    msgBody = "*Thoughts*\n{0}\n\n*Track Ratings*\n{1}\n\n*Overall Rating*\n{2}".format(reviewJson["ReviewBody"],TrackList,rating)
+    idText = "#AlbumReview No. {0}".format(count + 1)
+    msgBody = "*Album Title*\n{0}\n\n*Album Artist*\n{1}\n\n*Thoughts*\n{2}\n\n*Track Ratings*\n{3}\n\n*Overall Rating*\n{4}".format(reviewJson["Title"],reviewJson["Artist"],reviewJson["ReviewBody"],TrackList,rating)
 
-    context.bot.send_message(chat_id=MusicChatID, text="#AlbumReview")
+    context.bot.send_message(chat_id=MusicChatID, text=idText)
     context.bot.sendPhoto(chat_id=MusicChatID, photo=photo)
-    #context.bot.send_message(chat_id=MusicChatID, text=reviewJson["ReviewBody"], parse_mode='Markdown')
-    #context.bot.send_message(chat_id=MusicChatID, text=TrackList)
     context.bot.send_message(chat_id=MusicChatID, text=msgBody, parse_mode='Markdown')
     context.bot.send_message(chat_id=MusicChatID, text=reviewJson["NextUpText"], parse_mode='Markdown')
 
