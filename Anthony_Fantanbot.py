@@ -102,6 +102,18 @@ def FormatRatingBlock(json):
 
     return txt
 
+def FormatGenreBlock(json):
+    genres = json["Genre"]
+
+    gtxt = ""
+
+    for i in genres:
+        gtxt += "{0}, ".format(i)
+
+    gtxt = gtxt[:-2]
+
+    return gtxt
+
 @restricted
 def SendReview(update,context):
     MusicChatID = vars["CHATID"]
@@ -113,11 +125,12 @@ def SendReview(update,context):
     count = GetNumCompleted()
     reviewJson["id"] = count
 
+    genreTxt = FormatGenreBlock(reviewJson)
     TrackList = FormatTracklist(reviewJson)
     rating = FormatRatingBlock(reviewJson)
 
     idText = "#AlbumReview No. {0}".format(count + 1)
-    msgBody = "*Album Title*\n{0}\n\n*Album Artist*\n{1}\n\n*Thoughts*\n{2}\n\n*Track Ratings*\n{3}\n\n*Overall Rating*\n{4}".format(reviewJson["Title"],reviewJson["Artist"],reviewJson["ReviewBody"],TrackList,rating)
+    msgBody = "*Album Title*\n{0}\n\n*Album Artist*\n{1}\n\n*Genre*\n{2}\n\n*Thoughts*\n{3}\n\n*Track Ratings*\n{4}\n\n*Overall Rating*\n{5}".format(reviewJson["Title"],reviewJson["Artist"],genreTxt,reviewJson["ReviewBody"],TrackList,rating)
 
     context.bot.send_message(chat_id=MusicChatID, text=idText)
     context.bot.sendPhoto(chat_id=MusicChatID, photo=photo)
