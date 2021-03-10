@@ -45,19 +45,44 @@ def SendThicc(update,context):
     photo = open(file=os.path.join(__location__,'Media\\THICC.mp4'),mode='rb')
     context.bot.sendAnimation(chat_id=update.message.chat_id, animation=photo)
 
+def GeNextUpText(reviewLst):
+    end = False
+    index = 0
+
+    while not end:
+        if reviewLst[index]["id"] != -1:
+            if len(reviewLst) == 1 or index == len(reviewLst):
+                NextUpText = "NEXT UP:\n\nQueue is Empty"
+                end = True
+            else:
+                NextUpText = FormatNextUp(reviewLst[index])
+                end = True
+        else:
+            index += 1
+
+    return NextUpText
+    
 def GetNextInQueue():
     with open(os.path.join(__location__,'Queue.json'),'r') as file:
         queue = json.load(file)
+        queueShort = queue["Queue"]
 
-    if len(queue["Queue"]) == 0:
-        review = None
-    elif len(queue["Queue"]) == 1:
-        review = queue["Queue"].pop(0)
-        review["NextUpText"] = "NEXT UP:\n\nQueue is Empty"
-    else:
-        review = queue["Queue"].pop(0)
-        nextUpText = FormatNextUp(queue["Queue"][0])
-        review["NextUpText"] = nextUpText
+    if len(queueShort) == 0:
+        return None
+
+    end = False
+    index = 0
+
+    while not end:
+        if queueShort[index]["id"] != -1:
+            end = True
+        else:
+            index += 1
+
+    review = queueShort.pop(index)
+    review["NextUpText"] = GeNextUpText(queueShort)
+
+    queue["Queue"] = queueShort
 
     with open(os.path.join(__location__,'Queue.json'),'w') as file:
         json.dump(queue,file,indent=2)
@@ -140,8 +165,8 @@ def SendReview(update,context):
     UpdateCompleted(reviewJson)
 
 def SendTimedReview(context):
-    MusicChatID = vars["CHATID"]
-    #MusicChatID = vars["SELFID"]
+    #MusicChatID = vars["CHATID"]
+    MusicChatID = vars["SELFID"]
     reviewJson = GetNextInQueue()
 
     photo = open(file=reviewJson["AlbumArt"],mode='rb')
@@ -166,6 +191,10 @@ def GetReview():
 
 def error(update, context):
     """Log Errors caused by Updates."""
+
+    errorMsg = "Update {0} caused error {1}".format(update,context.error)
+
+    context.bot.send_message(chat_id=vars["SELFID"], text=idText)
     logger.warning('Update "%s" caused error "%s"', update, context.error)
 
 def MonFri_job(bot, update):
