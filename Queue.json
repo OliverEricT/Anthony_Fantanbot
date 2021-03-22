@@ -1,171 +1,97 @@
 {
   "Queue": [
     {
-      "id": 0,
-      "Title": "Airbag/How am I Driving?",
-      "Artist": "Radiohead",
-      "ReviewBody": "Oh a quick ep from Radiohead. I don't think I have ever really listened to too much Radiohead, dispite having a bunch of their albums. I think I might have listned to one of the tracks on this ep before hand and then just written the entire thing off. It's a little on the indie side for my tastes now-a-days but I still generally enjoy this ep. _Airbag_ starts off the album, this is one of those songs that I feel like to really enjoy it, you need to be really high. The next track, _Pearly_ picks up the pace slightly, it's a bit more jammy than the previous track as well. This is a quick review, I mean the ep is only seven songs after all. Overall I think this ep is good, I don't know how the rest of radiohead is going to go though.",
-      "AlbumRating": 3,
-      "AlbumFeelingRating": 3,
-      "SongAvg": 3,
-      "TrackList": [
-        "Airbag",
-        3,
-        "Pearly",
-        3,
-        "Meeting in the Aisle",
-        3,
-        "A Reminder",
-        2,
-        "Polyethylene, Pts. 1 & 2",
-        3,
-        "Melatonin",
-        3,
-        "Palo Alto",
-        3
-      ],
-      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Radiohead\\Airbag_How Am I Driving_\\Cover.jpg",
-      "Genre": [
-        "Alternative Rock"
-      ],
-      "Blurb": "I think i don't like this album",
-      "NextUpText": "",
-      "DatePosted": ""
-    },
-    {
-      "id": 0,
-      "Title": "The Alchemy Index, Vols. I, & II",
-      "Artist": "Thrice",
-      "ReviewBody": "Now I've been really looking forward to this album and the followup as well. This album and the following all concept albums, 4 eps split into 2 albums covering the four basic elements; Fire, Water, Air, and Earth. This first album takes the elements of fire and water. The fire is symbolized by their former style of \"post-hardcore\" and water is symbolized by an ambient kind of electronica. The second track on the album, _The Messenger_, starts out with this beat that sounds like the \"Showcase\" splash screen music, the thing before _Trailer Park Boys_. _The Arsonist_ has this really sick breakdown, \"I Love this city, enough that I'll set it ablaze\" over and over as the music builds, makes for a really cool effect. The first half is definitely my personal favorite of all 4 eps, but as you'll read in the next review, there are definitely some really cool tracks in the other elements, I just think fire is the most consistant. The second half of this album, Water, is interesting. I can't really say that I've heard Thrice do much with electronic elements before. The ambient electronic sound definitely works to make this sound very ocean-y. Too bad ambient music can be very hard to listen to if you are not in the mood for it. I don't have much to say for the second half; It's not bad, it just doesn't quite hold my interest like the first part does. Overall I think this is a good album, definitely the better of the two, but it doesn't feel like an album that you play all the time more listen to a couple times and think \"Yeah this is a cool concept\" and then don't touch it anymore.",
-      "AlbumRating": 3,
-      "AlbumFeelingRating": 3,
-      "SongAvg": 2.8,
-      "TrackList": [
-        "Firebreather",
-        3,
-        "The Messenger",
-        4,
-        "Backdraft",
-        3,
-        "The Arsonist",
-        4,
-        "Burn the Fleet",
-        3,
-        "The Flame Deluge",
-        2,
-        "Digital Sea",
-        3,
-        "Open Water",
-        2,
-        "Lost Continent",
-        2,
-        "Night Diving",
-        3,
-        "The Whaler",
-        3,
-        "Kings Upon the Main",
-        2
-      ],
-      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Thrice\\The Alchemy Index, Vols. 1 & 2_ Fire & Water\\Cover.jpg",
-      "Genre": [
-        "Post-Hardcore",
-        "Ambient",
-        "Electronic"
-      ],
-      "Blurb": "Parts I & II, fire & water, post-hardcore & Ambient Electronic",
-      "NextUpText": "",
-      "DatePosted": ""
-    },
-    {
-      "id": 0,
-      "Title": "The Alchemy Index, Vols. III, & IV",
-      "Artist": "Thrice",
-      "ReviewBody": "The second of the Thrice element concept albums. This album features Air and Earth, Atmospheric and Folk. What's really tough about these albums is that I think the highs are much higher than album one, but the lows are ever so much lower. The opening track _Broken Lungs_ is just this kind of boring ballad that I can barely sit through. Unlike the next track _The Sky Is Falling_ which features this groovy sound and sax chord carrying the melody, this one is a bop. _Daedelus_ is my favorite of all the tracks on both albums, it's a retelling of the myth of Icarus but from his father's perspective. The second half of this album is the Earth portion, based on folk and americana sounding; because those genres are \"down to earth\" get it? While this portion of the album is fine, it's not really my thing, a lot of it feels like the slow portion in a ska album. Overall this half of the two-part album is definitely not my favorite, the highs are high, but other than that it's a snooze fest.",
-      "AlbumRating": 2,
-      "AlbumFeelingRating": 2,
-      "SongAvg": 2.3,
-      "TrackList": [
-        "Broken Lungs",
-        2,
-        "The Sky is Falling",
-        3,
-        "A Song for Milly Michaelson",
-        2,
-        "Daedalus",
-        4,
-        "As the Crow Flies",
-        2,
-        "Silver Wings",
-        1,
-        "Moving Mountains",
-        3,
-        "Digging My Own Grave",
-        3,
-        "The Earth Isn't Humming",
-        3,
-        "The Lion and The Wolf",
-        2,
-        "Come All You Weary",
-        2,
-        "Child of Dust",
-        1
-      ],
-      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Thrice\\The Alchemy Index, Vol. 3 & 4_ Air & Earth\\Cover.jpg",
-      "Genre": [
-        "Atmospheric Rock",
-        "Americana",
-        "Folk"
-      ],
-      "Blurb": "Parts III & IV, Air & Earth, Atmospheric & Americana",
-      "NextUpText": "",
-      "DatePosted": ""
-    },
-    {
-      "id": 0,
-      "Title": "All Hail Bright Futures",
-      "Artist": "And So I Watch You From Afar",
-      "ReviewBody": "Now I have been looking forward to this album for a long time. I had a magical experience listening to this album high as fuck. I can say that sober it definitely holds up as well. The first track _Eonia_ while basically an extended intro for the next track, its still bumping. _Big Thinks Do Remarkable_ is the next track and definitely my favorite on the album. About halfway through when it starts hitting with that \"The Sun, The Sun, The Sun, Is in our eyes\" bit is epic. One of the cool things about ASIWYFA is that each of their albums feel wildly different from eachother, but still the same. This album has a definite upbeat-positive vibe to it. The tracks, _Stay Golden Pt. 1-3_, feel like a giant rising action. _Mend And Make Safe_ has this really cool panflute on the track, I feel like a lot of bands have been using the panflute lately. It also has this glitchy vibe tgo it as well. Since this is the digital deluxe version of this album it does come with two bonus tracks, _Gum_ and _Spiderbox_, both of which are awesome tracks. Overall this album is fantastic and is definitely worth the listen.",
+      "id": -1,
+      "Title": "DAMN.",
+      "Artist": "Kendrick Lamar",
+      "ReviewBody": "",
       "AlbumRating": 4,
       "AlbumFeelingRating": 4,
-      "SongAvg": 4,
+      "SongAvg": 3.6,
       "TrackList": [
-        "Eunoia",
+        "BLOOD.",
         3,
-        "Big Thinks Do Remarkable",
-        5,
-        "Like A Mouse",
+        "DNA.",
         4,
-        "Ambulance",
-        4,
-        "The Stay Golden Pt. 1",
-        4,
-        "The Stay Golden Pt. 2 (Rats on a Rock)",
-        4,
-        "The Stay Golden Pt. 3 (Trails...)",
+        "YAH.",
         3,
-        "Mend And Make Safe",
-        5,
-        "Ka Ba Ta Bo Da Ka",
+        "ELEMENT.",
         4,
-        "Things Amazing",
+        "FEEL.",
+        4,
+        "LOYALTY. (FEAT. RIHANNA.)",
         3,
-        "All Hail Bright Futures",
-        4,
-        "Young Brave Minds",
+        "PRIDE.",
         3,
-        "Gum (Bonus Track)",
+        "HUMBLE.",
         4,
-        "Spiderbox (Bonus Track)",
-        5
+        "LUST.",
+        4,
+        "LOVE. (FEAT. ZACARI.)",
+        3,
+        "XXX. (FEAT. U2.)",
+        4,
+        "FEAR.",
+        4,
+        "GOD.",
+        4,
+        "DUCKWORTH.",
+        3
       ],
-      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\And So I Watch You From Afar\\All Hail Bright Futures\\Cover.jpg",
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Kendrick Lamar\\DAMN\\Cover.jpg",
       "Genre": [
-        "Math Rock",
-        "Experimental Rock"
+        "Conscious Hip-Hop"
       ],
-      "Blurb": "A band I have recently fallen in love with, This album is a fucking jam",
+      "Blurb": "I don't know if I've ever listened to this all the way through, but this ones for you @Supershibe",
       "NextUpText": "",
-      "DatePosted": ""
+      "DatePosted": "",
+      "Listen1": "2021-03-12",
+      "Listen2": "2021-03-15",
+      "Listen3": ""
+    },
+    {
+      "id": -1,
+      "Title": "Love What Survives",
+      "Artist": "Mount Kimbie",
+      "ReviewBody": "",
+      "AlbumRating": 5,
+      "AlbumFeelingRating": 5,
+      "SongAvg": 4.2,
+      "TrackList": [
+        "Four Years and One Day",
+        3,
+        "Blue Train Lines",
+        5,
+        "Audition",
+        5,
+        "Marilyn",
+        4,
+        "SP12 Beat",
+        5,
+        "You Look Certain (I'm Not So Sure)",
+        5,
+        "Poison",
+        3,
+        "We Go Home Together",
+        3,
+        "Delta",
+        5,
+        "T.A.M.E.D",
+        4,
+        "How We Got By",
+        4
+      ],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Mount Kimbie\\Love What Survives\\Cover.jpg",
+      "Genre": [
+        "Future Garage",
+        "_Intelligent Dance Music_"
+      ],
+      "Blurb": "Fucking _Blue Train Lines_ is too good, this one is also for @Supershibe",
+      "NextUpText": "",
+      "DatePosted": "",
+      "Listen1": "2021-03-12",
+      "Listen2": "2021-03-15",
+      "Listen3": ""
     },
     {
       "id": -1,
@@ -180,10 +106,13 @@
       "Genre": [],
       "Blurb": "Oh baby, more angry teenager music, but I'm here for it",
       "NextUpText": "",
-      "DatePosted": ""
+      "DatePosted": "",
+      "Listen1": "",
+      "Listen2": "",
+      "Listen3": ""
     },
     {
-      "id": 0,
+      "id": 1,
       "Title": "All's Well That Ends Well",
       "Artist": "Chiodos",
       "ReviewBody": "When I first saw this was the album next up, I was thinking \"what if this is just bad edgy music from when I was a teenager\". Then it startup up and my thoughts were \"This is just good edgy music from when I was a teen\". Ignoring the prelude track and the two interludes, this album is a fucking bop. The higher pitch harmonies combined with the heavy-ness of the guitars and screaming compliment each other really well. The album also has this thread of a victorian opera going through it as well, that adds just another layer of depth to the music. The first track that really stands out is _Baby, You Wouldn't Last a Minute on the Creek_. The album also features this weird carnival synth that is layered on some of the tracks. It's such a weird mishmash of moods. This album has been a lost gem for me. Overall this album is great, give it a listen.",
@@ -231,7 +160,10 @@
       ],
       "Blurb": "Screamy, emo, music",
       "NextUpText": "",
-      "DatePosted": ""
+      "DatePosted": "",
+      "Listen1": "",
+      "Listen2": "",
+      "Listen3": ""
     },
     {
       "id": 0,
@@ -269,7 +201,10 @@
       ],
       "Blurb": "I think I've seen them live, I don't remember",
       "NextUpText": "",
-      "DatePosted": ""
+      "DatePosted": "",
+      "Listen1": "",
+      "Listen2": "",
+      "Listen3": ""
     },
     {
       "id": 0,
@@ -315,7 +250,10 @@
       ],
       "Blurb": "More ska greatness. Its the genre thats the most fun!",
       "NextUpText": "",
-      "DatePosted": ""
+      "DatePosted": "",
+      "Listen1": "",
+      "Listen2": "",
+      "Listen3": ""
     },
     {
       "id": 0,
@@ -352,7 +290,10 @@
       ],
       "Blurb": "I don't think this is the album with Headstrong",
       "NextUpText": "",
-      "DatePosted": ""
+      "DatePosted": "",
+      "Listen1": "",
+      "Listen2": "",
+      "Listen3": ""
     },
     {
       "id": 0,
@@ -394,7 +335,10 @@
       ],
       "Blurb": "I wonder if this is his ambient album?",
       "NextUpText": "",
-      "DatePosted": ""
+      "DatePosted": "",
+      "Listen1": "",
+      "Listen2": "",
+      "Listen3": ""
     },
     {
       "id": -1,
@@ -435,7 +379,10 @@
       ],
       "Blurb": "More Radiohead that I haven't listened too lol",
       "NextUpText": "",
-      "DatePosted": ""
+      "DatePosted": "",
+      "Listen1": "",
+      "Listen2": "",
+      "Listen3": ""
     },
     {
       "id": -1,
@@ -479,7 +426,10 @@
       ],
       "Blurb": "OH FUCK YEAH, GET HYPE Luis! Finally some recent-ish music as well",
       "NextUpText": "",
-      "DatePosted": ""
+      "DatePosted": "",
+      "Listen1": "",
+      "Listen2": "",
+      "Listen3": ""
     },
     {
       "id": -1,
@@ -543,7 +493,10 @@
       ],
       "Blurb": "There is a lot of metal covers here",
       "NextUpText": "",
-      "DatePosted": ""
+      "DatePosted": "",
+      "Listen1": "",
+      "Listen2": "",
+      "Listen3": ""
     },
     {
       "id": -1,
@@ -560,7 +513,10 @@
       ],
       "Blurb": "The Album before Bedlam, probably their best album",
       "NextUpText": "",
-      "DatePosted": ""
+      "DatePosted": "",
+      "Listen1": "",
+      "Listen2": "",
+      "Listen3": ""
     },
     {
       "id": -1,
@@ -625,7 +581,10 @@
       ],
       "Blurb": "I Think this is a spoken word album... ooof",
       "NextUpText": "",
-      "DatePosted": ""
+      "DatePosted": "",
+      "Listen1": "",
+      "Listen2": "",
+      "Listen3": ""
     },
     {
       "id": -1,
@@ -656,7 +615,10 @@
       ],
       "Blurb": "The first half of a two part ep, the other half was _A Weird Exits_",
       "NextUpText": "",
-      "DatePosted": ""
+      "DatePosted": "",
+      "Listen1": "",
+      "Listen2": "",
+      "Listen3": ""
     },
     {
       "id": -1,
@@ -694,7 +656,10 @@
       ],
       "Blurb": "We got a whole lot of fusion going on here, Am Excite",
       "NextUpText": "",
-      "DatePosted": ""
+      "DatePosted": "",
+      "Listen1": "",
+      "Listen2": "",
+      "Listen3": ""
     },
     {
       "id": -1,
@@ -735,7 +700,10 @@
       ],
       "Blurb": "The First album from ASIWYFA",
       "NextUpText": "",
-      "DatePosted": ""
+      "DatePosted": "",
+      "Listen1": "",
+      "Listen2": "",
+      "Listen3": ""
     },
     {
       "id": -1,
@@ -774,7 +742,10 @@
       ],
       "Blurb": "I've listened to Black Sands the most, but I like Bonobo, very interesting stuff",
       "NextUpText": "",
-      "DatePosted": ""
+      "DatePosted": "",
+      "Listen1": "",
+      "Listen2": "",
+      "Listen3": ""
     },
     {
       "id": -1,
@@ -826,7 +797,10 @@
       ],
       "Blurb": "Dang what is this like the third Moby review?",
       "NextUpText": "",
-      "DatePosted": ""
+      "DatePosted": "",
+      "Listen1": "",
+      "Listen2": "",
+      "Listen3": ""
     },
     {
       "id": -1,
@@ -874,7 +848,10 @@
       ],
       "Blurb": "I think this is really early AFI",
       "NextUpText": "",
-      "DatePosted": ""
+      "DatePosted": "",
+      "Listen1": "",
+      "Listen2": "",
+      "Listen3": ""
     },
     {
       "id": -1,
@@ -913,7 +890,10 @@
       ],
       "Blurb": "Oof got this album becuase the cover looked cool, the first time I stepped into Hot Topic",
       "NextUpText": "",
-      "DatePosted": ""
+      "DatePosted": "",
+      "Listen1": "",
+      "Listen2": "",
+      "Listen3": ""
     },
     {
       "id": 0,
@@ -950,7 +930,10 @@
       ],
       "Blurb": "This is the soundtrack to a fucking rad game, Antichamber",
       "NextUpText": "",
-      "DatePosted": ""
+      "DatePosted": "",
+      "Listen1": "",
+      "Listen2": "",
+      "Listen3": ""
     },
     {
       "id": -1,
@@ -988,7 +971,10 @@
       ],
       "Blurb": "The Second Interpol album, this is not the album with their best known track",
       "NextUpText": "",
-      "DatePosted": ""
+      "DatePosted": "",
+      "Listen1": "",
+      "Listen2": "",
+      "Listen3": ""
     },
     {
       "id": -1,
@@ -1035,7 +1021,10 @@
       ],
       "Blurb": "I think this might be more Janes Addiction, butt rock",
       "NextUpText": "",
-      "DatePosted": ""
+      "DatePosted": "",
+      "Listen1": "",
+      "Listen2": "",
+      "Listen3": ""
     },
     {
       "id": -1,
@@ -1130,7 +1119,10 @@
       ],
       "Blurb": "I've never played this game, but I know the music is supposed to be good",
       "NextUpText": "",
-      "DatePosted": ""
+      "DatePosted": "",
+      "Listen1": "",
+      "Listen2": "",
+      "Listen3": ""
     },
     {
       "id": -1,
@@ -1164,7 +1156,10 @@
       ],
       "Blurb": "I haven't listened to Aesop Rock in almost 10 years now",
       "NextUpText": "",
-      "DatePosted": ""
+      "DatePosted": "",
+      "Listen1": "",
+      "Listen2": "",
+      "Listen3": ""
     },
     {
       "id": -1,
@@ -1217,7 +1212,10 @@
       ],
       "Blurb": "I bought this album soley for the mastodon song",
       "NextUpText": "",
-      "DatePosted": ""
+      "DatePosted": "",
+      "Listen1": "",
+      "Listen2": "",
+      "Listen3": ""
     },
     {
       "id": -1,
@@ -1268,7 +1266,10 @@
       ],
       "Blurb": "Modern Art was the track that got me into The Black Lips",
       "NextUpText": "",
-      "DatePosted": ""
+      "DatePosted": "",
+      "Listen1": "",
+      "Listen2": "",
+      "Listen3": ""
     },
     {
       "id": -1,
@@ -1294,7 +1295,10 @@
       ],
       "Blurb": "Wtf is melodic dubstep",
       "NextUpText": "",
-      "DatePosted": ""
+      "DatePosted": "",
+      "Listen1": "",
+      "Listen2": "",
+      "Listen3": ""
     },
     {
       "id": -1,
@@ -1332,7 +1336,10 @@
       ],
       "Blurb": "Lol I wrote a Mr. G music review on one of these songs",
       "NextUpText": "",
-      "DatePosted": ""
+      "DatePosted": "",
+      "Listen1": "",
+      "Listen2": "",
+      "Listen3": ""
     },
     {
       "id": -1,
@@ -1371,7 +1378,10 @@
       ],
       "Blurb": "I lovet his album, it's solid",
       "NextUpText": "",
-      "DatePosted": ""
+      "DatePosted": "",
+      "Listen1": "",
+      "Listen2": "",
+      "Listen3": ""
     },
     {
       "id": -1,
@@ -1418,7 +1428,10 @@
       ],
       "Blurb": "Need to make sure I get the rest of the tracks",
       "NextUpText": "",
-      "DatePosted": ""
+      "DatePosted": "",
+      "Listen1": "",
+      "Listen2": "",
+      "Listen3": ""
     },
     {
       "id": -1,
@@ -1460,7 +1473,10 @@
       ],
       "Blurb": "Wooo this is THE Thrice album",
       "NextUpText": "",
-      "DatePosted": ""
+      "DatePosted": "",
+      "Listen1": "",
+      "Listen2": "",
+      "Listen3": ""
     },
     {
       "id": -1,
@@ -1501,7 +1517,10 @@
       ],
       "Blurb": "I don't really remember this album, I listened to their earlier albums more",
       "NextUpText": "",
-      "DatePosted": ""
+      "DatePosted": "",
+      "Listen1": "",
+      "Listen2": "",
+      "Listen3": ""
     },
     {
       "id": -1,
@@ -1549,7 +1568,10 @@
       ],
       "Blurb": "THIS IS MY CURSE!!!!!",
       "NextUpText": "",
-      "DatePosted": ""
+      "DatePosted": "",
+      "Listen1": "",
+      "Listen2": "",
+      "Listen3": ""
     },
     {
       "id": -1,
@@ -1598,7 +1620,10 @@
       ],
       "Blurb": "While not quite as good as their next album Shogun, this is still pretty solid",
       "NextUpText": "",
-      "DatePosted": ""
+      "DatePosted": "",
+      "Listen1": "",
+      "Listen2": "",
+      "Listen3": ""
     },
     {
       "id": -1,
@@ -1609,16 +1634,26 @@
       "AlbumFeelingRating": 4,
       "SongAvg": 3.7,
       "TrackList": [
-        "Floating Vibes",3,
-"Swim",4,
-"Take it Easy",3,
-"Harmonix",4,
-"Neighbour Riffs",4,
-"Twin Peaks",5,
-"Fast Jabroni",4,
-"Slow Jabroni",3,
-"Anchorage",4,
-"Catholic Pagans",3
+        "Floating Vibes",
+        3,
+        "Swim",
+        4,
+        "Take it Easy",
+        3,
+        "Harmonix",
+        4,
+        "Neighbour Riffs",
+        4,
+        "Twin Peaks",
+        5,
+        "Fast Jabroni",
+        4,
+        "Slow Jabroni",
+        3,
+        "Anchorage",
+        4,
+        "Catholic Pagans",
+        3
       ],
       "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Surfer Blood\\Astro Coast\\Cover.jpg",
       "Genre": [
@@ -1627,7 +1662,10 @@
       ],
       "Blurb": "This album is solid, I haven't listened to it in years",
       "NextUpText": "",
-      "DatePosted": ""
+      "DatePosted": "",
+      "Listen1": "",
+      "Listen2": "",
+      "Listen3": ""
     },
     {
       "id": -1,
@@ -1638,21 +1676,36 @@
       "AlbumFeelingRating": 3,
       "SongAvg": 3,
       "TrackList": [
-        "Who's There",3,
-"Diggin' Your Scene",3,
-"I Just Wanna See",2,
-"Waste",1,
-"All Star",5,
-"Satellite",4,
-"Radio",2,
-"Stoned",2,
-"The the Morning Comes",2,
-"Road Man",2,
-"Fallen Horses",2,
-"Defeat You",4,
-"Come on, Come On",5,
-"Home",4,
-"Can't get Enough of You Baby",4
+        "Who's There",
+        3,
+        "Diggin' Your Scene",
+        3,
+        "I Just Wanna See",
+        2,
+        "Waste",
+        1,
+        "All Star",
+        5,
+        "Satellite",
+        4,
+        "Radio",
+        2,
+        "Stoned",
+        2,
+        "The the Morning Comes",
+        2,
+        "Road Man",
+        2,
+        "Fallen Horses",
+        2,
+        "Defeat You",
+        4,
+        "Come on, Come On",
+        5,
+        "Home",
+        4,
+        "Can't get Enough of You Baby",
+        4
       ],
       "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Smash Mouth\\Astro Lounge\\Cover.jpg",
       "Genre": [
@@ -1661,7 +1714,10 @@
       ],
       "Blurb": "SOME BODY, ONCE TOLD ME",
       "NextUpText": "",
-      "DatePosted": ""
+      "DatePosted": "",
+      "Listen1": "",
+      "Listen2": "",
+      "Listen3": ""
     },
     {
       "id": -1,
@@ -1672,15 +1728,24 @@
       "AlbumFeelingRating": 3,
       "SongAvg": 3.3,
       "TrackList": [
-        "ornithopter",3,
-"affective",3,
-"driving logic",3,
-"disconnect Q1",3,
-"vanishing chameleon",4,
-"gigni;currency",4,
-"laminate phantom",4,
-"rejuvenation",3,
-"surface wellness",3
+        "ornithopter",
+        3,
+        "affective",
+        3,
+        "driving logic",
+        3,
+        "disconnect Q1",
+        3,
+        "vanishing chameleon",
+        4,
+        "gigni;currency",
+        4,
+        "laminate phantom",
+        4,
+        "rejuvenation",
+        3,
+        "surface wellness",
+        3
       ],
       "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Darius\\ASTROANTEDILUVIAN\\Cover.jpg",
       "Genre": [
@@ -1689,7 +1754,10 @@
       ],
       "Blurb": "I am really excited to listen to this fursona",
       "NextUpText": "",
-      "DatePosted": ""
+      "DatePosted": "",
+      "Listen1": "",
+      "Listen2": "",
+      "Listen3": ""
     },
     {
       "id": -1,
@@ -1706,7 +1774,10 @@
       ],
       "Blurb": "Get ready for the Deadmua5 block",
       "NextUpText": "",
-      "DatePosted": ""
+      "DatePosted": "",
+      "Listen1": "",
+      "Listen2": "",
+      "Listen3": ""
     },
     {
       "id": -1,
@@ -1721,67 +1792,206 @@
       "Genre": [],
       "Blurb": "More Deadmau5, this might get repetitive",
       "NextUpText": "",
-      "DatePosted": ""
+      "DatePosted": "",
+      "Listen1": "",
+      "Listen2": "",
+      "Listen3": ""
     },
     {
       "id": -1,
       "Title": "Atomizer",
       "Artist": "Furries in a Blender",
       "ReviewBody": "",
-      "AlbumRating": 0,
-      "AlbumFeelingRating": 0,
-      "SongAvg": 0,
-      "TrackList": [],
+      "AlbumRating": 3,
+      "AlbumFeelingRatng": 3,
+      "SongAvg": 3,
+      "TrackList": [
+        "Atomizer",
+        3,
+        "Lockdown",
+        3,
+        "Yellow RMX",
+        3,
+        "Slow Mover",
+        3,
+        "Wheels of Steel",
+        3,
+        "Great Expectations (FIAB RMX)",
+        3,
+        "GABBERST\u00c3\u201eG (FIAB RMX)",
+        3,
+        "I'm Alive 2012",
+        3,
+        "Wind Me Up",
+        3,
+        "Blue Deceiver (feat. Darius)",
+        3,
+        "Atomizer (The Living Tombstone RMX feat. Ibeabronyrapper)",
+        3
+      ],
       "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Furries in a Blender\\Atomizer\\Cover.jpg",
       "Genre": [],
       "Blurb": "Woo More GABBERSTAG",
       "NextUpText": "",
-      "DatePosted": ""
+      "DatePosted": "",
+      "Listen1": "2021-03-12",
+      "Listen2": "2021-03-15",
+      "Listen3": ""
     },
     {
       "id": -1,
       "Title": "Attack & Release",
       "Artist": "The Black Keys",
       "ReviewBody": "",
-      "AlbumRating": 0,
-      "AlbumFeelingRating": 0,
-      "SongAvg": 0,
-      "TrackList": [],
+      "AlbumRating": 3,
+      "AlbumFeelingRating": 3,
+      "SongAvg": 3.3,
+      "TrackList": [
+        "All You Ever Wanted",
+        3,
+        "I Got Mine",
+        4,
+        "Strange Times",
+        4,
+        "Psychotic Girl",
+        3,
+        "Lies",
+        3,
+        "Remember When (Side A)",
+        3,
+        "Remember When (Side B)",
+        4,
+        "Same Old Thing",
+        3,
+        "So He Won't Break",
+        3,
+        "Oceans & Streams",
+        3,
+        "Things Ain't Like They Used to Be",
+        3
+      ],
       "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Black Keys, The\\Attack & Release\\Cover.jpg",
-      "Genre": [],
+      "Genre": [
+        "Blues Rock"
+      ],
       "Blurb": "I Think this is the album right before Brothers",
       "NextUpText": "",
-      "DatePosted": ""
+      "DatePosted": "",
+      "Listen1": "2021-03-15",
+      "Listen2": "2021-03-16",
+      "Listen3": ""
     },
     {
       "id": -1,
       "Title": "Attack On Memory",
       "Artist": "Cloud Nothings",
       "ReviewBody": "",
-      "AlbumRating": 0,
-      "AlbumFeelingRating": 0,
-      "SongAvg": 0,
-      "TrackList": [],
+      "AlbumRating": 5,
+      "AlbumFeelingRating": 5,
+      "SongAvg": 4.8,
+      "TrackList": [
+        "No Future No Past",
+        4,
+        "Wasted Days",
+        5,
+        "Fall In",
+        5,
+        "Stay Useless",
+        5,
+        "Seperation",
+        4,
+        "No Sentiment",
+        5,
+        "Our Plans",
+        5,
+        "Cut You",
+        5
+      ],
       "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Cloud Nothings\\Attack on Memory\\Cover.jpg",
-      "Genre": [],
+      "Genre": [
+        "Noise Rock",
+        "Post-Hardcore"
+      ],
       "Blurb": "Holy shit this album is fucking fantastic, and I haven't listened to it in forever",
       "NextUpText": "",
-      "DatePosted": ""
+      "DatePosted": "",
+      "Listen1": "2021-03-16",
+      "Listen2": "2021-03-17",
+      "Listen3": ""
     },
     {
       "id": -1,
       "Title": "Avatar: The Last Airbender",
       "Artist": "The Track Team",
       "ReviewBody": "",
-      "AlbumRating": 0,
-      "AlbumFeelingRating": 0,
-      "SongAvg": 0,
-      "TrackList": [],
-      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Various Artists\\Avatar The Last Airbender OST\\OST\\Cover.jpg",
-      "Genre": [],
+      "AlbumRating": 3,
+      "AlbumFeelingRating": 3,
+      "SongAvg": 3,
+      "TrackList": [
+        "Avatar Premier Main Title",
+        3,
+        "The Final Blow",
+        3,
+        "The Avatar State",
+        3,
+        "Heart Charkra",
+        4,
+        "Dai Li Headquarters",
+        3,
+        "Agni Kai Avatar",
+        3,
+        "Into the Earth Kingdom",
+        3,
+        "Return to Omashu Night Sky",
+        3,
+        "Missing",
+        0,
+        "Missing",
+        0,
+        "Missing",
+        0,
+        "Missing",
+        0,
+        "Missing",
+        0,
+        "End Credit Music",
+        3,
+        "Entering Ba Sing Se",
+        3,
+        "Nomad Songs",
+        2,
+        "Panda Lily",
+        3,
+        "Swamp Fight",
+        3,
+        "YuYen Capture Aang",
+        3,
+        "Uncle's Tsungi Horn",
+        3,
+        "Water Monster",
+        3,
+        "Who's Destiny",
+        3,
+        "Yue Becomes Moon Spirit",
+        3,
+        "Zuko On the Mount",
+        3,
+        "Azula Intro",
+        3,
+        "Blue Spirit",
+        3
+      ],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Track Team, The\\Avatar The Last Airbender OST\\Cover.jpg",
+      "Genre": [
+        "Soundtrack",
+        "TV Show"
+      ],
       "Blurb": "Soundtrack for the amazing show",
       "NextUpText": "",
-      "DatePosted": ""
+      "DatePosted": "",
+      "Listen1": "2021-03-17",
+      "Listen2": "2021-03-18",
+      "Listen3": ""
     },
     {
       "id": -1,
@@ -1792,86 +2002,17 @@
       "AlbumFeelingRating": 0,
       "SongAvg": 0,
       "TrackList": [],
-      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\Various Artists\\Awesomenauts Original Soundtrack\\Cover.jpg",
-      "Genre": [],
+      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\SonicPicnic\\Awesomenauts Original Soundtrack\\Cover.jpg",
+      "Genre": [
+        "Soundtrack",
+        "Video Game"
+      ],
       "Blurb": "Soundtrack for the game, damn its a lot of tracks",
       "NextUpText": "",
-      "DatePosted": ""
-    },
-    {
-      "id": -1,
-      "Title": "",
-      "Artist": "",
-      "ReviewBody": "",
-      "AlbumRating": 0,
-      "AlbumFeelingRating": 0,
-      "SongAvg": 0,
-      "TrackList": [],
-      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\ \\Cover.jpg",
-      "Genre": [],
-      "Blurb": "",
-      "NextUpText": "",
-      "DatePosted": ""
-    },
-    {
-      "id": -1,
-      "Title": "",
-      "Artist": "",
-      "ReviewBody": "",
-      "AlbumRating": 0,
-      "AlbumFeelingRating": 0,
-      "SongAvg": 0,
-      "TrackList": [],
-      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\ \\Cover.jpg",
-      "Genre": [],
-      "Blurb": "",
-      "NextUpText": "",
-      "DatePosted": ""
-    },
-    {
-      "id": -1,
-      "Title": "",
-      "Artist": "",
-      "ReviewBody": "",
-      "AlbumRating": 0,
-      "AlbumFeelingRating": 0,
-      "SongAvg": 0,
-      "TrackList": [],
-      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\ \\Cover.jpg",
-      "Genre": [],
-      "Blurb": "",
-      "NextUpText": "",
-      "DatePosted": ""
-    },
-    {
-      "id": -1,
-      "Title": "",
-      "Artist": "",
-      "ReviewBody": "",
-      "AlbumRating": 0,
-      "AlbumFeelingRating": 0,
-      "SongAvg": 0,
-      "TrackList": [],
-      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\ \\Cover.jpg",
-      "Genre": [],
-      "Blurb": "",
-      "NextUpText": "",
-      "DatePosted": ""
-    },
-    {
-      "id": -1,
-      "Title": "",
-      "Artist": "",
-      "ReviewBody": "",
-      "AlbumRating": 0,
-      "AlbumFeelingRating": 0,
-      "SongAvg": 0,
-      "TrackList": [],
-      "AlbumArt": "\\\\OPENMEDIAVAULT\\Media\\Music\\ \\Cover.jpg",
-      "Genre": [],
-      "Blurb": "",
-      "NextUpText": "",
-      "DatePosted": ""
+      "DatePosted": "",
+      "Listen1": "2021-03-18",
+      "Listen2": "2021-03-19",
+      "Listen3": ""
     }
   ]
 }

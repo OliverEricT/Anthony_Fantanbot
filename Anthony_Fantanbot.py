@@ -22,6 +22,10 @@ logger = logging.getLogger(__name__)
 vars = json.load(open(os.path.join(__location__,'Telegram.json'),'r'))
 LIST_OF_ADMINS = vars["ADMINS"]
 
+#########################
+#   Telegram Commands   #
+#########################
+
 def restricted(func):
     @wraps(func)
     def wrapped(update,context, *args, **kwargs):
@@ -45,6 +49,90 @@ def SendThicc(update,context):
     photo = open(file=os.path.join(__location__,'Media\\THICC.mp4'),mode='rb')
     context.bot.sendAnimation(chat_id=update.message.chat_id, animation=photo)
 
+def SendNut(update,context):
+    photo = open(file=os.path.join(__location__,'Media\\Nutt.mp4'),mode='rb')
+    context.bot.sendAnimation(chat_id=update.message.chat_id, animation=photo)
+
+def SendJuicy(update,context):
+    photo = open(file=os.path.join(__location__,'Media\\Grapefruit.mp4'),mode='rb')
+    context.bot.sendAnimation(chat_id=update.message.chat_id, animation=photo)
+
+def ParseQueue(update, context):
+    countChanged = 0
+    lstChangedToZero = []
+    lstChangedToNOne = []
+
+    with open(os.path.join(__location__,'Queue.json'),'r') as file:
+        queue = json.load(file)
+        queueShort = queue["Queue"]
+
+    if len(queueShort) == 0:
+        return None
+
+    for review in queueShort:
+        if review["id"] == 0:
+            if CheckReviewForValue(review,""):
+                review["id"] = -1
+                countChanged += 1
+                lstChangedToNOne.append(review["Title"])
+        elif review["id"] == -1:
+            if not CheckReviewForValue(review,""):
+                review["id"] = 0
+                countChanged += 1
+                lstChangedToZero.append(review["Title"])
+
+    msgText = "*Parse Results*\n\nTotal Changed: {0}".format(countChanged)
+
+    msgText += "\n\nItems Changed to `Not Queue Ready`: "
+    for item in lstChangedToNOne:
+        msgText += "\n\t" + item
+
+    msgText += "\n\nItems Changed to `Queue Ready`: "
+    for item in lstChangedToZero:
+        msgText += "\n\t" + item
+
+    queue["Queue"] = queueShort
+
+    with open(os.path.join(__location__,'Queue.json'),'w') as file:
+        json.dump(queue,file,indent=2)
+
+    context.bot.send_message(chat_id=vars["SELFID"], text=msgText, parse_mode='Markdown')
+
+@restricted
+def SendReview(update,context):
+    MusicChatID = vars["CHATID"]
+    #MusicChatID = vars["SELFID"]
+    reviewJson = GetNextInQueue()
+
+    photo = open(file=reviewJson["AlbumArt"],mode='rb')
+
+    count = GetNumCompleted()
+    reviewJson["id"] = count
+
+    genreTxt = FormatGenreBlock(reviewJson)
+    TrackList = FormatTracklist(reviewJson)
+    rating = FormatRatingBlock(reviewJson)
+
+    idText = "#AlbumReview No. {0}".format(count + 1)
+    msgBody = "{0}\n\n*Album Title*\n{1}\n\n*Album Artist*\n{2}\n\n*Genre*\n{3}\n\n*Thoughts*\n{4}\n\n*Track Ratings*\n{5}\n\n*Overall Rating*\n{6}\n\n{7}".format(idText,reviewJson["Title"],reviewJson["Artist"],genreTxt,reviewJson["ReviewBody"],TrackList,rating,reviewJson["NextUpText"])
+
+    context.bot.sendPhoto(chat_id=MusicChatID, photo=photo)
+    context.bot.send_message(chat_id=MusicChatID, text=msgBody, parse_mode='Markdown')
+
+    UpdateCompleted(reviewJson)
+
+def error(update, context):
+    """Log Errors caused by Updates."""
+
+    errorMsg = "Update\n `{0}`\n\n caused error\n `{1}`".format(update,context.error)
+
+    context.bot.send_message(chat_id=vars["SELFID"], text=errorMsg)
+    logger.warning('Update "%s" caused error "%s"', update, context.error) 
+
+#####################
+#   Get Functions   #
+#####################
+
 def GeNextUpText(reviewLst):
     end = False
     index = 0
@@ -56,6 +144,7 @@ def GeNextUpText(reviewLst):
                 end = True
             else:
                 NextUpText = FormatNextUp(reviewLst[index])
+                reviewLst[index]["id"] = 1
                 end = True
         else:
             index += 1
@@ -74,7 +163,7 @@ def GetNextInQueue():
     index = 0
 
     while not end:
-        if queueShort[index]["id"] != -1:
+        if queueShort[index]["id"] == 1:
             end = True
         else:
             index += 1
@@ -89,16 +178,6 @@ def GetNextInQueue():
 
     return review
 
-def UpdateCompleted(review):
-    with open(os.path.join(__location__,'Posted_Reviews.json'),'r') as file:
-        completed = json.load(file)
-    
-    review["DatePosted"] = datetime.datetime.now().isoformat()
-    completed["Completed"].append(review)
-
-    with open(os.path.join(__location__,'Posted_Reviews.json'),'w') as file:
-        json.dump(completed,file,indent=2)
-
 def GetNumCompleted():
     with open(os.path.join(__location__,'Posted_Reviews.json'),'r') as file:
         completed = json.load(file)
@@ -106,6 +185,10 @@ def GetNumCompleted():
     count = len(completed["Completed"])
 
     return count
+
+########################
+#   Format Functions   #
+########################
 
 def FormatTracklist(reviewJson):
     trackList = reviewJson["TrackList"]
@@ -139,30 +222,47 @@ def FormatGenreBlock(json):
 
     return gtxt
 
-@restricted
-def SendReview(update,context):
-    MusicChatID = vars["CHATID"]
-    #MusicChatID = vars["SELFID"]
-    reviewJson = GetNextInQueue()
+def CheckReviewForValue(queue,equalTo):
+    if queue["Title"] == equalTo:
+        return True
 
-    photo = open(file=reviewJson["AlbumArt"],mode='rb')
+    if queue["Artist"] == equalTo:
+        return True
 
-    count = GetNumCompleted()
-    reviewJson["id"] = count
+    if queue["ReviewBody"] == equalTo:
+        return True
 
-    genreTxt = FormatGenreBlock(reviewJson)
-    TrackList = FormatTracklist(reviewJson)
-    rating = FormatRatingBlock(reviewJson)
+    if queue["AlbumRating"] == equalTo:
+        return True
 
-    idText = "#AlbumReview No. {0}".format(count + 1)
-    msgBody = "*Album Title*\n{0}\n\n*Album Artist*\n{1}\n\n*Genre*\n{2}\n\n*Thoughts*\n{3}\n\n*Track Ratings*\n{4}\n\n*Overall Rating*\n{5}".format(reviewJson["Title"],reviewJson["Artist"],genreTxt,reviewJson["ReviewBody"],TrackList,rating)
+    if queue["AlbumFeelingRating"] == equalTo:
+        return True
 
-    context.bot.send_message(chat_id=MusicChatID, text=idText)
-    context.bot.sendPhoto(chat_id=MusicChatID, photo=photo)
-    context.bot.send_message(chat_id=MusicChatID, text=msgBody, parse_mode='Markdown')
-    context.bot.send_message(chat_id=MusicChatID, text=reviewJson["NextUpText"], parse_mode='Markdown')
+    if queue["SongAvg"] == equalTo:
+        return True
 
-    UpdateCompleted(reviewJson)
+    if queue["TrackList"] == equalTo:
+        return True
+
+    if queue["AlbumArt"] == equalTo:
+        return True
+
+    if queue["Genre"] == equalTo:
+        return True
+
+    if queue["Blurb"] == equalTo:
+        return True
+    return False
+
+def UpdateCompleted(review):
+    with open(os.path.join(__location__,'Posted_Reviews.json'),'r') as file:
+        completed = json.load(file)
+    
+    review["DatePosted"] = datetime.datetime.now().isoformat()
+    completed["Completed"].append(review)
+
+    with open(os.path.join(__location__,'Posted_Reviews.json'),'w') as file:
+        json.dump(completed,file,indent=2)
 
 def SendTimedReview(context):
     #MusicChatID = vars["CHATID"]
@@ -186,23 +286,11 @@ def SendTimedReview(context):
 
     UpdateCompleted(reviewJson)
 
-def GetReview():
-    pass
-
-def error(update, context):
-    """Log Errors caused by Updates."""
-
-    errorMsg = "Update {0} caused error {1}".format(update,context.error)
-
-    context.bot.send_message(chat_id=vars["SELFID"], text=idText)
-    logger.warning('Update "%s" caused error "%s"', update, context.error)
-
-def MonFri_job(bot, update):
-    t = datetime.time(10, 00, 00, 000000)
-    update.job_queue.run_daily(callback_Review, t, days=(0,4,), context=update)
-
 def callback_Review(context: CallbackContext):
     SendTimedReview(context)
+
+def TestSend(update, context):
+    context.bot.send_message(chat_id=vars["SELFID"], text="Henlo", parse_mode='Markdown')
 
 def Main():
 
@@ -214,10 +302,11 @@ def Main():
     dispatcher.add_handler(CommandHandler('getuserid',GetUserID))
     dispatcher.add_handler(CommandHandler('sendreview',SendReview))
     dispatcher.add_handler(CommandHandler('thicc',SendThicc))
+    dispatcher.add_handler(CommandHandler('ParseQueue',ParseQueue))
+    dispatcher.add_handler(CommandHandler('Nut',SendNut))
+    dispatcher.add_handler(CommandHandler('Juicy',SendJuicy))
 
     dispatcher.add_error_handler(error)
-
-    dispatcher.add_handler(CommandHandler('notify', MonFri_job, pass_job_queue=True))
 
     updater.start_polling()
     updater.idle()
@@ -225,4 +314,3 @@ def Main():
 
 if __name__ == '__main__':
     Main()
-    #GetNextInQueue()
