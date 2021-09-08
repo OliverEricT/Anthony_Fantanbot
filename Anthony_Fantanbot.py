@@ -70,14 +70,14 @@ def ParseQueue(update, context):
         return None
 
     for review in queueShort:
-        if review["id"] == 0:
+        if review["ID"] == 0:
             if CheckReviewForValue(review,""):
-                review["id"] = -1
+                review["ID"] = -1
                 countChanged += 1
                 lstChangedToNOne.append(review["Title"])
-        elif review["id"] == -1:
+        elif review["ID"] == -1:
             if not CheckReviewForValue(review,""):
-                review["id"] = 0
+                review["ID"] = 0
                 countChanged += 1
                 lstChangedToZero.append(review["Title"])
 
@@ -107,7 +107,7 @@ def SendReview(update,context):
     photo = open(file=reviewJson["AlbumArt"],mode='rb')
 
     count = GetNumCompleted()
-    reviewJson["id"] = count
+    reviewJson["ID"] = count
 
     genreTxt = FormatGenreBlock(reviewJson)
     TrackList = FormatTracklist(reviewJson)
@@ -138,13 +138,13 @@ def GeNextUpText(reviewLst):
     index = 0
 
     while not end:
-        if reviewLst[index]["id"] != -1:
+        if reviewLst[index]["ID"] != -1:
             if len(reviewLst) == 1 or index == len(reviewLst):
                 NextUpText = "NEXT UP:\n\nQueue is Empty"
                 end = True
             else:
                 NextUpText = FormatNextUp(reviewLst[index])
-                reviewLst[index]["id"] = 1
+                reviewLst[index]["ID"] = 1
                 end = True
         else:
             index += 1
@@ -163,7 +163,7 @@ def GetNextInQueue():
     index = 0
 
     while not end:
-        if queueShort[index]["id"] == 1:
+        if queueShort[index]["ID"] == 1:
             end = True
         else:
             index += 1
