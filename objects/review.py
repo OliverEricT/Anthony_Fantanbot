@@ -3,9 +3,15 @@ import json
 import os
 
 class Review:
+	"""
+	Class to handle the review object.
+	"""
 
 	@property
 	def id(self) -> int:
+		"""
+		The integer key for the review
+		"""
 		return self._id
 	
 	@id.setter
@@ -14,6 +20,9 @@ class Review:
 
 	@property
 	def title(self) -> str:
+		"""
+		The album title
+		"""
 		return self._title
 	
 	@title.setter
@@ -22,6 +31,9 @@ class Review:
 
 	@property
 	def artist(self) -> str:
+		"""
+		the artist name. Potentially change this to a key
+		"""
 		return self._artist
 	
 	@artist.setter
@@ -30,6 +42,9 @@ class Review:
 
 	@property
 	def body(self) -> str:
+		"""
+		The body of the review
+		"""
 		return self._body
 	
 	@body.setter
@@ -38,6 +53,10 @@ class Review:
 
 	@property
 	def feelingRating(self) -> float:
+		"""
+		The first half of the rating system; in which a score, out of five, is given
+		based on the overall feeling the album gives you.
+		"""
 		return self._feelingRating
 	
 	@feelingRating.setter
@@ -46,6 +65,10 @@ class Review:
 
 	@property
 	def songAvg(self) -> float:
+		"""
+		The second half of the rating system; in which a score, out of 5, is given for
+		each song and then that total is averaged
+		"""
 		return self._songAvg
 	
 	@songAvg.setter
@@ -53,19 +76,30 @@ class Review:
 		self._songAvg = val
 
 	@property
-	def OverralRating(self) -> float:
+	def OverallRating(self) -> float:
+		"""
+		The final review for the album; in which the the average of the
+		feeling and song avgs is taken
+		"""
 		return (self._feelingRating * self._songAvg) / 2
 	
 	@property
-	def trackList(self) -> list(str):
+	def trackList(self) -> tuple[str,int]:
+		"""
+		The array of song names and ratings that comprise the album
+		"""
 		return self._trackList
 	
 	@trackList.setter
-	def trackList(self,val: list(str)) -> None:
+	def trackList(self,val: tuple[str,int]) -> None:
 		self._trackList = val
 
 	@property
 	def albumArt(self) -> str:
+		"""
+		The link to the album art
+		"""
+		#TODO: Fix this
 		return os.path.join("\\\\Deepthought\\Media\\Music\\",self._albumArt,"Cover.jpg") 
 	
 	@albumArt.setter
@@ -74,6 +108,9 @@ class Review:
 
 	@property
 	def genre(self) -> list(str):
+		"""
+		The list of genres that comprise the album
+		"""
 		return self._genre
 	
 	@genre.setter
@@ -82,6 +119,9 @@ class Review:
 
 	@property
 	def blurb(self) -> str:
+		"""
+		The fun little blurb that gets added to the next up text
+		"""
 		return self._blurb
 	
 	@blurb.setter
@@ -90,6 +130,11 @@ class Review:
 
 	@property
 	def nextUp(self) -> str:
+		"""
+		The fully computed text that get's displayed at the end of the
+		previous review.
+		"""
+		#TODO: Change this to a computed property
 		return self._nextUp
 	
 	@nextUp.setter
@@ -97,15 +142,21 @@ class Review:
 		self._nextUp = val
 
 	@property
-	def posted(self) -> datetime:
+	def postedDate(self) -> datetime:
+		"""
+		The date the review was posted
+		"""
 		return self._posted
 	
-	@posted.setter
+	@postedDate.setter
 	def postedDate(self,val: datetime) -> None:
 		self._posted = val
 
 	@property
 	def listenDate1(self) -> datetime:
+		"""
+		The date of the first listen
+		"""
 		return self._listenDate1
 	
 	@listenDate1.setter
@@ -114,6 +165,9 @@ class Review:
 
 	@property
 	def listenDate2(self) -> datetime:
+		"""
+		The date of the second listen
+		"""
 		return self._listenDate2
 	
 	@listenDate2.setter
@@ -122,6 +176,9 @@ class Review:
 
 	@property
 	def listenDate3(self) -> datetime:
+		"""
+		The date of the third listen
+		"""
 		return self._listenDate3
 	
 	@listenDate3.setter
@@ -129,6 +186,15 @@ class Review:
 		self._listenDate3 = val
 
 	def __init__(self,*argv) -> None:
+		"""
+		The constructor for the review class. There are three cases for object creation.add()
+
+		1. a Review object is passed in and then copied.
+
+		2. a json is passed in and then parsed into a review
+
+		3. The argv is read and then attempted to parse into the object
+		"""
 		if len(argv) == 0:
 			self.id = -1
 			self.title = ""
@@ -165,6 +231,7 @@ class Review:
 			self.listenDate3 = rev.listenDate3
 
 		elif type(argv[0]) is json:
+			#TODO: change this to inbuilt json parsing
 			rev = argv[0]
 			self.id = rev['id']
 			self.title = rev['title']
@@ -183,29 +250,39 @@ class Review:
 			self.listenDate3 = rev['listenDate3']
 					
 		else:
-		self.id = argv[0]
-		self.title = argv[1]
-		self.artist = argv[2]
-		self.body = argv[3]
-		self.feelingRating = argv[4]
-		self.songAvg = argv[5]
-		self.trackList = argv[6]
-		self.albumArt = argv[7]
-		self.genre = argv[8]
-		self.blurb = argv[9]
-		self.nextUp = argv[10]
-		self.datePosted = argv[11]
-		self.listenDate1 = argv[12]
-		self.listenDate2 = argv[13]
-		self.listenDate3 = argv[14]
+			self.id = argv[0]
+			self.title = argv[1]
+			self.artist = argv[2]
+			self.body = argv[3]
+			self.feelingRating = argv[4]
+			self.songAvg = argv[5]
+			self.trackList = argv[6]
+			self.albumArt = argv[7]
+			self.genre = argv[8]
+			self.blurb = argv[9]
+			self.nextUp = argv[10]
+			self.datePosted = argv[11]
+			self.listenDate1 = argv[12]
+			self.listenDate2 = argv[13]
+			self.listenDate3 = argv[14]
 
 	def ToJson(self) -> json:
+		"""
+		Helper function to change the object into a json
+		"""
 		return json.dumps(self, default=lambda o: o.__dict__, sort_keys=True, indent=2)
 
 	def __eq__(self,other) -> bool:
+		"""
+		The equality operator overload for the object
+		"""
 		return self.__dict__ == other.__dict__
 
 	def __gt__(self,other) -> bool:
+		"""
+		Helper function to check if a review is greater than the other.
+		TBH I have no idea why I have this.
+		"""
 		if int(self.ID) <= int(other.ID):
 				return False
 		if (self.Title == '' and other.Title != '') or (self.Title != other.Title):
@@ -241,7 +318,7 @@ class Review:
 
 		return True
 
-	def Merge(self,other: Review) -> Review:
+	def Merge(self,other):
 		"""
 		Takes two Review objects and then fills in any null slots in the
 		right object with the values in the left.

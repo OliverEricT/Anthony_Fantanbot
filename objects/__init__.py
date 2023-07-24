@@ -1,1 +1,1 @@
-__all__ = ['Artist']
+__all__ = ['Artist', 'Album', 'Review']
