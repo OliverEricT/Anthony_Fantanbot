@@ -321,31 +321,31 @@ class Review:
 
 		trackList: str = ""
 		for pair in self.trackList:
-			trackList += "{1} - {2} - {3}/5\n".format(0,pair[0],pair[1])
+			trackList += "{0} - {1} - {2}/5\n".format(0,pair[0],pair[1])
 
 		text = """
-#AlbumReview No. {1}
+#AlbumReview No. {0}
 
 *Album Title*
-{2}
+{1}
 
 *Album Artist*
-{3}
+{2}
 
 *Genre*
-{4}
+{3}
 
 *Thoughts*
-{5}
+{4}
 
 *Track Ratings*
-{6}
+{5}
 
 *Overall Rating*
-({7} + {8}) / 2 = {9}
+({6} + {7}) / 2 = {8}
 
 *NEXT UP*:
-{10}"
+{9}"
 """
 		return text.format(
 			self.id,
