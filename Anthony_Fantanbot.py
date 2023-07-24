@@ -27,6 +27,7 @@ logger = logging.getLogger(__name__)
 
 vars = json.load(open(os.path.join(__location__,'telegram.json'),'r'))
 LIST_OF_ADMINS = vars["admins"]
+MUSIC_CHAT_ID = vars['musicChatId']
 
 #########################
 #   Telegram Commands   #
@@ -125,12 +126,10 @@ async def ParseQueue(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None
 	with open(os.path.join(__location__,'Queue.json'),'w') as file:
 		json.dump(queue,file,indent=2)
 
-	context.bot.send_message(chat_id=vars["SELFID"], text=msgText, parse_mode='Markdown')
+	context.bot.send_message(chat_id=vars["debugChatId"], text=msgText, parse_mode='Markdown')
 
 @restricted
 async def SendReview(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-	MusicChatID = vars["CHATID"]
-	#MusicChatID = vars["SELFID"]
 	reviewJson = GetNextInQueue()
 
 	photo = open(file=reviewJson["AlbumArt"],mode='rb')
@@ -146,8 +145,8 @@ async def SendReview(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None
 	idText = "#AlbumReview No. {0}".format(count + 1)
 	msgBody = "{0}\n\n*Album Title*\n{1}\n\n*Album Artist*\n{2}\n\n*Genre*\n{3}\n\n*Thoughts*\n{4}\n\n*Track Ratings*\n{5}\n\n*Overall Rating*\n{6}\n\n{7}".format(idText,reviewJson["Title"],reviewJson["Artist"],genreTxt,reviewJson["ReviewBody"],TrackList,rating,reviewJson["NextUpText"])
 
-	await context.bot.sendPhoto(chat_id=MusicChatID, photo=photo)
-	await context.bot.send_message(chat_id=MusicChatID, text=msgBody, parse_mode='Markdown')
+	await context.bot.sendPhoto(chat_id=MUSIC_CHAT_ID, photo=photo)
+	await context.bot.send_message(chat_id=MUSIC_CHAT_ID, text=msgBody, parse_mode='Markdown')
 
 	UpdateCompleted(reviewJson)
 
