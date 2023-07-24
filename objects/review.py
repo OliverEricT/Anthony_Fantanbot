@@ -134,7 +134,7 @@ class Review:
 		The fully computed text that get's displayed at the end of the
 		previous review.
 		"""
-		return self._nextUp
+		return "{1} by {2}\n\n{3}".format(self.title, self.artist, self.blurb)
 
 	@property
 	def postedDate(self) -> datetime:

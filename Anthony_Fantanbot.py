@@ -2,16 +2,20 @@ import logging
 import json
 from functools import wraps
 from telegram import (
+	Update,
   ReplyKeyboardMarkup,
   ReplyKeyboardRemove
 )
 from telegram.ext import (
-	Updater,
+	ApplicationBuilder,
+	ContextTypes,
 	CommandHandler,
+	Updater,
 	MessageHandler,
 	Filters,
 	ConversationHandler,
-	CallbackContext
+	CallbackContext,
+	JobQueue
 )
 import schedule
 from threading import Thread
@@ -315,24 +319,28 @@ def callback_Review(context: CallbackContext):
 def TestSend(update, context):
 	context.bot.send_message(chat_id=vars["SELFID"], text="Henlo", parse_mode='Markdown')
 
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+	await context.bot.send_message(
+		chat_id=update.effective_chat.id,
+		text="I HAVE ARISEN, ONCE MORE!!!"
+	)
+
 def Main():
+	application = ApplicationBuilder().token(vars['token']).build()
+	job_queue = application.job_queue
 
-	updater = Updater(vars["TOKEN"], use_context=True)
-	job_queue = updater.job_queue
+	application.add_handler(CommandHandler('getuserid',GetUserID))
+	application.add_handler(CommandHandler('sendreview',SendReview))
+	application.add_handler(CommandHandler('thicc',SendThicc))
+	application.add_handler(CommandHandler('ParseQueue',ParseQueue))
+	application.add_handler(CommandHandler('Nut',SendNut))
+	application.add_handler(CommandHandler('Juicy',SendJuicy))
 
-	dispatcher = updater.dispatcher
+	application.add_error_handler(error)
+	tenAm = datetime.datetime(0,0,0,10,0,0)
+	job_weeklyReview = job_queue.run_daily(SendReview,tenAm,[1])
 
-	dispatcher.add_handler(CommandHandler('getuserid',GetUserID))
-	dispatcher.add_handler(CommandHandler('sendreview',SendReview))
-	dispatcher.add_handler(CommandHandler('thicc',SendThicc))
-	dispatcher.add_handler(CommandHandler('ParseQueue',ParseQueue))
-	dispatcher.add_handler(CommandHandler('Nut',SendNut))
-	dispatcher.add_handler(CommandHandler('Juicy',SendJuicy))
-
-	dispatcher.add_error_handler(error)
-
-	updater.start_polling()
-	updater.idle()
+	application.run_polling()
 	print('Stopped')
 
 if __name__ == '__main__':
