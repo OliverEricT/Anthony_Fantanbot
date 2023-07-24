@@ -1,7 +1,11 @@
 import json
 import os
 import re
-import Objects
+from Objects import (
+  Artist,
+  Album,
+  Review
+)
 
 __OpenMediaVault__ = '//OpenMediaVault/Media/Music'
 __location__ = os.path.realpath(
@@ -10,7 +14,7 @@ __location__ = os.path.realpath(
 __Queue__ = os.path.join(__location__,'Queue.json')
 __Posted__ = os.path.join(__location__,'Posted_Reviews.json')
 
-def ParseIndex():
+def ParseIndex() -> list(Artist):
   file = open(os.path.join(__OpenMediaVault__,'index.md'),'r')
 
   lines = file.readlines()
@@ -32,17 +36,17 @@ def ParseIndex():
           artists.append(artist)
 
         tup = ParseMdLink(line)
-        artist = Objects.Artist(tup[0],os.path.join(__OpenMediaVault__,tup[1]),[])
+        artist = Artist(tup[0],os.path.join(__OpenMediaVault__,tup[1]),[])
         print('\n\nArtist Name: {0}\nArtist Location: {1}\n'.format(artist.name,artist.fileLocation))
       elif line[0:3] == '  -':
         tup = ParseMdLink(line)
-        album = Objects.Album(tup[0],os.path.join(__OpenMediaVault__,tup[1]))
+        album = Album(tup[0],os.path.join(__OpenMediaVault__,tup[1]))
         print('Album Name: {0}\nAlbum Location: {1}'.format(album.name,album.fileLocation))
         artist.albums.append(album)
 
   return artists
 
-def ParseMdLink(mdLink):
+def ParseMdLink(mdLink: str) -> tuple[str, str]:
   text = []
   link = []
 
@@ -69,7 +73,7 @@ def ParseMdLink(mdLink):
 
   return p1, p2
 
-def CreateAlbumReviewMDFromJson(album):
+def CreateAlbumReviewMDFromJson(album: Review) -> list(str):
   lines = []
 
   lines.append('# {0} Album Review\n'.format(album.Title))
@@ -133,9 +137,9 @@ def CreateAlbumReviewMDFromJson(album):
 
   return lines
 
-def ParseAlbumReview(rev,albumObj):
+def ParseAlbumReview(rev: list(str), albumObj: Album) -> Review:
 
-  revObj = Objects.AlbumJson()
+  revObj = Review()
   
   for i in range(0,len(rev)):
     line = rev[i]
@@ -155,19 +159,19 @@ def ParseAlbumReview(rev,albumObj):
     elif line[:-1] == '## Track Ratings':
       end = False
       j = i + 4
-      tracklist = []
+      trackList = []
       while not end:
           if re.match(r'^\| \d\d \| (.*) \| (\d)(\\|/)\d \|$',rev[j]):
               track = re.search(r'^\| \d\d \| (.*) \| (\d)(\\|/)\d \|$',rev[j])
               trackName = "{0}".format(track.group(1))
               trackRating = int(track.group(2))
-              tracklist.append(trackName)
-              tracklist.append(trackRating)
+              trackList.append(trackName)
+              trackList.append(trackRating)
               j += 1
           else:
               end = True
       
-      revObj.TrackList = tracklist
+      revObj.TrackList = trackList
 
     elif line[:-1] == '## Genre':
       genres = []
@@ -197,19 +201,19 @@ def ParseAlbumReview(rev,albumObj):
     elif line[:-1] == '## Dates':
       end = False
       j = i + 4
-      datelist = []
+      dateList = []
       while not end:
         if re.match(r'\| \d \| (.*) \|$',rev[j]):
           date = re.search(r'\| \d \| (.*) \|$',rev[j])
           date = date.group(1)
-          datelist.append(date)
+          dateList.append(date)
           j += 1
         else:
           end = True
 
-      revObj.Listen1 = datelist[0]
-      revObj.Listen2 = datelist[1]
-      revObj.Listen3 = datelist[2]
+      revObj.Listen1 = dateList[0]
+      revObj.Listen2 = dateList[1]
+      revObj.Listen3 = dateList[2]
 
     elif line[:-1] == '## Blurb':
       revObj.Blurb = rev[i+2].replace('\n','')
@@ -240,7 +244,7 @@ def PopulateIndex():
 def PopulateQueue():
   pass
 
-def GetAllMDFiles():
+def GetAllMDFiles() -> list(str):
   mdFiles = []
 
   for pathName, dirs, files in os.walk(__OpenMediaVault__):
@@ -250,7 +254,7 @@ def GetAllMDFiles():
 
   return mdFiles
 
-def GetAllMDFilesNotInJson():
+def GetAllMDFilesNotInJson() -> list(str):
   mdFiles = []
 
   for pathName, dirs, files in os.walk(__OpenMediaVault__):
@@ -259,11 +263,11 @@ def GetAllMDFilesNotInJson():
         if not CheckIfInQueue(pathName) and not CheckIfInPosted(pathName):
           pName = FormatName(f)
           fileLoc = os.path.join(pathName,f)
-          mdFiles.append(Objects.Album(f,fileLoc,pName))
+          mdFiles.append(Album(f,fileLoc,pName))
 
   return mdFiles
 
-def CheckIfInQueue(path):
+def CheckIfInQueue(path: str) -> bool:
   queueF = open(__Queue__,'r')
   queueRaw = json.load(queueF)
   queue = queueRaw["Queue"]
@@ -277,7 +281,7 @@ def CheckIfInQueue(path):
 
   return False
 
-def CheckIfInPosted(path):
+def CheckIfInPosted(path: str) -> bool:
   postedF = open(__Posted__,'r')
   postedRaw = json.load(postedF)
   posted = postedRaw["Completed"]
@@ -291,7 +295,7 @@ def CheckIfInPosted(path):
 
   return False
 
-def FormatName(str):
+def FormatName(str: str) -> str:
   tmp = str.lower()
   tmp = tmp.replace('_album_review.md','')
   tmp = tmp.replace('_',' ')
@@ -301,21 +305,21 @@ def FormatName(str):
 
   return tmp
 
-def StringNoArticle(str):
+def StringNoArticle(str: str) -> str:
   if re.match(r'^the ',str.lower()):
     newStr = re.split(r'^the ',str.lower())[1]
   else:
     newStr = str
   return newStr
 
-def AlbumListToJson(lst):
+def AlbumListToJson(lst: list(str)) -> list(json):
   jsons = []
   for item in lst:
     jsons.append(AlbumToJson(item))
 
   return jsons
 
-def AlbumToJson(album):
+def AlbumToJson(album: Album) -> Review:
   file = open(album.fileLocation,'r')
   lines = file.readlines()
   rev = ParseAlbumReview(lines,album)
@@ -340,7 +344,7 @@ def AddToQueue(review):
   with open(__Queue__,'w') as file:
     json.dump(queue,file,indent=2)
 
-def Main():
+def Main() -> None:
 
   #fileLoc = 'Various%20Artists/Aqua%20Teen%20Hunger%20Force%20Colon%20Movie%20Film%20for%20Theaters%20Colon%20the%20Soundtrack/Aqua_Teen_Album_Review.md'
 
@@ -352,7 +356,7 @@ def Main():
 
   #rev = ParseAlbumReview(lines,fileLoc)
 
-  #artist = Objects.Artist('Various Artists','Various%20Artists',[])
+  #artist = Artist('Various Artists','Various%20Artists',[])
 
   #rev.Artist = artist.name
 
@@ -375,7 +379,7 @@ def Main():
 
   fileLoc = '\\\\OPENMEDIAVAULT\\Media\\Music\\SonicPicnic\\Awesomenauts Original Soundtrack\\Awesomenauts_OST_Album_Review.md'
 
-  albFile = Objects.Album('',fileLoc,'')
+  albFile = Album('',fileLoc,'')
 
   file = open(albFile.fileLocation,'r')
 
@@ -389,13 +393,12 @@ def Main():
     queue = json.load(file)
     queueShort = queue["Queue"]
 
-  albQ = Objects.AlbumJson(queueShort[2])
+  albQ = Review(queueShort[2])
 
   rev.Merge(albQ)
 
   print('')
 
   #ParseIndex()
-
 
 Main()
