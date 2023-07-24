@@ -77,6 +77,9 @@ def PhotoSender(update, context, imagePath: str) -> None:
 	context.bot.sendAnimation(chat_id=update.message.chat_id, animation=photo)
 
 def ParseQueue(update, context):
+	"""
+	Function to parse the queue. Should move this to another class or db logic
+	"""
 	countChanged = 0
 	lstChangedToZero = []
 	lstChangedToNOne = []
@@ -132,6 +135,7 @@ def SendReview(update,context):
 	TrackList = FormatTracklist(reviewJson)
 	rating = FormatRatingBlock(reviewJson)
 
+	#TODO: Change this up
 	idText = "#AlbumReview No. {0}".format(count + 1)
 	msgBody = "{0}\n\n*Album Title*\n{1}\n\n*Album Artist*\n{2}\n\n*Genre*\n{3}\n\n*Thoughts*\n{4}\n\n*Track Ratings*\n{5}\n\n*Overall Rating*\n{6}\n\n{7}".format(idText,reviewJson["Title"],reviewJson["Artist"],genreTxt,reviewJson["ReviewBody"],TrackList,rating,reviewJson["NextUpText"])
 

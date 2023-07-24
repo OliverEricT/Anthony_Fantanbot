@@ -134,12 +134,7 @@ class Review:
 		The fully computed text that get's displayed at the end of the
 		previous review.
 		"""
-		#TODO: Change this to a computed property
 		return self._nextUp
-	
-	@nextUp.setter
-	def nextUp(self,val: str) -> None:
-		self._nextUp = val
 
 	@property
 	def postedDate(self) -> datetime:
@@ -317,6 +312,52 @@ class Review:
 			return False
 
 		return True
+
+	def __str__(self) -> str:
+		"""
+		To String overload for the review object
+		"""
+		genreText = self.genre.join(", ")
+
+		trackList: str = ""
+		for pair in self.trackList:
+			trackList += "{1} - {2} - {3}/5\n".format(0,pair[0],pair[1])
+
+		text = """
+#AlbumReview No. {1}
+
+*Album Title*
+{2}
+
+*Album Artist*
+{3}
+
+*Genre*
+{4}
+
+*Thoughts*
+{5}
+
+*Track Ratings*
+{6}
+
+*Overall Rating*
+({7} + {8}) / 2 = {9}
+
+*NEXT UP*:
+{10}"
+"""
+		return text.format(
+			self.id,
+			self.title,
+			self.artist,
+			genreText,
+			self.body,
+			trackList,
+			self.feelingRating,
+			self.songAvg,
+			self.OverallRating,
+			self.nextUp)
 
 	def Merge(self,other):
 		"""
