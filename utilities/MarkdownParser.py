@@ -7,15 +7,15 @@ from Objects import (
   Review
 )
 
-__OpenMediaVault__ = '//OpenMediaVault/Media/Music'
-__location__ = os.path.realpath(
+FOLDER_PATH = '//OpenMediaVault/Media/Music'
+CURRENT_LOCATION = os.path.realpath(
   os.path.join(os.getcwd(), os.path.dirname(__file__))
 )
-__Queue__ = os.path.join(__location__,'Queue.json')
-__Posted__ = os.path.join(__location__,'Posted_Reviews.json')
+QUEUE = os.path.join(CURRENT_LOCATION,'Queue.json')
+POSTED = os.path.join(CURRENT_LOCATION,'Posted_Reviews.json')
 
 def ParseIndex() -> list(Artist):
-  file = open(os.path.join(__OpenMediaVault__,'index.md'),'r')
+  file = open(os.path.join(FOLDER_PATH,'index.md'),'r')
 
   lines = file.readlines()
 
@@ -36,11 +36,11 @@ def ParseIndex() -> list(Artist):
           artists.append(artist)
 
         tup = ParseMdLink(line)
-        artist = Artist(tup[0],os.path.join(__OpenMediaVault__,tup[1]),[])
+        artist = Artist(tup[0],os.path.join(FOLDER_PATH,tup[1]),[])
         print('\n\nArtist Name: {0}\nArtist Location: {1}\n'.format(artist.name,artist.fileLocation))
       elif line[0:3] == '  -':
         tup = ParseMdLink(line)
-        album = Album(tup[0],os.path.join(__OpenMediaVault__,tup[1]))
+        album = Album(tup[0],os.path.join(FOLDER_PATH,tup[1]))
         print('Album Name: {0}\nAlbum Location: {1}'.format(album.name,album.fileLocation))
         artist.albums.append(album)
 
@@ -247,7 +247,7 @@ def PopulateQueue():
 def GetAllMDFiles() -> list(str):
   mdFiles = []
 
-  for pathName, dirs, files in os.walk(__OpenMediaVault__):
+  for pathName, dirs, files in os.walk(FOLDER_PATH):
     for f in files:
       if 'Album_Review.md' in f:
         mdFiles.append(os.path.join(pathName,f))
@@ -257,7 +257,7 @@ def GetAllMDFiles() -> list(str):
 def GetAllMDFilesNotInJson() -> list(str):
   mdFiles = []
 
-  for pathName, dirs, files in os.walk(__OpenMediaVault__):
+  for pathName, dirs, files in os.walk(FOLDER_PATH):
     for f in files:
       if 'Album_Review.md' in f:
         if not CheckIfInQueue(pathName) and not CheckIfInPosted(pathName):
@@ -268,7 +268,7 @@ def GetAllMDFilesNotInJson() -> list(str):
   return mdFiles
 
 def CheckIfInQueue(path: str) -> bool:
-  queueF = open(__Queue__,'r')
+  queueF = open(QUEUE,'r')
   queueRaw = json.load(queueF)
   queue = queueRaw["Queue"]
   
@@ -282,7 +282,7 @@ def CheckIfInQueue(path: str) -> bool:
   return False
 
 def CheckIfInPosted(path: str) -> bool:
-  postedF = open(__Posted__,'r')
+  postedF = open(POSTED,'r')
   postedRaw = json.load(postedF)
   posted = postedRaw["Completed"]
   
@@ -326,22 +326,22 @@ def AlbumToJson(album: Album) -> Review:
   return rev
 
 def AddListToQueue(lst):
-  with open(__Queue__,'r') as file:
+  with open(QUEUE,'r') as file:
     queue = json.load(file)
 
   for item in lst:
     queue["Queue"].append(item.ToJson())
 
-  with open(__Queue__,'w') as file:
+  with open(QUEUE,'w') as file:
     json.dump(queue,file,indent=2)
 
 def AddToQueue(review):
-  with open(__Queue__,'r') as file:
+  with open(QUEUE,'r') as file:
     queue = json.load(file)
 
   queue["Queue"].append(review)
 
-  with open(__Queue__,'w') as file:
+  with open(QUEUE,'w') as file:
     json.dump(queue,file,indent=2)
 
 def Main() -> None:
@@ -350,7 +350,7 @@ def Main() -> None:
 
   #fileLoc = fileLoc.replace('%20',' ')
 
-  #file = open(os.path.join(__OpenMediaVault__,fileLoc),'r')
+  #file = open(os.path.join(FOLDER_PATH,fileLoc),'r')
 
   #lines = file.readlines()
 
@@ -362,7 +362,7 @@ def Main() -> None:
 
   #lines = CreateAlbumReviewMDFromJson(rev)
 
-  #file2 = open(os.path.join(__OpenMediaVault__,'test.md'),'w')
+  #file2 = open(os.path.join(FOLDER_PATH,'test.md'),'w')
 
   #for line in lines:
   #    file2.write(line)
@@ -389,7 +389,7 @@ def Main() -> None:
 
   albFile = rev
 
-  with open(os.path.join(__Queue__),'r') as file:
+  with open(os.path.join(QUEUE),'r') as file:
     queue = json.load(file)
     queueShort = queue["Queue"]
 
