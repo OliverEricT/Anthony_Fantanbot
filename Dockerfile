@@ -6,7 +6,7 @@ VOLUME /Media
 COPY Anthony_Fantanbot.py .
 COPY requirements.txt .
 COPY Objects/. ./Objects/
-COPY Services/. .Services/
+COPY Services/. ./Services/
 COPY Utilities/. ./Utilities/
 
 RUN pip install -r requirements.txt
