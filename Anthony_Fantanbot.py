@@ -1,5 +1,9 @@
+import os
 import logging
+import datetime
+import pytz
 import json
+from dotenv import load_dotenv
 from functools import wraps
 from telegram import (
 	Update
@@ -9,25 +13,22 @@ from telegram.ext import (
 	ContextTypes,
 	CommandHandler,
 	CallbackContext,
-	JobQueue,
-	filters
+	JobQueue
 )
-import os
-import datetime
-import pytz
 
-__location__ = os.path.realpath(
-	os.path.join(os.getcwd(), os.path.dirname(__file__)))
+load_dotenv()
 
 # Enable logging
-logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-	level=logging.INFO)
-
+logging.basicConfig(
+	format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+	level=logging.INFO
+)
 logger = logging.getLogger(__name__)
 
-vars = json.load(open(os.path.join(__location__,'telegram.json'),'r'))
-LIST_OF_ADMINS = vars["admins"]
-MUSIC_CHAT_ID = vars['musicChatId']
+BOT_TOKEN = os.getenv('BOT_TOKEN')
+LIST_OF_ADMINS = os.getenv('ADMINS').split(',')
+MUSIC_CHAT_ID = os.getenv('MUSIC_CHAT_ID')
+DEBUG_CHAT_ID = os.getenv('DEBUG_CHAT_ID')
 
 #########################
 #   Telegram Commands   #
@@ -47,17 +48,13 @@ def restricted(func):
 	return wrapped
 
 @restricted
-def CustomeQuery(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-	pass
-
-@restricted
 async def GetUserID(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 	"""
 	Restricted. Sends the current users id
 	"""
 	user_name = update.effective_user.name
 	user_id = update.effective_user.id
-	await context.bot.send_message(chat_id=vars['debugChatId'], text="User \"{0}\": {1}".format(user_name, user_id))
+	await context.bot.send_message(chat_id=DEBUG_CHAT_ID, text="User \"{0}\": {1}".format(user_name, user_id))
 
 @restricted
 async def GetGroupID(update: Update,context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -66,13 +63,13 @@ async def GetGroupID(update: Update,context: ContextTypes.DEFAULT_TYPE) -> None:
 	"""
 	chat_name = update.effective_chat.effective_name
 	chat_id = update.effective_chat.id
-	await context.bot.send_message(chat_id=vars['debugChatId'], text="Group \"{0}\": {1}".format(chat_name, chat_id))
+	await context.bot.send_message(chat_id=DEBUG_CHAT_ID, text="Group \"{0}\": {1}".format(chat_name, chat_id))
 
 async def SendThicc(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 	await PhotoSender(update, context, 'Media/THICC.mp4')
 
 async def SendTest(context: ContextTypes.DEFAULT_TYPE) -> None:
-	await context.bot.send_message(chat_id=vars['debugChatId'], text='**Hello**!!!', parse_mode='Markdown')
+	await context.bot.send_message(chat_id=DEBUG_CHAT_ID, text='**Hello**!!!', parse_mode='Markdown')
 
 async def SendNut(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 	await PhotoSender(update, context, 'Media/Nutt.mp4')
@@ -84,7 +81,7 @@ async def PhotoSender(update: Update, context: ContextTypes.DEFAULT_TYPE, imageP
 	"""
 	Helper function to send a photo by path
 	"""
-	photo = open(file=os.path.join(__location__,imagePath),mode='rb')
+	photo = open(file=imagePath,mode='rb')
 	await context.bot.sendAnimation(chat_id=update.message.chat_id, animation=photo)
 
 async def ParseQueue(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -95,7 +92,8 @@ async def ParseQueue(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None
 	lstChangedToZero = []
 	lstChangedToNOne = []
 
-	with open(os.path.join(__location__,'Queue.json'),'r') as file:
+	#TODO: Fix the parser to not do anything
+	with open('Queue.json','r') as file:
 		queue = json.load(file)
 		queueShort = queue["Queue"]
 
@@ -126,10 +124,10 @@ async def ParseQueue(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None
 
 	queue["Queue"] = queueShort
 
-	with open(os.path.join(__location__,'Queue.json'),'w') as file:
+	with open('Queue.json','w') as file:
 		json.dump(queue,file,indent=2)
 
-	context.bot.send_message(chat_id=vars["debugChatId"], text=msgText, parse_mode='Markdown')
+	context.bot.send_message(chat_id=DEBUG_CHAT_ID, text=msgText, parse_mode='Markdown')
 
 @restricted
 async def SendReview(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -141,7 +139,7 @@ async def SendReview(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None
 	reviewJson["ID"] = count
 
 	genreTxt = FormatGenreBlock(reviewJson)
-	TrackList = FormatTracklist(reviewJson)
+	TrackList = FormatTrackList(reviewJson)
 	rating = FormatRatingBlock(reviewJson)
 
 	#TODO: Change this up
@@ -158,7 +156,7 @@ async def error(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
 	errorMsg = "Update\n `{0}`\n\n caused error\n `{1}`".format(update, context.error)
 
-	await context.bot.send_message(chat_id=vars["debugChatId"], text=errorMsg)
+	await context.bot.send_message(chat_id=DEBUG_CHAT_ID, text=errorMsg)
 	logger.warning('Update "%s" caused error "%s"', update, context.error) 
 
 #####################
@@ -184,7 +182,7 @@ def GeNextUpText(reviewLst: json) -> str:
 	return NextUpText
     
 def GetNextInQueue() -> json:
-	with open(os.path.join(__location__,'Queue.json'),'r') as file:
+	with open('Queue.json','r') as file:
 		queue = json.load(file)
 		queueShort = queue["Queue"]
 
@@ -205,13 +203,13 @@ def GetNextInQueue() -> json:
 
 	queue["Queue"] = queueShort
 
-	with open(os.path.join(__location__,'Queue.json'),'w') as file:
+	with open('Queue.json','w') as file:
 		json.dump(queue,file,indent=2)
 
 	return review
 
 def GetNumCompleted() -> int:
-	with open(os.path.join(__location__,'Posted_Reviews.json'),'r') as file:
+	with open('Posted_Reviews.json','r') as file:
 		completed = json.load(file)
 
 	count = len(completed["Completed"])
@@ -222,7 +220,7 @@ def GetNumCompleted() -> int:
 #   Format Functions   #
 ########################
 
-def FormatTracklist(reviewJson: json) -> str:
+def FormatTrackList(reviewJson: json) -> str:
 	trackList = reviewJson["TrackList"]
 
 	tList = ""
@@ -245,14 +243,12 @@ def FormatRatingBlock(json: json) -> str:
 def FormatGenreBlock(json: json) -> str:
 	genres = json["Genre"]
 
-	gtxt = ""
+	genreTxt = ""
 
 	for i in genres:
-		gtxt += "{0}, ".format(i)
+		genreTxt += "{0}, ".format(i)
 
-	gtxt = gtxt[:-2]
-
-	return gtxt
+	return genreTxt[:-2]
 
 def CheckReviewForValue(queue: json,equalTo: any) -> bool:
 	if queue["Title"] == equalTo:
@@ -287,17 +283,17 @@ def CheckReviewForValue(queue: json,equalTo: any) -> bool:
 	return False
 
 def UpdateCompleted(review: json) -> None:
-	with open(os.path.join(__location__,'Posted_Reviews.json'),'r') as file:
+	with open('Posted_Reviews.json','r') as file:
 		completed = json.load(file)
 	
 	review["DatePosted"] = datetime.datetime.now().isoformat()
 	completed["Completed"].append(review)
 
-	with open(os.path.join(__location__,'Posted_Reviews.json'),'w') as file:
+	with open('Posted_Reviews.json','w') as file:
 		json.dump(completed,file,indent=2)
 
 def Main() -> None:
-	application = ApplicationBuilder().token(vars['token']).build()
+	application = ApplicationBuilder().token(BOT_TOKEN).build()
 	job_queue = application.job_queue
 
 	application.add_handler(CommandHandler('getuserid',GetUserID))
