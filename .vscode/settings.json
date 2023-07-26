@@ -5,7 +5,10 @@
 	"python.formatting.provider": "none",
 	"cSpell.words": [
 		"Depeche",
-		"jsons"
+		"jsons",
+		"Nutt",
+		"pytz",
+		"Thicc"
 	],
 	"files.exclude": {
 		"**/.git": true,

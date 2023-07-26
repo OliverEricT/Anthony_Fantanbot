@@ -69,13 +69,16 @@ async def GetGroupID(update: Update,context: ContextTypes.DEFAULT_TYPE) -> None:
 	await context.bot.send_message(chat_id=vars['debugChatId'], text="Group \"{0}\": {1}".format(chat_name, chat_id))
 
 async def SendThicc(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-	await PhotoSender(update, context, 'Media\\THICC.mp4')
+	await PhotoSender(update, context, 'Media/THICC.mp4')
+
+async def SendTest(context: ContextTypes.DEFAULT_TYPE) -> None:
+	await context.bot.send_message(chat_id=vars['debugChatId'], text='**Hello**!!!', parse_mode='Markdown')
 
 async def SendNut(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-	await PhotoSender(update, context, 'Media\\Nutt.mp4')
+	await PhotoSender(update, context, 'Media/Nutt.mp4')
 
 async def SendJuicy(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-	await PhotoSender(update, context, 'Media\\Grapefruit.mp4')
+	await PhotoSender(update, context, 'Media/Grapefruit.mp4')
 
 async def PhotoSender(update: Update, context: ContextTypes.DEFAULT_TYPE, imagePath: str) -> None:
 	"""
@@ -162,7 +165,7 @@ async def error(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 #   Get Functions   #
 #####################
 
-def GeNextUpText(reviewLst: list(json)) -> str:
+def GeNextUpText(reviewLst: json) -> str:
 	end = False
 	index = 0
 
@@ -307,11 +310,14 @@ def Main() -> None:
 
 	application.add_error_handler(error)
 
-	# Sends the review at 10 am every monday (in theory)
+	# Sends the review at 10 am every monday
 	tenAm = datetime.time(hour=10, tzinfo=pytz.timezone('America/Chicago'))
 	job_queue.run_daily(SendReview,tenAm,days=(1,1))
 
-	application.run_polling()
+	try:
+		application.run_polling()
+	except:
+		print('An Error has occurred.')
 	print('Stopped')
 
 if __name__ == '__main__':
