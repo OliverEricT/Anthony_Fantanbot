@@ -223,10 +223,13 @@ def GetNumCompleted() -> int:
 def FormatTrackList(reviewJson: json) -> str:
 	trackList = reviewJson["TrackList"]
 
-	tList = ""
-
+	tList: str = ""
 	for i in range(0,(len(trackList)-1),2):
-		tList += "{TrackNo:02d} - {TrackTitle} - {Rating}/5\n".format(TrackNo = int((i/2)+1), TrackTitle = trackList[i], Rating = trackList[i+1])
+		tList += "{TrackNo:02d} - {TrackTitle} - {Rating}/5\n".format(
+			TrackNo= int((i/2)+1),
+			TrackTitle= trackList[i],
+			Rating= trackList[i+1]
+		)
 
 	return tList
 
