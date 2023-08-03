@@ -103,5 +103,13 @@
 			"ROLLBACK TRANSACTION [$1]"
 		],
 		"description": "Creates a transaction block"
+	},
+	"Music Database schema": {
+		"scope": "sql",
+		"prefix": "musicdbo",
+		"body": [
+			"[Music].[dbo].[$1]"
+		],
+		"description": "shorthand to reduce typing the schema"
 	}
 }

@@ -16,13 +16,13 @@ GO
 
 CREATE TABLE [dbo].[Reviews](
      ReviewId int PRIMARY KEY NOT NULL IDENTITY(1,1)
-    ,Title varchar(100) NOT NULL
-    ,ArtistId int NOT NULL
+    ,ArtistId INT NOT NULL
+    ,Title VARCHAR(250) NOT NULL
+    ,AlbumArt VARCHAR(1000)
     ,Body varchar(max)
     ,FeelingRating int
-    ,SongAvg int
-    ,AlbumArt varchar(2000)
-    ,Blurb varchar(100)
+    ,Blurb varchar(1000)
+    ,NumberPosted int
     ,PostedDate datetime
     ,Listen1 datetime
     ,Listen2 datetime

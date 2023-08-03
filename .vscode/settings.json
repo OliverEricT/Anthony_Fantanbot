@@ -11,9 +11,11 @@
 		"jsons",
 		"levelname",
 		"Nutt",
+		"pyodbc",
 		"pytz",
 		"sendreview",
-		"Thicc"
+		"Thicc",
+		"Tupleize"
 	],
 	"files.exclude": {
 		"**/.git": true,

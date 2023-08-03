@@ -1,6 +1,7 @@
 import datetime
 import json
 import os
+from . import Song
 
 class Review:
 	"""
@@ -81,17 +82,17 @@ class Review:
 		The final review for the album; in which the the average of the
 		feeling and song avgs is taken
 		"""
-		return (self._feelingRating * self._songAvg) / 2
+		return (self._feelingRating + self._songAvg) / 2
 	
 	@property
-	def trackList(self) -> tuple[str,int]:
+	def trackList(self) -> list[Song.Song]:
 		"""
 		The array of song names and ratings that comprise the album
 		"""
 		return self._trackList
 	
 	@trackList.setter
-	def trackList(self,val: tuple[str,int]) -> None:
+	def trackList(self,val: list[Song.Song]) -> None:
 		self._trackList = val
 
 	@property
@@ -100,21 +101,21 @@ class Review:
 		The link to the album art
 		"""
 		#TODO: Fix this
-		return os.path.join("\\\\Deepthought\\Media\\Music\\",self._albumArt,"Cover.jpg") 
+		return os.path.join("\\\\Deepthought\\Media\\Music\\",self._albumArt) 
 	
 	@albumArt.setter
 	def albumArt(self,val: str) -> None:
 		self._albumArt = val
 
 	@property
-	def genre(self) -> list(str):
+	def genre(self) -> list[str]:
 		"""
 		The list of genres that comprise the album
 		"""
 		return self._genre
 	
 	@genre.setter
-	def genre(self,val: list(str)) -> None:
+	def genre(self,val: list[str]) -> None:
 		self._genre = val
 
 	@property
@@ -134,50 +135,54 @@ class Review:
 		The fully computed text that get's displayed at the end of the
 		previous review.
 		"""
-		return "{1} by {2}\n\n{3}".format(self.title, self.artist, self.blurb)
+		return self._nextUp
+	
+	@nextUp.setter
+	def nextUp(self, val: str) -> None:
+		self._nextUp = val
 
 	@property
-	def postedDate(self) -> datetime:
+	def postedDate(self) -> datetime.datetime:
 		"""
 		The date the review was posted
 		"""
 		return self._posted
 	
 	@postedDate.setter
-	def postedDate(self,val: datetime) -> None:
+	def postedDate(self,val: datetime.datetime) -> None:
 		self._posted = val
 
 	@property
-	def listenDate1(self) -> datetime:
+	def listenDate1(self) -> datetime.datetime:
 		"""
 		The date of the first listen
 		"""
 		return self._listenDate1
 	
 	@listenDate1.setter
-	def listenDate1(self,val: datetime) -> None:
+	def listenDate1(self,val: datetime.datetime) -> None:
 		self._listenDate1 = val
 
 	@property
-	def listenDate2(self) -> datetime:
+	def listenDate2(self) -> datetime.datetime:
 		"""
 		The date of the second listen
 		"""
 		return self._listenDate2
 	
 	@listenDate2.setter
-	def listenDate2(self,val: datetime) -> None:
+	def listenDate2(self,val: datetime.datetime) -> None:
 		self._listenDate2 = val
 
 	@property
-	def listenDate3(self) -> datetime:
+	def listenDate3(self) -> datetime.datetime:
 		"""
 		The date of the third listen
 		"""
 		return self._listenDate3
 	
 	@listenDate3.setter
-	def listenDate3(self,val: datetime) -> None:
+	def listenDate3(self,val: datetime.datetime) -> None:
 		self._listenDate3 = val
 
 	def __init__(self,*argv) -> None:
@@ -266,6 +271,21 @@ class Review:
 		Helper function to change the object into a json
 		"""
 		return json.dumps(self, default=lambda o: o.__dict__, sort_keys=True, indent=2)
+
+	def Tupleize(self) -> tuple[int,str, str, str,float,str,str,datetime.datetime,datetime.datetime,datetime.datetime]:
+		return (
+			self.id,
+			self.title,
+			self.artist,
+			self.body,
+			self.feelingRating,
+			self.albumArt,
+			self.blurb,
+			self.datePosted,
+			self.listenDate1,
+			self.listenDate2,
+			self.listenDate3
+		)
 
 	def __eq__(self,other) -> bool:
 		"""
