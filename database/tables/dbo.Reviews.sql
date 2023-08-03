@@ -11,6 +11,7 @@ GO
 /*######################
     - Debug Commands
         SELECT * FROM [Music].[dbo].[Reviews]
+        SELECT * FROM [Music].[dbo].[Reviews] WHERE FeelingRating < 1
 
 ######################*/
 

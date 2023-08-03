@@ -142,47 +142,47 @@ class Review:
 		self._nextUp = val
 
 	@property
-	def postedDate(self) -> datetime.datetime:
+	def postedDate(self) -> datetime.datetime | None:
 		"""
 		The date the review was posted
 		"""
 		return self._posted
 	
 	@postedDate.setter
-	def postedDate(self,val: datetime.datetime) -> None:
+	def postedDate(self,val: datetime.datetime | None) -> None:
 		self._posted = val
 
 	@property
-	def listenDate1(self) -> datetime.datetime:
+	def listenDate1(self) -> datetime.datetime | None:
 		"""
 		The date of the first listen
 		"""
 		return self._listenDate1
 	
 	@listenDate1.setter
-	def listenDate1(self,val: datetime.datetime) -> None:
+	def listenDate1(self,val: datetime.datetime | None) -> None:
 		self._listenDate1 = val
 
 	@property
-	def listenDate2(self) -> datetime.datetime:
+	def listenDate2(self) -> datetime.datetime | None:
 		"""
 		The date of the second listen
 		"""
 		return self._listenDate2
 	
 	@listenDate2.setter
-	def listenDate2(self,val: datetime.datetime) -> None:
+	def listenDate2(self,val: datetime.datetime | None) -> None:
 		self._listenDate2 = val
 
 	@property
-	def listenDate3(self) -> datetime.datetime:
+	def listenDate3(self) -> datetime.datetime | None:
 		"""
 		The date of the third listen
 		"""
 		return self._listenDate3
 	
 	@listenDate3.setter
-	def listenDate3(self,val: datetime.datetime) -> None:
+	def listenDate3(self,val: datetime.datetime | None) -> None:
 		self._listenDate3 = val
 
 	def __init__(self,*argv) -> None:

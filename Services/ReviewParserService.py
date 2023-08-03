@@ -23,14 +23,14 @@ def ParseReviewMd(path: str) -> Review.Review:
 	artist: str = ''
 	body: str = ''
 	feelingRating: int = 0
-	songAvg: int = 0
+	songAvg: float = 0
 	trackList: list[Song.Song] = []
 	albumArt: str = ''
 	genre: list[str] = []
 	blurb: str = ''
-	listenDate1: datetime.datetime = SQL_MIN_DATE
-	listenDate2: datetime.datetime = SQL_MIN_DATE
-	listenDate3: datetime.datetime = SQL_MIN_DATE
+	listenDate1: datetime.datetime | None = None
+	listenDate2: datetime.datetime | None = None
+	listenDate3: datetime.datetime | None = None
 
 	bodyFlag: bool = False
 	trackFlag: bool = False
@@ -92,11 +92,11 @@ def ParseReviewMd(path: str) -> Review.Review:
 			continue
 
 		# Grab the ratings
-		if re.match(r'\((\d).\+ (\d)\) / 2.*',line):
-			ratings = re.search(r'\((\d).\+ (\d)\) / 2.*',line)
+		if re.match(r'\((\d)\+(\d.*)\)/2.*',line.replace(' ', '')):
+			ratings = re.search(r'\((\d)\+(\d.*)\)/2.*',line.replace(' ', ''))
 
 			feelingRating = int(ratings.group(1))
-			songAvg = int(ratings.group(2))
+			songAvg = float(ratings.group(2))
 			continue
 
 		# Match the dates
@@ -117,7 +117,7 @@ def ParseReviewMd(path: str) -> Review.Review:
 			continue
 
 		if blurbFlag:
-			blurb = line
+			blurb = line[:-1]
 			blurbFlag = False
 			continue
 
@@ -150,7 +150,7 @@ def ParseReviewMd(path: str) -> Review.Review:
 		genre,
 		blurb,
 		'',
-		SQL_MIN_DATE,
+		None,
 		listenDate1,
 		listenDate2,
 		listenDate3
@@ -169,7 +169,7 @@ def ParseReviewObj(review: Review.Review) -> list[str]:
 
 	parsedDates.append(f'| 1 | {review.listenDate1.strftime("%Y-%m-%d")} |\n')
 	parsedDates.append(f'| 2 | {review.listenDate2.strftime("%Y-%m-%d")} |\n')
-	parsedDates.append(f'| 3 | {review.listenDate3.strftime("%Y-%m-%d") if review.listenDate3 != datetime.datetime.min else ""} |\n')
+	parsedDates.append(f'| 3 | {review.listenDate3.strftime("%Y-%m-%d") if review.listenDate3 != None else ""} |\n')
 	
 	lines.append(f'# {review.title} Album Review\n')
 	lines.append('\n')

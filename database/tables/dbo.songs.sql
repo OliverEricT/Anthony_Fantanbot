@@ -16,8 +16,8 @@ GO
 
 CREATE TABLE [dbo].[Songs](
      SongId int PRIMARY KEY NOT NULL IDENTITY(1,1)
-    ,AlbumId int NOT NULL
+    ,ReviewId int NOT NULL
     ,SongName varchar(100) NOT NULL
-    ,SongRating int NOT NULL
+    ,Rating int NOT NULL
 )
 GO
