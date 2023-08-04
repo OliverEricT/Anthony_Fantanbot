@@ -10,6 +10,13 @@
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal"
-        }
+        },
+				{
+					"name": "Testing Script",
+					"type": "python",
+					"request": "launch",
+					"program": "testing.py",
+					"console": "integratedTerminal"
+			}
     ]
 }

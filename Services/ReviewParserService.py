@@ -89,7 +89,8 @@ def ParseReviewMd(path: str) -> Review.Review:
 			continue
 
 		if genreFlag:
-			genre = line.split('; ')
+			
+			genre = line[:-1].replace(',',';').split('; ')
 			genreFlag = False
 			continue
 

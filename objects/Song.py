@@ -47,4 +47,11 @@ class Song:
 	def __iter__(self):
 		return self
 
+	def Tupleize(self) -> tuple[int, str, int]:
+		return (
+			self.TrackNo,
+			self.Name,
+			self.Rating
+		)
+
 		

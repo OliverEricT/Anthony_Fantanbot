@@ -24,8 +24,13 @@ for path, subdirs, files in os.walk(REVIEWS_FOLDER):
 
 service = SQLService.SQLService(CONNECTION_STRING)
 
+reviewId: int = 0
 for review in reviews:
 	service.InsertArtist(review.artist)
-	service.SaveReview(review)
+	reviewId = service.SaveReview(review)
+	for song in review.trackList:
+		success = service.InsertSong(reviewId,song)
+	for genre in review.genre:
+		success = service.InsertGenre(reviewId,genre)
 
 #service.TestQuery()

@@ -5,7 +5,8 @@ import os
 sys.path.append(os.path.dirname(sys.path[0]))
 from Objects import (
 	Artist,
-	Review
+	Review,
+	Song
 )
 
 class SQLService:
@@ -20,6 +21,7 @@ class SQLService:
 
 	def TestQuery(self) -> str:
 		queryStr: str = """
+SET NOCOUNT ON;
 SELECT * FROM [Music].[dbo].[Reviews]
 """
 
@@ -35,6 +37,7 @@ SELECT * FROM [Music].[dbo].[Reviews]
 
 	def InsertReview(self, review: Review):
 		queryStr: str = """
+SET NOCOUNT ON;
 EXEC Insert_Review
 	@value = ?
 """
@@ -48,6 +51,7 @@ EXEC Insert_Review
 
 	def InsertArtist(self, artist: Artist.Artist) -> bool:
 		queryStr: str = """
+SET NOCOUNT ON;
 EXEC Insert_Artist
 	 @ArtistName = ?
 	,@SortArtistName = ?
@@ -57,8 +61,9 @@ EXEC Insert_Artist
 
 		return True
 
-	def SaveReview(self, review: Review.Review) -> None:
+	def SaveReview(self, review: Review.Review) -> int:
 		queryStr: str = """
+SET NOCOUNT ON;
 EXEC [Music].[dbo].[Save_Review]
 	 @ReviewId = ?
 	,@AlbumTitle = ?
@@ -73,15 +78,54 @@ EXEC [Music].[dbo].[Save_Review]
 	,@ListenDate2 = ?
 	,@ListenDate3 = ?
 """
-		
+		reviewId: int = 0
+
 		cursor: pyodbc.Cursor = self.Connection.cursor()
 		tuples = review.Tupleize()
 		cursor.execute(queryStr, tuples)
 
 		for row in cursor.fetchall():
-			print(row)
+			reviewId = row.ReviewId
 		
-		pass
+		return reviewId
+
+	def InsertSong(self, reviewId: int, song: Song.Song) -> bool:
+		queryStr: str = """
+SET NOCOUNT ON;
+EXEC [Music].[dbo].[Insert_Song]
+	 @ReviewId = ?
+	,@TrackNo = ?
+	,@SongName = ?
+	,@Rating = ?
+"""
+		success: bool = False
+
+		cursor: pyodbc.Cursor = self.Connection.cursor()
+		tuples = song.Tupleize()
+		tuples = (reviewId,) + tuples
+		cursor.execute(queryStr, tuples)
+
+		for row in cursor.fetchall():
+			success = bool(row.Success)
+		
+		return success
+
+	def InsertGenre(self, reviewId: int, genreName: str) -> bool:
+		queryStr: str = """
+SET NOCOUNT ON;
+EXEC [Music].[dbo].[Insert_ReviewGenre]
+	 @ReviewId = ?
+	,@GenreName = ?
+"""
+		success: bool = False
+
+		cursor: pyodbc.Cursor = self.Connection.cursor()
+		cursor.execute(queryStr, (reviewId,genreName))
+
+		for row in cursor.fetchall():
+			success = bool(row.Success)
+		
+		return success
 
 	def __init__(self, *argv):
 		self.Connection = pyodbc.connect(argv[0], autocommit=True)

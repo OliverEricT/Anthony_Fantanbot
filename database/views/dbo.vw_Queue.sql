@@ -26,8 +26,8 @@ AS
     SongScores AS (
         SELECT
              s.ReviewId
-            ,SUM(s.Rating) AS TotalRatings
-            ,COUNT(s.Rating) AS NumberTracks
+            ,CAST(SUM(s.Rating) AS FLOAT) AS TotalRatings
+            ,CAST(COUNT(s.Rating) AS FLOAT) AS NumberTracks
         FROM [Music].[dbo].[Songs] s
         GROUP BY s.ReviewId
     ),
@@ -37,7 +37,7 @@ AS
     ),
     SortedFilteredReviews AS (
         SELECT
-             m.MaxNum - 1 + ROW_NUMBER() OVER(ORDER BY r.Title) AS ReviewNumber
+             m.MaxNum - 1 + ROW_NUMBER() OVER(ORDER BY r.SortTitle) AS ReviewNumber
             ,r.ReviewId
             ,r.Title
             ,r.ArtistId
@@ -65,7 +65,7 @@ AS
         ,r.FeelingRating AS FeelingRating
         ,s.TotalRatings / s.NumberTracks AS SongAvg
         ,sf2.Title + ' by ' + a2.Name + '\n\n' + sf2.Blurb AS NextUp
-        ,ROW_NUMBER() OVER(ORDER BY r.Title) AS ForcedSort
+        ,ROW_NUMBER() OVER(ORDER BY r.SortTitle) AS ForcedSort
     FROM [Music].[dbo].[Reviews] r
     INNER JOIN SortedFilteredReviews sf ON r.ReviewId = sf.ReviewId
     LEFT JOIN ConcatedGenres g ON r.ReviewId = g.ReviewId
