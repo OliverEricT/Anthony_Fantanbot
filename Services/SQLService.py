@@ -4,6 +4,7 @@ import os
 
 sys.path.append(os.path.dirname(sys.path[0]))
 from Objects import (
+	Artist,
 	Review
 )
 
@@ -45,13 +46,14 @@ EXEC Insert_Review
 			print(row)
 			row = cursor.fetchone()
 
-	def InsertArtist(self, artistName: str) -> bool:
+	def InsertArtist(self, artist: Artist.Artist) -> bool:
 		queryStr: str = """
 EXEC Insert_Artist
-	@ArtistName = ?
+	 @ArtistName = ?
+	,@SortArtistName = ?
 """
 		cursor: pyodbc.Cursor = self.Connection.cursor()
-		cursor.execute(queryStr, artistName)
+		cursor.execute(queryStr, artist.name, artist.sortName)
 
 		return True
 
@@ -60,6 +62,7 @@ EXEC Insert_Artist
 EXEC [Music].[dbo].[Save_Review]
 	 @ReviewId = ?
 	,@AlbumTitle = ?
+	,@SortName = ?
 	,@ArtistName = ?
 	,@Body = ?
 	,@FeelingRating = ?
@@ -75,8 +78,8 @@ EXEC [Music].[dbo].[Save_Review]
 		tuples = review.Tupleize()
 		cursor.execute(queryStr, tuples)
 
-		# for row in cursor.fetchall():
-		# 	print(row)
+		for row in cursor.fetchall():
+			print(row)
 		
 		pass
 

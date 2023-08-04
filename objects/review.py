@@ -278,11 +278,12 @@ class Review:
 		"""
 		return json.dumps(self, default=lambda o: o.__dict__, sort_keys=True, indent=2)
 
-	def Tupleize(self) -> tuple[int,str, str, str,float,str,str,datetime.datetime,datetime.datetime,datetime.datetime]:
+	def Tupleize(self) -> tuple[int, str, str, str, str,float,str,str,datetime.datetime,datetime.datetime,datetime.datetime]:
 		return (
 			self.id,
 			self.title,
-			self.artist,
+			self.sortTitle,
+			self.artist.name,
 			self.body,
 			self.feelingRating,
 			self.albumArt,

@@ -17,7 +17,13 @@ GO
 CREATE VIEW [dbo].[Queue]
 AS
     
-    WITH SongScores AS (
+    WITH FilteredReviews AS (
+        SELECT
+            r.ReviewId
+        FROM [Music].[dbo].[Reviews] r
+        WHERE r.NumberPosted IS NULL
+    ),
+    SongScores AS (
         SELECT
              s.ReviewId
             ,SUM(s.Rating) AS TotalRatings
@@ -37,14 +43,24 @@ AS
             ,r.ArtistId
             ,r.Blurb
         FROM [Music].[dbo].[Reviews] r
+        INNER JOIN FilteredReviews fr ON r.ReviewId = fr.ReviewId
         LEFT JOIN MaxNumPosted m ON m.MaxNum > 0
-        WHERE r.NumberPosted IS NULL
+    ),
+    ConcatedGenres AS (
+        SELECT
+            r.ReviewId
+            ,STRING_AGG(g.Name,'; ') AS Genres
+        FROM [Music].[dbo].[Reviews] r
+        INNER JOIN [Music].[dbo].[ReviewGenres] rg ON rg.ReviewId = r.ReviewId
+        INNER JOIN [Music].[dbo].[Genres] g ON rg.GenreId = g.GenreId
+        GROUP BY r.ReviewId
     )
     SELECT
          sf.ReviewNumber AS ReviewNumber
         ,r.Title AS AlbumTitle
         ,a.Name AS ArtistName
         ,r.AlbumArt AS AlbumArt
+        ,g.Genres AS Genres
         ,r.Body AS Body
         ,r.FeelingRating AS FeelingRating
         ,s.TotalRatings / s.NumberTracks AS SongAvg
@@ -52,6 +68,7 @@ AS
         ,ROW_NUMBER() OVER(ORDER BY r.Title) AS ForcedSort
     FROM [Music].[dbo].[Reviews] r
     INNER JOIN SortedFilteredReviews sf ON r.ReviewId = sf.ReviewId
+    LEFT JOIN ConcatedGenres g ON r.ReviewId = g.ReviewId
     LEFT JOIN SortedFilteredReviews sf2 ON sf.ReviewNumber + 1 = sf2.ReviewNumber
     INNER JOIN [Music].[dbo].[Artists] a ON r.ArtistId = a.ArtistId
     INNER JOIN [Music].[dbo].[Artists] a2 ON sf2.ArtistId = a2.ArtistId

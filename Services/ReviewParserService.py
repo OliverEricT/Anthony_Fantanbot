@@ -21,7 +21,7 @@ def ParseReviewMd(path: str) -> Review.Review:
 	"""
 	title: str = ''
 	sortTitle: str | None = None
-	artist: str = ''
+	artist: Artist.Artist = None
 	body: str = ''
 	feelingRating: int = 0
 	songAvg: float = 0
@@ -126,15 +126,22 @@ def ParseReviewMd(path: str) -> Review.Review:
 		# Grab the artist
 		if re.match(r'\[.*Artist\]\(.*\)',line):
 			link: str = _ParseMdLink(line)[1]
-			artist = \
+			sortArtist = \
 				re.search(r'(.*)_(A|a)rtist_(R|r)eview.md',link).group(1).replace('_', ' ')
 
-			if artist == 'Depeche Mode':
+			if sortArtist == 'Depeche Mode':
 				artistPath: str = os.path.dirname(os.path.dirname(path))
 				pathToRemove: str = os.path.dirname(artistPath)
-				artist = artistPath.replace(pathToRemove,'').replace('\\','').replace('/','')
+				sortArtist = artistPath.replace(pathToRemove,'').replace('\\','').replace('/','')
 
-			sortArtist = _UnSortify(artist)
+			artistName = _UnSortify(sortArtist)
+
+			artist = Artist.Artist(
+				artistName,
+				sortArtist,
+				'',
+				[]
+			)
 
 			continue
 
@@ -240,10 +247,10 @@ def _Sortify(string: str) -> str:
 	
 	ie. The Black Keys -> Black Keys, The
 	"""
-	if not re.match(r'^(the|an)',string, re.IGNORECASE):
+	if not re.match(r'^(the|an) ',string, re.IGNORECASE):
 		return string
 	
-	article = re.search(r'^(the|an)',string, re.IGNORECASE).group(1)
+	article = re.search(r'^(the|an) ',string, re.IGNORECASE).group(1)
 	temp = string[len(article)+1:]
 	return f'{temp}, {article}'
 
@@ -253,9 +260,6 @@ def _UnSortify(string: str) -> str:
 
 	ie. Black Keys, The -> The Black Keys
 	"""
-	if string[-5:] == ", The":
-		print('huh!')
-
 	groups = re.search(r', (the|an)$',string, re.IGNORECASE)
 	if not groups:
 		return string

@@ -15,7 +15,8 @@ GO
 ######################*/
 
 CREATE PROCEDURE [dbo].[Insert_Artist](
-    @ArtistName varchar(100) = NULL
+     @ArtistName varchar(100) = NULL
+    ,@SortArtistName varchar(100) = NULL
 )
 AS
 
@@ -34,10 +35,12 @@ AS
     END
 
     INSERT INTO [Music].[dbo].[Artists] (
-        [Name]
+         [Name]
+        ,SortName
     )
     SELECT
-        @ArtistName AS [Name]
+         @ArtistName AS [Name]
+        ,@SortArtistName AS SortName
 
     SELECT 1 AS Success
 

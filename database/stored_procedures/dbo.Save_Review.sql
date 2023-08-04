@@ -17,6 +17,7 @@ GO
 		EXEC [Music].[dbo].[Save_Review]
 			 @ReviewId = NULL
 			,@AlbumTitle = 'Test'
+			,@SortName = 'Test, The'
 			,@ArtistName = '+44'
 			,@Body = ''
 			,@FeelingRating = 3
@@ -32,6 +33,7 @@ GO
 CREATE PROCEDURE [dbo].[Save_Review](
 	 @ReviewId int = NULL
 	,@AlbumTitle varchar(250)
+	,@SortName varchar(250) = NULL
 	,@ArtistName varchar(100) = NULL
 	,@Body varchar(max) = NULL
 	,@FeelingRating int = NULL
@@ -60,6 +62,7 @@ AS
 		UPDATE r
 		SET
 			 r.Title = @AlbumTitle
+			,r.SortTitle = @SortName
 			,r.ArtistId = @ArtistId
 			,r.AlbumArt = @AlbumArt
 			,r.Body = @Body
@@ -77,6 +80,7 @@ AS
 		INSERT INTO [Music].[dbo].[Reviews] (
 			 ArtistId
 			,Title
+			,SortTitle
 			,AlbumArt
 			,Body
 			,FeelingRating
@@ -90,6 +94,7 @@ AS
 		SELECT
 			 @ArtistId AS ArtistId
 			,@AlbumTitle AS Title
+			,@SortName AS SortTitle
 			,@AlbumArt AS AlbumArt
 			,@Body AS Body
 			,@FeelingRating AS FeelingRating
