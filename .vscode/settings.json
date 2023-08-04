@@ -14,6 +14,7 @@
 		"pyodbc",
 		"pytz",
 		"sendreview",
+		"Sortify",
 		"Thicc",
 		"Tupleize"
 	],

@@ -20,6 +20,7 @@ def ParseReviewMd(path: str) -> Review.Review:
 	Review object
 	"""
 	title: str = ''
+	sortTitle: str | None = None
 	artist: str = ''
 	body: str = ''
 	feelingRating: int = 0
@@ -48,6 +49,7 @@ def ParseReviewMd(path: str) -> Review.Review:
 		# Grab the album title
 		if line[-13:-1] == 'Album Review':
 			title = line[2:-14]
+			sortTitle = _Sortify(title)
 			continue
 
 		# Grab the album art
@@ -132,6 +134,8 @@ def ParseReviewMd(path: str) -> Review.Review:
 				pathToRemove: str = os.path.dirname(artistPath)
 				artist = artistPath.replace(pathToRemove,'').replace('\\','').replace('/','')
 
+			sortArtist = _UnSortify(artist)
+
 			continue
 
 		if bodyFlag:
@@ -140,16 +144,18 @@ def ParseReviewMd(path: str) -> Review.Review:
 
 	return Review.Review(
 		0,
-		title,
 		artist,
+		title,
+		sortTitle,
+		albumArt,
 		body,
 		feelingRating,
 		songAvg,
 		trackList,
-		albumArt,
 		genre,
 		blurb,
 		'',
+		None,
 		None,
 		listenDate1,
 		listenDate2,
@@ -227,6 +233,37 @@ def _ParseMdLink(mdLink: str) -> tuple[str, str]:
 	link = link.replace('%20', ' ')
 
 	return text, link
+
+def _Sortify(string: str) -> str:
+	"""
+	Takes any string and then attempts to normalize it for sorting
+	
+	ie. The Black Keys -> Black Keys, The
+	"""
+	if not re.match(r'^(the|an)',string, re.IGNORECASE):
+		return string
+	
+	article = re.search(r'^(the|an)',string, re.IGNORECASE).group(1)
+	temp = string[len(article)+1:]
+	return f'{temp}, {article}'
+
+def _UnSortify(string: str) -> str:
+	"""
+	Takes any string and then tries to recombine it into normal english
+
+	ie. Black Keys, The -> The Black Keys
+	"""
+	if string[-5:] == ", The":
+		print('huh!')
+
+	groups = re.search(r', (the|an)$',string, re.IGNORECASE)
+	if not groups:
+		return string
+	
+	article = groups.group(1)
+	endlen = len(f', {article}')
+	temp = string[:-endlen]
+	return f'{article} {temp}'
 
 def Main() -> None:
 
