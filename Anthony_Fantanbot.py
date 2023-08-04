@@ -15,6 +15,10 @@ from telegram.ext import (
 	CallbackContext,
 	JobQueue
 )
+from Services import (
+	ReviewParserService,
+	SQLService
+)
 
 load_dotenv()
 
@@ -29,6 +33,10 @@ BOT_TOKEN = os.getenv('BOT_TOKEN')
 LIST_OF_ADMINS = os.getenv('ADMINS').split(',')
 MUSIC_CHAT_ID = os.getenv('MUSIC_CHAT_ID')
 DEBUG_CHAT_ID = os.getenv('DEBUG_CHAT_ID')
+CONNECTION_STRING = os.getenv('CONNECTION_STRING')
+REVIEWS_FOLDER = os.getenv('REVIEWS_FOLDER')
+
+service: SQLService.SQLService
 
 #########################
 #   Telegram Commands   #
@@ -296,6 +304,9 @@ def UpdateCompleted(review: json) -> None:
 		json.dump(completed,file,indent=2)
 
 def Main() -> None:
+	service = SQLService.SQLService(CONNECTION_STRING)
+
+	# Initialize the bot
 	application = ApplicationBuilder().token(BOT_TOKEN).build()
 	job_queue = application.job_queue
 
@@ -311,7 +322,11 @@ def Main() -> None:
 
 	# Sends the review at 10 am every monday
 	tenAm = datetime.time(hour=10, tzinfo=pytz.timezone('America/Chicago'))
-	job_queue.run_daily(SendReview,tenAm,days=(1,1))
+	job_queue.run_daily(SendReview,tenAm,days=(1,5))
+
+	# Check the Markdown Files every night
+	midnight = datetime.time(hour=00, tzinfo=pytz.timezone('America/Chicago'))
+	job_queue.run_daily(,tenAm,days=(0,1,2,3,4,5,6))
 
 	try:
 		application.run_polling()
