@@ -57,6 +57,7 @@ AS
     )
     SELECT
          sf.ReviewNumber AS ReviewNumber
+        ,r.ReviewId AS ReviewId
         ,r.Title AS AlbumTitle
         ,a.Name AS ArtistName
         ,r.AlbumArt AS AlbumArt
