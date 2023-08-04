@@ -17,7 +17,7 @@ GO
 		EXEC [Music].[dbo].[Save_Review]
 			 @ReviewId = NULL
 			,@AlbumTitle = 'Test'
-			,@ArtistName = 'Test'
+			,@ArtistName = '+44'
 			,@Body = ''
 			,@FeelingRating = 3
 			,@AlbumArt = 'test'

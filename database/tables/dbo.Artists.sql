@@ -17,5 +17,6 @@ GO
 CREATE TABLE [dbo].[Artists](
      ArtistId int PRIMARY KEY NOT NULL IDENTITY(1,1)
     ,[Name] varchar(100) NOT NULL
+    ,SortName varchar(100)
 )
 GO
