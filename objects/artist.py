@@ -9,6 +9,14 @@ class Artist:
 		self._name = val
 
 	@property
+	def sortName(self) -> str:
+		return self._sortName
+	
+	@sortName.setter
+	def sortName(self,val: str) -> None:
+		self._sortName = val
+
+	@property
 	def fileLocation(self) -> str:
 		return self._fileLocation
 	
@@ -28,9 +36,11 @@ class Artist:
 		if type(argv[0]) is Artist:
 			artist = argv[0]
 			self.name = artist.name
+			self.sortName = artist.sortName
 			self.fileLocation = artist.fileLocation
 			self.albums = artist.albums
 		else:
 			self.name = argv[0]
-			self.fileLocation = argv[1]
-			self.albums = argv[2]
+			self.sortName = argv[1]
+			self.fileLocation = argv[2]
+			self.albums = argv[3]
