@@ -1,7 +1,10 @@
 import datetime
 import json
 import os
-from . import Song
+from . import (
+  Artist,
+	Song
+)
 
 class Review:
 	"""
@@ -20,14 +23,14 @@ class Review:
 		self._id = val
 
 	@property
-	def artist(self) -> str:
+	def artist(self) -> Artist.Artist:
 		"""
 		the artist name. Potentially change this to a key
 		"""
 		return self._artist
 	
 	@artist.setter
-	def artist(self,val: str) -> None:
+	def artist(self,val: Artist.Artist) -> None:
 		self._artist = val
 
 	@property
@@ -213,7 +216,7 @@ class Review:
 		"""
 		if len(argv) == 0:
 			self.id = 0
-			self.artist = ''
+			self.artist = None
 			self.title = ''
 			self.sortTitle = ''
 			self.albumArt = ''
