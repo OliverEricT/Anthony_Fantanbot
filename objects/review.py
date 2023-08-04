@@ -20,6 +20,17 @@ class Review:
 		self._id = val
 
 	@property
+	def artist(self) -> str:
+		"""
+		the artist name. Potentially change this to a key
+		"""
+		return self._artist
+	
+	@artist.setter
+	def artist(self,val: str) -> None:
+		self._artist = val
+
+	@property
 	def title(self) -> str:
 		"""
 		The album title
@@ -31,15 +42,24 @@ class Review:
 		self._title = val
 
 	@property
-	def artist(self) -> str:
-		"""
-		the artist name. Potentially change this to a key
-		"""
-		return self._artist
+	def sortTitle(self) -> str | None:
+		return self._sortTitle
 	
-	@artist.setter
-	def artist(self,val: str) -> None:
-		self._artist = val
+	@sortTitle.setter
+	def sortTitle(self,val: str | None) -> None:
+		self._sortTitle = val
+
+	@property
+	def albumArt(self) -> str:
+		"""
+		The link to the album art
+		"""
+		#TODO: Fix this
+		return os.path.join("\\\\Deepthought\\Media\\Music\\",self._albumArt) 
+	
+	@albumArt.setter
+	def albumArt(self,val: str) -> None:
+		self._albumArt = val
 
 	@property
 	def body(self) -> str:
@@ -85,6 +105,17 @@ class Review:
 		return (self._feelingRating + self._songAvg) / 2
 	
 	@property
+	def blurb(self) -> str:
+		"""
+		The fun little blurb that gets added to the next up text
+		"""
+		return self._blurb
+	
+	@blurb.setter
+	def blurb(self,val: str) -> None:
+		self._blurb = val
+
+	@property
 	def trackList(self) -> list[Song.Song]:
 		"""
 		The array of song names and ratings that comprise the album
@@ -94,18 +125,6 @@ class Review:
 	@trackList.setter
 	def trackList(self,val: list[Song.Song]) -> None:
 		self._trackList = val
-
-	@property
-	def albumArt(self) -> str:
-		"""
-		The link to the album art
-		"""
-		#TODO: Fix this
-		return os.path.join("\\\\Deepthought\\Media\\Music\\",self._albumArt) 
-	
-	@albumArt.setter
-	def albumArt(self,val: str) -> None:
-		self._albumArt = val
 
 	@property
 	def genre(self) -> list[str]:
@@ -119,17 +138,6 @@ class Review:
 		self._genre = val
 
 	@property
-	def blurb(self) -> str:
-		"""
-		The fun little blurb that gets added to the next up text
-		"""
-		return self._blurb
-	
-	@blurb.setter
-	def blurb(self,val: str) -> None:
-		self._blurb = val
-
-	@property
 	def nextUp(self) -> str:
 		"""
 		The fully computed text that get's displayed at the end of the
@@ -140,6 +148,14 @@ class Review:
 	@nextUp.setter
 	def nextUp(self, val: str) -> None:
 		self._nextUp = val
+
+	@property
+	def numberPosted(self) -> int | None:
+		return self._numberPosted
+	
+	@numberPosted.setter
+	def numberPosted(self,val: int | None) -> None:
+		self._numberPosted = val
 
 	@property
 	def postedDate(self) -> datetime.datetime | None:
@@ -196,75 +212,62 @@ class Review:
 		3. The argv is read and then attempted to parse into the object
 		"""
 		if len(argv) == 0:
-			self.id = -1
-			self.title = ""
-			self.artist = ""
-			self.body = ""
+			self.id = 0
+			self.artist = ''
+			self.title = ''
+			self.sortTitle = ''
+			self.albumArt = ''
+			self.body = ''
 			self.feelingRating = 0
 			self.songAvg = 0
 			self.trackList = []
-			self.albumArt = ""
 			self.genre = []
-			self.blurb = ""
-			self.nextUp = ""
-			self.datePosted = datetime.now()
-			self.listenDate1 = ""
-			self.listenDate2 = ""
-			self.listenDate3 = ""
+			self.blurb = ''
+			self.nextUp = ''
+			self.numberPosted = 0
+			self.datePosted = None
+			self.listenDate1 = None
+			self.listenDate2 = None
+			self.listenDate3 = None
 
 		elif type(argv[0]) is Review:
 			rev = argv[0]
 			self.id = rev.id
-			self.title = rev.title
 			self.artist = rev.artist
+			self.title = rev.title
+			self.sortTitle = rev.sortTitle
+			self.albumArt = rev.albumArt
 			self.body = rev.body
 			self.feelingRating = rev.feelingRating
 			self.songAvg = rev.songAvg
 			self.trackList = rev.trackList
-			self.albumArt = rev.albumArt
 			self.genre = rev.genre
 			self.blurb = rev.blurb
 			self.nextUp = rev.nextUp
+			self.numberPosted = rev.numberPosted
 			self.datePosted = rev.datePosted
 			self.listenDate1 = rev.listenDate1
 			self.listenDate2 = rev.listenDate2
 			self.listenDate3 = rev.listenDate3
-
-		elif type(argv[0]) is json:
-			#TODO: change this to inbuilt json parsing
-			rev = argv[0]
-			self.id = rev['id']
-			self.title = rev['title']
-			self.artist = rev['artist']
-			self.body = rev['body']
-			self.feelingRating = rev['feelingRating']
-			self.songAvg = rev['songAvg']
-			self.trackList = rev['trackList']
-			self.albumArt = rev['albumArt']
-			self.genre = rev['genre']
-			self.blurb = rev['blurb']
-			self.nextUp = rev['nextUp']
-			self.datePosted = rev['datePosted']
-			self.listenDate1 = rev['listenDate1']
-			self.listenDate2 = rev['listenDate2']
-			self.listenDate3 = rev['listenDate3']
 					
 		else:
 			self.id = argv[0]
-			self.title = argv[1]
-			self.artist = argv[2]
-			self.body = argv[3]
-			self.feelingRating = argv[4]
-			self.songAvg = argv[5]
-			self.trackList = argv[6]
-			self.albumArt = argv[7]
-			self.genre = argv[8]
-			self.blurb = argv[9]
-			self.nextUp = argv[10]
-			self.datePosted = argv[11]
-			self.listenDate1 = argv[12]
-			self.listenDate2 = argv[13]
-			self.listenDate3 = argv[14]
+			self.artist = argv[1]
+			self.title = argv[2]
+			self.sortTitle = argv[3]
+			self.albumArt = argv[4]
+			self.body = argv[5]
+			self.feelingRating = argv[6]
+			self.songAvg = argv[7]
+			self.trackList = argv[8]
+			self.genre = argv[9]
+			self.blurb = argv[10]
+			self.nextUp = argv[11]
+			self.numberPosted = argv[12]
+			self.datePosted = argv[13]
+			self.listenDate1 = argv[14]
+			self.listenDate2 = argv[15]
+			self.listenDate3 = argv[16]
 
 	def ToJson(self) -> json:
 		"""
