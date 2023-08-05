@@ -21,7 +21,7 @@ GO
 
         SELECT * FROM [Music].[dbo].[Reviews] WHERE ISNULL(Blurb,'') = '' ORDER BY NumberPosted
 
-        SELECT * FROM [Music].[dbo].[Reviews] WHERE Title LIKE 'Acid%'
+        SELECT * FROM [Music].[dbo].[Reviews] WHERE Title LIKE 'Flower%'
 
         SELECT * FROM [Music].[dbo].[Reviews] WHERE FeelingRating < 1
 

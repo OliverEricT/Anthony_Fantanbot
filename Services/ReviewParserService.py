@@ -41,6 +41,9 @@ def ParseReviewMd(path: str) -> Review.Review:
 	file = open(path,encoding='utf-8', mode='r')
 	lines = file.readlines()
 
+	if lines[0][-3:-1] == "IP":
+		return Review.Review()
+
 	for line in lines:
 		# If the line is empty, skip it
 		if line == '' or line == '\n':
@@ -181,13 +184,18 @@ def ParseReviewObj(review: Review.Review) -> list[str]:
 	for track in review.trackList:
 		parsedTracks.append(f'| {track.TrackNo} | {track.Name} | {track.Rating}\\5 |\n')
 
-	parsedDates.append(f'| 1 | {review.listenDate1.strftime("%Y-%m-%d")} |\n')
-	parsedDates.append(f'| 2 | {review.listenDate2.strftime("%Y-%m-%d")} |\n')
+	parsedDates.append(f'| 1 | {review.listenDate1.strftime("%Y-%m-%d") if review.listenDate1 != None else ""} |\n')
+	parsedDates.append(f'| 2 | {review.listenDate2.strftime("%Y-%m-%d") if review.listenDate2 != None else ""} |\n')
 	parsedDates.append(f'| 3 | {review.listenDate3.strftime("%Y-%m-%d") if review.listenDate3 != None else ""} |\n')
+
+	if review.numberPosted != None and review.postedDate != None:
+		parsedDates.append(f'| {review.numberPosted} | {review.postedDate.strftime("%Y-%m-%d")} |\n')
+
+	image = os.path.basename(os.path.normpath(review.albumArt))
 	
 	lines.append(f'# {review.title} Album Review\n')
 	lines.append('\n')
-	lines.append('![](Cover.jpg)\n')
+	lines.append(f'![]({image})\n')
 	lines.append('\n')
 	lines.append('## Thoughts\n')
 	lines.append('\n')
@@ -200,13 +208,13 @@ def ParseReviewObj(review: Review.Review) -> list[str]:
 	lines.append(f'{"".join(parsedTracks)}\n')
 	lines.append('## Genre\n')
 	lines.append('\n')
-	lines.append(f'{"; ".join(review.genre)}')
+	lines.append(f'{"; ".join(review.genre)}\n')
 	lines.append('\n')
 	lines.append('## Overall Rating\n')
 	lines.append('\n')
 	lines.append('(personal rating + Songs avg) / 2 = Rating\n')
 	lines.append('\n')
-	lines.append(f'({review.feelingRating} + {review.songAvg}) / 2 = {review.OverallRating}\n')
+	lines.append(f'({review.feelingRating} + {round(review.songAvg,1)}) / 2 = {round(review.OverallRating,1)} = {round(review.OverallRating)}\n')
 	lines.append('\n')
 	lines.append('## Dates\n')
 	lines.append('\n')
@@ -215,12 +223,11 @@ def ParseReviewObj(review: Review.Review) -> list[str]:
 	lines.append(f'{"".join(parsedDates)}\n')
 	lines.append('## Blurb\n')
 	lines.append('\n')
-	lines.append(f'{review.blurb}')
+	lines.append(f'{review.blurb}\n')
 	lines.append('\n')
-	lines.append(f'[Return to Artist](../{review.artist.replace(" ", "_")}_Artist_review.md)\n')
+	lines.append(f'[Return to Artist](../{review.artist.name.replace(" ", "_")}_Artist_review.md)\n')
 	lines.append('\n')
 	lines.append('[Return to Index](../../Index.md)\n')
-	lines.append('\n')
 
 	return lines
 

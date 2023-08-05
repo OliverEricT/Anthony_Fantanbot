@@ -165,11 +165,11 @@ class Review:
 		"""
 		The date the review was posted
 		"""
-		return self._posted
+		return self._postedDate
 	
 	@postedDate.setter
 	def postedDate(self,val: datetime.datetime | None) -> None:
-		self._posted = val
+		self._postedDate = val
 
 	@property
 	def listenDate1(self) -> datetime.datetime | None:
@@ -228,7 +228,7 @@ class Review:
 			self.blurb = ''
 			self.nextUp = ''
 			self.numberPosted = 0
-			self.datePosted = None
+			self.postedDate = None
 			self.listenDate1 = None
 			self.listenDate2 = None
 			self.listenDate3 = None
@@ -248,7 +248,7 @@ class Review:
 			self.blurb = rev.blurb
 			self.nextUp = rev.nextUp
 			self.numberPosted = rev.numberPosted
-			self.datePosted = rev.datePosted
+			self.postedDate = rev.postedDate
 			self.listenDate1 = rev.listenDate1
 			self.listenDate2 = rev.listenDate2
 			self.listenDate3 = rev.listenDate3
@@ -267,7 +267,7 @@ class Review:
 			self.blurb = argv[10]
 			self.nextUp = argv[11]
 			self.numberPosted = argv[12]
-			self.datePosted = argv[13]
+			self.postedDate = argv[13]
 			self.listenDate1 = argv[14]
 			self.listenDate2 = argv[15]
 			self.listenDate3 = argv[16]
