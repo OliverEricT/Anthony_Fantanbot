@@ -132,7 +132,6 @@ EXEC [Music].[dbo].[Insert_ReviewGenre]
 		queryStr: str = """
 SET NOCOUNT ON;
 EXEC [Music].[dbo].[Select_NextInQueue]
-	@DebugMode = 1
 """
 		review: Review.Review
 
