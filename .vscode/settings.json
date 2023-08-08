@@ -1,0 +1,31 @@
+{
+	"[python]": {
+		"editor.defaultFormatter": "ms-python.black-formatter"
+	},
+	"python.formatting.provider": "none",
+	"cSpell.words": [
+		"Depeche",
+		"dotenv",
+		"getgroupid",
+		"getuserid",
+		"jsons",
+		"levelname",
+		"Nutt",
+		"pyodbc",
+		"pytz",
+		"sendreview",
+		"Sortify",
+		"Thicc",
+		"Tupleize"
+	],
+	"files.exclude": {
+		"**/.git": true,
+		"**/.svn": true,
+		"**/.hg": true,
+		"**/CVS": true,
+		"**/.DS_Store": true,
+		"**/Thumbs.db": true,
+		"__pycache__": true
+	},
+	"explorerExclude.backup": {}
+}
