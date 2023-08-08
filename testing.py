@@ -17,15 +17,19 @@ REVIEWS_FOLDER = os.getenv('REVIEWS_FOLDER')
 
 # reviews: list[str] = []
 
+service = SQLService.SQLService(CONNECTION_STRING)
+
+service.UpdateAlbumArt()
+
 # //192.168.69.16/Media/Music/+44/When Your Heart Stops Beating/Cover.jpg
 
-photo = open(file='//DEEPTHOUGHT/Media/Music/+44/When Your Heart Stops Beating/Cover.jpg',mode='rb')
-encodedString = base64.b64encode(photo.read())
-print(encodedString)
+# photo = open(file='//DEEPTHOUGHT/Media/Music/+44/When Your Heart Stops Beating/Cover.jpg',mode='rb')
+# encodedString = base64.b64encode(photo.read())
+# print(encodedString)
 
-for line in photo.readlines():
-	print(base64.decodebytes(line))
-print()
+# for line in photo.readlines():
+# 	print(base64.decodebytes(line))
+# print()
 
 
 

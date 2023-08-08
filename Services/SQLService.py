@@ -2,6 +2,7 @@ import pyodbc
 import sys
 import os
 import datetime
+import base64
 
 sys.path.append(os.path.dirname(sys.path[0]))
 from Objects import (
@@ -39,19 +40,34 @@ WHERE r.ReviewId = 1
 
 		# return row
 
-	def InsertReview(self, review: Review):
+	def UpdateAlbumArt(self):
 		queryStr: str = """
 SET NOCOUNT ON;
-EXEC Insert_Review
-	@value = ?
+SELECT
+	 ReviewId
+	,AlbumArt
+FROM [Music].[dbo].[Reviews] r
+WHERE AlbumArt64 IS NULL
+"""
+
+		queryStr2: str = """
+SET NOCOUNT ON;
+UPDATE r
+SET AlbumArt64 = ?
+FROM [Music].[dbo].[Reviews] r
+WHERE r.ReviewId = ?
 """
 		cursor: pyodbc.Cursor = self.Connection.cursor()
 		cursor.execute(queryStr)
 
-		row: pyodbc.Row = cursor.fetchone()
-		while row:
-			print(row)
-			row = cursor.fetchone()
+		for row in cursor.fetchall():
+			try:
+				photo = open(file=row.AlbumArt,mode='rb')
+				encodedString = base64.b64encode(photo.read())
+				cursor.execute(queryStr2,(encodedString,row.ReviewId))
+			except Exception as e:
+				print(e)
+				continue
 
 	def InsertArtist(self, artist: Artist.Artist) -> bool:
 		queryStr: str = """

@@ -37,7 +37,7 @@ CREATE PROCEDURE [dbo].[Save_Review](
 	,@ArtistName varchar(100) = NULL
 	,@Body varchar(max) = NULL
 	,@FeelingRating int = NULL
-	,@AlbumArt varchar(max) = NULL
+	,@AlbumArt VARBINARY(MAX) = NULL
 	,@Blurb varchar(1000) = NULL
 	,@PostedDate datetime = NULL
 	,@ListenDate1 datetime = NULL
@@ -64,7 +64,6 @@ AS
 			 r.Title = @AlbumTitle
 			,r.SortTitle = @SortName
 			,r.ArtistId = @ArtistId
-			,r.AlbumArt = @AlbumArt
 			,r.Body = @Body
 			,r.FeelingRating = @FeelingRating
 			,r.Blurb = @Blurb
@@ -81,7 +80,6 @@ AS
 			 ArtistId
 			,Title
 			,SortTitle
-			,AlbumArt
 			,Body
 			,FeelingRating
 			,Blurb
@@ -95,7 +93,6 @@ AS
 			 @ArtistId AS ArtistId
 			,@AlbumTitle AS Title
 			,@SortName AS SortTitle
-			,@AlbumArt AS AlbumArt
 			,@Body AS Body
 			,@FeelingRating AS FeelingRating
 			,@Blurb AS Blurb
@@ -106,9 +103,36 @@ AS
 			,@ListenDate3 AS Listen3
 	END
 
-	SELECT ReviewId
+	SELECT
+		@ReviewId = ReviewId
 	FROM [Music].[dbo].[Reviews]
 	WHERE Title = @AlbumTitle
 	OR ReviewId = @ReviewId
+
+	IF EXISTS (
+		SELECT 1
+		FROM [Music].[dbo].[AlbumArt]
+		WHERE @ReviewId = ReviewId
+	) BEGIN
+
+		UPDATE a
+		SET AlbumArt = @AlbumArt
+		FROM [Music].[dbo].[AlbumArt] a
+		WHERE a.ReviewId = @ReviewId
+
+	END
+	ELSE BEGIN
+
+		INSERT INTO [Music].[dbo].[AlbumArt] (
+			 ReviewId
+			,AlbumArt
+		)
+		SELECT
+			 @ReviewId
+			,@AlbumArt
+
+	END
+
+	SELECT @ReviewId	
 
 GO

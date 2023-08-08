@@ -10,7 +10,7 @@ GO
 
 /*######################
     - Debug Commands
-        SELECT * FROM [Music].[dbo].[Songs] WHERE ReviewId = 298
+        SELECT * FROM [Music].[dbo].[Songs] WHERE ReviewId = 1
 
 ######################*/
 

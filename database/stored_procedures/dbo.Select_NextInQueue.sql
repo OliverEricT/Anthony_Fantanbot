@@ -34,7 +34,7 @@ AS
          q.ReviewNumber AS NumberPosted
         ,q.AlbumTitle AS Title
         ,q.ArtistName AS Artist
-        ,q.AlbumArt AS AlbumArt
+        ,aa.AlbumArt AS AlbumArt
         ,q.Genres AS Genre
         ,q.Body AS Body
         ,q.FeelingRating AS FeelingRating
@@ -42,6 +42,7 @@ AS
         ,q.NextUp AS NextUp
         ,q.ReviewId AS Id
     FROM [Music].[dbo].[Queue] q
+    INNER JOIN [Music].[dbo].[AlbumArt] aa ON q.ReviewId = aa.ReviewId
 
     IF @DebugMode = 0 BEGIN
         UPDATE r

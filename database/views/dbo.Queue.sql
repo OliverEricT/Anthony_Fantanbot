@@ -60,7 +60,6 @@ AS
         ,r.ReviewId AS ReviewId
         ,r.Title AS AlbumTitle
         ,a.Name AS ArtistName
-        ,r.AlbumArt AS AlbumArt
         ,g.Genres AS Genres
         ,r.Body AS Body
         ,r.FeelingRating AS FeelingRating
