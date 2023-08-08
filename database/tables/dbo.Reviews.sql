@@ -21,9 +21,11 @@ GO
 
         SELECT * FROM [Music].[dbo].[Reviews] WHERE ISNULL(Blurb,'') = '' ORDER BY NumberPosted
 
-        SELECT * FROM [Music].[dbo].[Reviews] WHERE Title LIKE 'Flower%'
+        SELECT * FROM [Music].[dbo].[Reviews] WHERE Title LIKE 'A Lesson%'
 
         SELECT * FROM [Music].[dbo].[Reviews] WHERE FeelingRating < 1
+
+        UPDATE 
 
 ######################*/
 
@@ -32,7 +34,7 @@ CREATE TABLE [dbo].[Reviews](
     ,ArtistId INT NOT NULL
     ,Title VARCHAR(250) NOT NULL
     ,SortTitle VARCHAR(250)
-    ,AlbumArt VARCHAR(1000)
+    ,AlbumArt VARBINARY(MAX)
     ,Body varchar(max)
     ,FeelingRating int
     ,Blurb varchar(1000) NOT NULL DEFAULT ''

@@ -20,21 +20,24 @@ class SQLService:
 	def Connection(self,val: pyodbc.Connection) -> None:
 		self._Connection = val
 
-	def TestQuery(self) -> str:
+	def TestQuery(self, encodedStr: bytes) -> str:
 		queryStr: str = """
 SET NOCOUNT ON;
-SELECT * FROM [Music].[dbo].[Reviews]
+UPDATE r
+SET AlbumArt64 = ?
+FROM [Music].[dbo].[Reviews] r
+WHERE r.ReviewId = 1
 """
 
 		cursor: pyodbc.Cursor = self.Connection.cursor()
-		cursor.execute(queryStr)
+		cursor.execute(queryStr, (encodedStr,))
 
-		row: pyodbc.Row = cursor.fetchone()
-		while row:
-			print(row)
-			row = cursor.fetchone()
+		# row: pyodbc.Row = cursor.fetchone()
+		# while row:
+		# 	print(row)
+		# 	row = cursor.fetchone()
 
-		return row
+		# return row
 
 	def InsertReview(self, review: Review):
 		queryStr: str = """
@@ -272,6 +275,49 @@ INNER JOIN SongScores s ON r.ReviewId = s.ReviewId
 			))
 
 		return reviews
+
+	def GetReviewById(self, reviewId: int) -> Review.Review:
+		queryStr: str = """
+SET NOCOUNT ON;
+EXEC [Music].[dbo].[Select_ReviewById]
+  @ReviewId = ?
+"""
+		review: Review.Review
+
+		cursor: pyodbc.Cursor = self.Connection.cursor()
+		cursor.execute(queryStr,(reviewId,))
+
+		for row in cursor.fetchall():
+			review = Review.Review(
+				row.Id,
+				Artist.Artist(row.Artist,'','',[]),
+				row.Title,
+				'',
+				row.AlbumArt,
+				row.Body,
+				row.FeelingRating,
+				row.SongAvg,
+				[],
+				row.Genre,
+				'',
+				row.NextUp,
+				row.NumberPosted,
+				None,
+				None,
+				None,
+				None
+			)
+		
+		cursor.nextset()
+
+		for row in cursor.fetchall():
+			review.trackList.append(Song.Song(
+				row.TrackNo,
+				row.Name,
+				row.Rating
+			))
+
+		return review
 
 	def __init__(self, *argv):
 		self.Connection = pyodbc.connect(argv[0], autocommit=True)

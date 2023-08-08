@@ -11,10 +11,13 @@ GO
 /*######################
     - Debug Commands
         EXEC [Music].[dbo].[Select_NextInQueue]
+            @DebugMode = 1
 
 ######################*/
 
-CREATE PROCEDURE [dbo].[Select_NextInQueue]
+CREATE PROCEDURE [dbo].[Select_NextInQueue](
+    @DebugMode bit = 0
+)
 AS
 
     DECLARE @ReviewId int
@@ -40,12 +43,14 @@ AS
         ,q.ReviewId AS Id
     FROM [Music].[dbo].[Queue] q
 
-    UPDATE r
-    SET
-         r.NumberPosted  = @MinReviewNumber
-        ,r.PostedDate = GETDATE()
-    FROM [Music].[dbo].[Reviews] r
-    WHERE r.ReviewId = @ReviewId
+    IF @DebugMode = 0 BEGIN
+        UPDATE r
+        SET
+             r.NumberPosted  = @MinReviewNumber
+            ,r.PostedDate = GETDATE()
+        FROM [Music].[dbo].[Reviews] r
+        WHERE r.ReviewId = @ReviewId
+    END
 
     SELECT
          TrackNo AS TrackNo

@@ -1,5 +1,6 @@
 import os
 import time
+import base64
 from dotenv import load_dotenv
 from Services import (
 	SQLService,
@@ -15,6 +16,20 @@ CONNECTION_STRING = os.getenv('CONNECTION_STRING')
 REVIEWS_FOLDER = os.getenv('REVIEWS_FOLDER')
 
 # reviews: list[str] = []
+
+# //192.168.69.16/Media/Music/+44/When Your Heart Stops Beating/Cover.jpg
+
+photo = open(file='//DEEPTHOUGHT/Media/Music/+44/When Your Heart Stops Beating/Cover.jpg',mode='rb')
+encodedString = base64.b64encode(photo.read())
+print(encodedString)
+
+for line in photo.readlines():
+	print(base64.decodebytes(line))
+print()
+
+
+
+
 
 for path, subdirs, files in os.walk(REVIEWS_FOLDER):
 	for name in files:

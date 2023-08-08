@@ -58,7 +58,7 @@ class Review:
 		The link to the album art
 		"""
 		#TODO: Fix this
-		return os.path.join("\\\\Deepthought\\Media\\Music\\",self._albumArt) 
+		return self._albumArt
 	
 	@albumArt.setter
 	def albumArt(self,val: str) -> None:
