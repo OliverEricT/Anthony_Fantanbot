@@ -218,7 +218,7 @@ class Review:
 			self.artist = None
 			self.title = ''
 			self.sortTitle = ''
-			self.albumArt = ''
+			self.albumArt = b''
 			self.body = ''
 			self.feelingRating = 0
 			self.songAvg = 0
@@ -277,7 +277,7 @@ class Review:
 		"""
 		return json.dumps(self, default=lambda o: o.__dict__, sort_keys=True, indent=2)
 
-	def Tupleize(self) -> tuple[int, str, str, str, str,float,str,str,datetime.datetime,datetime.datetime,datetime.datetime]:
+	def Tupleize(self) -> tuple[int, str, str, str, str,float,bytes,str,datetime.datetime,datetime.datetime,datetime.datetime]:
 		return (
 			self.id,
 			self.title,

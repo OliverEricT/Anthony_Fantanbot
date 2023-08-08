@@ -10,7 +10,10 @@ GO
 
 /*######################
     - Debug Commands
-        SELECT * FROM [Music].[dbo].[Reviews]
+        SELECT FROM [Music].[dbo].[Reviews]
+
+
+        SELECT AlbumArt64,* FROM [Music].[dbo].[Reviews] WHERE AlbumArt64 IS NULL
         
         SELECT 
              r.NumberPosted
@@ -34,7 +37,6 @@ CREATE TABLE [dbo].[Reviews](
     ,ArtistId INT NOT NULL
     ,Title VARCHAR(250) NOT NULL
     ,SortTitle VARCHAR(250)
-    ,AlbumArt VARBINARY(MAX)
     ,Body varchar(max)
     ,FeelingRating int
     ,Blurb varchar(1000) NOT NULL DEFAULT ''
