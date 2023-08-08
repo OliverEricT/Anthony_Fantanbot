@@ -53,15 +53,14 @@ class Review:
 		self._sortTitle = val
 
 	@property
-	def albumArt(self) -> str:
+	def albumArt(self) -> bytes:
 		"""
 		The link to the album art
 		"""
-		#TODO: Fix this
 		return self._albumArt
 	
 	@albumArt.setter
-	def albumArt(self,val: str) -> None:
+	def albumArt(self,val: bytes) -> None:
 		self._albumArt = val
 
 	@property

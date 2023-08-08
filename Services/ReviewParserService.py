@@ -14,7 +14,7 @@ from Objects import (
 
 SQL_MIN_DATE: datetime.datetime = datetime.datetime.strptime('1753-01-01','%Y-%m-%d')
 
-def ParseReviewMd(path: str) -> Review.Review:
+def ParseReviewMd(lines: list[str]) -> Review.Review:
 	"""
 	Takes a link and then tries to parse the result into a
 	Review object
@@ -37,9 +37,6 @@ def ParseReviewMd(path: str) -> Review.Review:
 	trackFlag: bool = False
 	genreFlag: bool = False
 	blurbFlag: bool = False
-
-	file = open(path,encoding='utf-8', mode='r')
-	lines = file.readlines()
 
 	if lines[0][-3:-1] == "IP":
 		return Review.Review()
@@ -280,8 +277,10 @@ def _UnSortify(string: str) -> str:
 def Main() -> None:
 
 	filePath: str = '//DEEPTHOUGHT/Media/Music/Bassnectar/Cozza Frenzy/Cozz_Frenzy_Album_Review.md'
+	file = open(filePath,encoding='utf-8', mode='r')
+	lines = file.readlines()
 
-	review: Review.Review = ParseReviewMd(filePath)
+	review: Review.Review = ParseReviewMd(lines)
 
 	reviewStr = ParseReviewObj(review)
 
