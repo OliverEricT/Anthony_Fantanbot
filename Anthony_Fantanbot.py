@@ -37,7 +37,7 @@ LIST_OF_ADMINS = os.getenv('ADMINS').split(',')
 MUSIC_CHAT_ID = os.getenv('DEBUG_CHAT_ID') #os.getenv('MUSIC_CHAT_ID')
 DEBUG_CHAT_ID = os.getenv('DEBUG_CHAT_ID')
 CONNECTION_STRING = os.getenv('CONNECTION_STRING')
-REVIEWS_FOLDER = os.getenv('REVIEWS_FOLDER') or '/Covers'
+REVIEWS_FOLDER = os.getenv('REVIEWS_FOLDER') or '/Music'
 
 service: SQLService.SQLService
 
@@ -76,6 +76,115 @@ async def GetGroupID(update: Update,context: ContextTypes.DEFAULT_TYPE) -> None:
 	chat_id = update.effective_chat.id
 	await context.bot.send_message(chat_id=DEBUG_CHAT_ID, text="Group \"{0}\": {1}".format(chat_name, chat_id))
 
+@restricted
+async def ScrapeReviews(context: ContextTypes.DEFAULT_TYPE) -> None:
+	"""
+	Restricted to Admins
+
+	Function to scrape the provided folder path for reviews and to dump them into
+	the database
+	"""
+	global service
+	totalReviews: int = 0
+	insertedReviews: int = 0
+	insertedReviewLines: str = ''
+
+	for path, subdirs, files in os.walk(REVIEWS_FOLDER):
+		for name in files:
+			fullName = os.path.join(path,name)
+			
+			if name[-15:].lower() != 'album_review.md':
+				continue
+
+			totalReviews += 1
+			
+			reviewFile = open(file=fullName,mode='r')
+			try:
+				lines = reviewFile.readlines()
+				reviewFile.close()
+			except:
+				await context.bot.send_message(chat_id=DEBUG_CHAT_ID, text=f'Encountered an issue with: {fullName}', parse_mode='Markdown')
+				continue
+
+			if not ReviewParserService.IsReadyToParse(lines[0]):
+				continue
+
+			insertedReviews += 1
+
+			review = ReviewParserService.ParseReviewMd(lines, fullName)
+			service.SaveReview(review)
+			insertedReviewLines = f'{insertedReviewLines}\n{review.title}'
+
+	message: str = f"""
+**Scrape Report**
+
+**Found:** {totalReviews}
+
+**Inserted:** {insertedReviews}
+
+**Albums Inserted:**{insertedReviewLines}
+"""
+
+	await context.bot.send_message(chat_id=DEBUG_CHAT_ID, text=message, parse_mode='Markdown')
+
+@restricted
+async def SendReview(update: Update, context: ContextTypes.DEFAULT_TYPE):
+	"""
+	Restricted to Admins
+
+	Function that is callable by telegram command to get another review and post it	
+	"""
+	global service
+	review: Review.Review = service.GetNextInQueue()
+
+	try:
+		photo = open(file=review.albumArt,mode='rb')
+		await context.bot.sendPhoto(chat_id=update.message.chat_id, photo=photo)
+	except:
+		await context.bot.send_message(chat_id=DEBUG_CHAT_ID, text="Uh Oh Can't find the image", parse_mode='Markdown')
+
+	msgBody: str = ParseReviewToMessage(review)
+	await context.bot.send_message(chat_id=update.message.chat_id, text=msgBody, parse_mode='Markdown')
+
+@restricted
+async def SendReviewTimer(context: ContextTypes.DEFAULT_TYPE):
+	"""
+	Restricted to Admins
+
+	Function that is missing an update since it is called via a timer.
+	but this function takes the next review in the queue and then posts it
+	"""
+	global service
+	review: Review.Review = service.GetNextInQueue()
+
+	try:
+		photo = open(file=review.albumArt,mode='rb')
+		await context.bot.sendPhoto(chat_id=MUSIC_CHAT_ID, photo=photo)
+	except:
+		await context.bot.send_message(chat_id=DEBUG_CHAT_ID, text="Uh Oh Can't find the image", parse_mode='Markdown')
+
+	msgBody: str = ParseReviewToMessage(review)
+	await context.bot.send_message(chat_id=MUSIC_CHAT_ID, text=msgBody, parse_mode='Markdown')
+
+@restricted
+async def SendReviewById(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+	"""
+	Restricted to Admins
+
+	Sends a specific review by the review Id	
+	"""
+	global service
+	review: Review.Review = service.GetReviewById(int(context.args[0]))
+
+	try:
+		photo = base64.b64decode(review.albumArt)
+		await context.bot.sendPhoto(chat_id=update.message.chat_id, photo=photo)
+	except:
+		await context.bot.send_message(chat_id=DEBUG_CHAT_ID, text="Uh Oh Can't find the image", parse_mode='Markdown')
+
+	msgBody: str = ParseReviewToMessage(review)
+	await context.bot.send_message(chat_id=update.message.chat_id, text=msgBody, parse_mode='Markdown')
+
 async def SendTest(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 	photo = open(file='//DEEPTHOUGHT/Media/Music/+44/When Your Heart Stops Beating/Cover.jpg',mode='rb')
 	encodedString = base64.b64encode(photo.read())
@@ -88,7 +197,6 @@ async def SendTest(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 	
 	photo2 = base64.b64decode(retyped)
 	await context.bot.sendPhoto(chat_id=DEBUG_CHAT_ID, photo=photo2)
-
 
 async def SendThicc(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 	await PhotoSender(update, context, 'Media/THICC.mp4')
@@ -106,57 +214,10 @@ async def PhotoSender(update: Update, context: ContextTypes.DEFAULT_TYPE, imageP
 	photo = open(file=imagePath,mode='rb')
 	await context.bot.sendAnimation(chat_id=update.message.chat_id, animation=photo)
 
-@restricted
-async def ParseQueue(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-	"""
-	Function to parse the queue. Should move this to another class or db logic
-	"""
-	pass
-
-@restricted
-async def SendReview(update: Update, context: ContextTypes.DEFAULT_TYPE):
-	global service
-	review: Review.Review = service.GetNextInQueue()
-
-	try:
-		photo = open(file=review.albumArt,mode='rb')
-		await context.bot.sendPhoto(chat_id=update.message.chat_id, photo=photo)
-	except:
-		await context.bot.send_message(chat_id=DEBUG_CHAT_ID, text="Uh Oh Can't find the image", parse_mode='Markdown')
-
-	msgBody: str = ParseReviewToMessage(review)
-	await context.bot.send_message(chat_id=update.message.chat_id, text=msgBody, parse_mode='Markdown')
-
-@restricted
-async def SendReviewTimer(context: ContextTypes.DEFAULT_TYPE):
-	global service
-	review: Review.Review = service.GetNextInQueue()
-
-	try:
-		photo = open(file=review.albumArt,mode='rb')
-		await context.bot.sendPhoto(chat_id=MUSIC_CHAT_ID, photo=photo)
-	except:
-		await context.bot.send_message(chat_id=DEBUG_CHAT_ID, text="Uh Oh Can't find the image", parse_mode='Markdown')
-
-	msgBody: str = ParseReviewToMessage(review)
-	await context.bot.send_message(chat_id=MUSIC_CHAT_ID, text=msgBody, parse_mode='Markdown')
-
-@restricted
-async def SendReviewById(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-	global service
-	review: Review.Review = service.GetReviewById(int(context.args[0]))
-
-	try:
-		photo = base64.b64decode(review.albumArt)
-		await context.bot.sendPhoto(chat_id=update.message.chat_id, photo=photo)
-	except:
-		await context.bot.send_message(chat_id=DEBUG_CHAT_ID, text="Uh Oh Can't find the image", parse_mode='Markdown')
-
-	msgBody: str = ParseReviewToMessage(review)
-	await context.bot.send_message(chat_id=update.message.chat_id, text=msgBody, parse_mode='Markdown')
-
 async def error(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-	"""Log Errors caused by Updates."""
+	"""
+	Log Errors caused by Updates.
+	"""
 
 	errorMsg = "Update\n `{0}`\n\n caused error\n `{1}`".format(update, context.error)
 
@@ -202,8 +263,6 @@ def ParseReviewToMessage(review: Review.Review) -> str:
 """
 	return msgBody
 
-
-
 def Main() -> None:
 	global service
 	service = SQLService.SQLService(CONNECTION_STRING)
@@ -217,7 +276,6 @@ def Main() -> None:
 	application.add_handler(CommandHandler('sendreview',SendReview))
 	application.add_handler(CommandHandler('sendreviewbyid',SendReviewById))
 	application.add_handler(CommandHandler('thicc',SendThicc))
-	application.add_handler(CommandHandler('ParseQueue',ParseQueue))
 	application.add_handler(CommandHandler('Nut',SendNut))
 	application.add_handler(CommandHandler('Juicy',SendJuicy))
 	application.add_handler(CommandHandler('sendTest',SendTest))
@@ -230,7 +288,7 @@ def Main() -> None:
 
 	# Check the Markdown Files every night
 	midnight = datetime.time(hour=00, tzinfo=pytz.timezone('America/Chicago'))
-	#job_queue.run_daily(,midnight,days=(0,1,2,3,4,5,6))
+	job_queue.run_daily(ScrapeReviews,midnight,days=(0,1,2,3,4,5,6))
 
 	try:
 		application.run_polling()

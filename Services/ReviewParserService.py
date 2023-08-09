@@ -14,7 +14,7 @@ from Objects import (
 
 SQL_MIN_DATE: datetime.datetime = datetime.datetime.strptime('1753-01-01','%Y-%m-%d')
 
-def ParseReviewMd(lines: list[str]) -> Review.Review:
+def ParseReviewMd(lines: list[str], path: str) -> Review.Review:
 	"""
 	Takes a link and then tries to parse the result into a
 	Review object
@@ -38,7 +38,7 @@ def ParseReviewMd(lines: list[str]) -> Review.Review:
 	genreFlag: bool = False
 	blurbFlag: bool = False
 
-	if lines[0][-3:-1] == "IP":
+	if not IsReadyToParse(lines[0]):
 		return Review.Review()
 
 	for line in lines:
@@ -227,6 +227,12 @@ def ParseReviewObj(review: Review.Review) -> list[str]:
 	lines.append('[Return to Index](../../Index.md)\n')
 
 	return lines
+
+def IsReadyToParse(line: str) -> bool:
+	if line[-3:-1] == "IP":
+		return False
+	
+	return True
 
 def _ParseMdLink(mdLink: str) -> tuple[str, str]:
 	"""
