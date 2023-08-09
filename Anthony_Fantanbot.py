@@ -136,7 +136,61 @@ async def ScrapeReviews(context: ContextTypes.DEFAULT_TYPE) -> None:
 
 @restricted
 async def ParseQueue(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-	await ScrapeReviews(context)
+	"""
+	Restricted to Admins
+
+	Function to scrape the provided folder path for reviews and to dump them into
+	the database
+	"""
+	global service
+	totalReviews: int = 0
+	insertedReviews: int = 0
+	insertedReviewLines: str = ''
+
+	for path, subdirs, files in os.walk(REVIEWS_FOLDER):
+		for name in files:
+			fullName = os.path.join(path,name)
+			
+			if name[-15:].lower() != 'album_review.md':
+				continue
+
+			totalReviews += 1
+			
+			reviewFile = open(file=fullName,mode='r')
+			try:
+				lines = reviewFile.readlines()
+				reviewFile.close()
+			except:
+				await context.bot.send_message(chat_id=DEBUG_CHAT_ID, text=f'Encountered an issue with: {fullName}')
+				continue
+
+			if not ReviewParserService.IsReadyToParse(lines[0]):
+				continue
+
+			insertedReviews += 1
+
+			review = ReviewParserService.ParseReviewMd(lines, fullName)
+			reviewId = service.SaveReview(review)
+			for song in review.trackList:
+				success = service.InsertSong(reviewId,song)
+			for genre in review.genre:
+				success = service.InsertGenre(reviewId,genre)
+			insertedReviewLines = f'{insertedReviewLines}\n{review.title}'
+
+			if reviewId:
+				os.remove(fullName)
+
+	message: str = f"""
+**Scrape Report**
+
+**Found:** {totalReviews}
+
+**Inserted:** {insertedReviews}
+
+**Albums Inserted:**{insertedReviewLines}
+"""
+
+	await context.bot.send_message(chat_id=DEBUG_CHAT_ID, text=message, parse_mode='Markdown')
 
 @restricted
 async def SendReview(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -286,7 +340,7 @@ def Main() -> None:
 	application.add_handler(CommandHandler('getgroupid',GetGroupID))
 	application.add_handler(CommandHandler('sendreview',SendReview))
 	application.add_handler(CommandHandler('sendreviewbyid',SendReviewById))
-	#application.add_handler(CommandHandler('parsequeue',ScrapeReviews))
+	application.add_handler(CommandHandler('parsequeue',ScrapeReviews))
 	application.add_handler(CommandHandler('thicc',SendThicc))
 	application.add_handler(CommandHandler('Nut',SendNut))
 	application.add_handler(CommandHandler('Juicy',SendJuicy))
