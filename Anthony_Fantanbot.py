@@ -119,7 +119,7 @@ async def ScrapeReviews(context: ContextTypes.DEFAULT_TYPE) -> None:
 				success = service.InsertGenre(reviewId,genre)
 			insertedReviewLines = f'{insertedReviewLines}\n{review.title}'
 
-			if id:
+			if reviewId:
 				os.remove(fullName)
 
 	message: str = f"""
