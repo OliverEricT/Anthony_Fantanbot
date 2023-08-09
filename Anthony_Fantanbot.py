@@ -340,7 +340,7 @@ def Main() -> None:
 	application.add_handler(CommandHandler('getgroupid',GetGroupID))
 	application.add_handler(CommandHandler('sendreview',SendReview))
 	application.add_handler(CommandHandler('sendreviewbyid',SendReviewById))
-	application.add_handler(CommandHandler('parsequeue',ScrapeReviews))
+	application.add_handler(CommandHandler('parsequeue',ParseQueue))
 	application.add_handler(CommandHandler('thicc',SendThicc))
 	application.add_handler(CommandHandler('Nut',SendNut))
 	application.add_handler(CommandHandler('Juicy',SendJuicy))
