@@ -3,6 +3,7 @@ import os
 import re
 import datetime
 import sys
+import base64
 
 sys.path.append(os.path.dirname(sys.path[0]))
 from Objects import (
@@ -26,7 +27,7 @@ def ParseReviewMd(lines: list[str], path: str) -> Review.Review:
 	feelingRating: int = 0
 	songAvg: float = 0
 	trackList: list[Song.Song] = []
-	albumArt: str = ''
+	albumArt: bytes = b''
 	genre: list[str] = []
 	blurb: str = ''
 	listenDate1: datetime.datetime | None = None
@@ -58,7 +59,9 @@ def ParseReviewMd(lines: list[str], path: str) -> Review.Review:
 
 			artistAlbum = os.path.dirname(path)
 
-			albumArt = os.path.join(artistAlbum,cover)
+			albumArtPath = os.path.join(artistAlbum,cover)
+			photo = open(file=albumArtPath,mode='rb')
+			albumArt = base64.b64encode(photo.read())
 			continue
 		
 		# notify that we are in a thoughts block and the next

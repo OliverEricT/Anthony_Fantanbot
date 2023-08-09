@@ -103,7 +103,7 @@ async def ScrapeReviews(context: ContextTypes.DEFAULT_TYPE) -> None:
 				lines = reviewFile.readlines()
 				reviewFile.close()
 			except:
-				await context.bot.send_message(chat_id=DEBUG_CHAT_ID, text=f'Encountered an issue with: {fullName}', parse_mode='Markdown')
+				await context.bot.send_message(chat_id=DEBUG_CHAT_ID, text=f'Encountered an issue with: {fullName}')
 				continue
 
 			if not ReviewParserService.IsReadyToParse(lines[0]):
@@ -112,8 +112,11 @@ async def ScrapeReviews(context: ContextTypes.DEFAULT_TYPE) -> None:
 			insertedReviews += 1
 
 			review = ReviewParserService.ParseReviewMd(lines, fullName)
-			service.SaveReview(review)
+			id = service.SaveReview(review)
 			insertedReviewLines = f'{insertedReviewLines}\n{review.title}'
+
+			if id:
+				os.remove(fullName)
 
 	message: str = f"""
 **Scrape Report**
@@ -126,6 +129,10 @@ async def ScrapeReviews(context: ContextTypes.DEFAULT_TYPE) -> None:
 """
 
 	await context.bot.send_message(chat_id=DEBUG_CHAT_ID, text=message, parse_mode='Markdown')
+
+@restricted
+async def ParseQueue(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+	await ScrapeReviews(context)
 
 @restricted
 async def SendReview(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -275,6 +282,7 @@ def Main() -> None:
 	application.add_handler(CommandHandler('getgroupid',GetGroupID))
 	application.add_handler(CommandHandler('sendreview',SendReview))
 	application.add_handler(CommandHandler('sendreviewbyid',SendReviewById))
+	#application.add_handler(CommandHandler('parsequeue',ScrapeReviews))
 	application.add_handler(CommandHandler('thicc',SendThicc))
 	application.add_handler(CommandHandler('Nut',SendNut))
 	application.add_handler(CommandHandler('Juicy',SendJuicy))

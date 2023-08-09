@@ -287,7 +287,7 @@ class Review:
 			self.feelingRating,
 			self.albumArt,
 			self.blurb,
-			self.datePosted,
+			self.postedDate,
 			self.listenDate1,
 			self.listenDate2,
 			self.listenDate3
