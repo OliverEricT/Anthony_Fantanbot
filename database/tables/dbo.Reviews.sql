@@ -10,7 +10,7 @@ GO
 
 /*######################
     - Debug Commands
-        SELECT FROM [Music].[dbo].[Reviews]
+        SELECT * FROM [Music].[dbo].[Reviews]
 
 
         SELECT AlbumArt64,* FROM [Music].[dbo].[Reviews] WHERE AlbumArt64 IS NULL
@@ -24,7 +24,7 @@ GO
 
         SELECT * FROM [Music].[dbo].[Reviews] WHERE ISNULL(Blurb,'') = '' ORDER BY NumberPosted
 
-        SELECT * FROM [Music].[dbo].[Reviews] WHERE Title LIKE 'A Lesson%'
+        SELECT * FROM [Music].[dbo].[Reviews] WHERE Title LIKE 'Fever%'
 
         SELECT * FROM [Music].[dbo].[Reviews] WHERE FeelingRating < 1
 

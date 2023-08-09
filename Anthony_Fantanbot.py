@@ -112,7 +112,11 @@ async def ScrapeReviews(context: ContextTypes.DEFAULT_TYPE) -> None:
 			insertedReviews += 1
 
 			review = ReviewParserService.ParseReviewMd(lines, fullName)
-			id = service.SaveReview(review)
+			reviewId = service.SaveReview(review)
+			for song in review.trackList:
+				success = service.InsertSong(reviewId,song)
+			for genre in review.genre:
+				success = service.InsertGenre(reviewId,genre)
 			insertedReviewLines = f'{insertedReviewLines}\n{review.title}'
 
 			if id:
