@@ -11,9 +11,7 @@ from telegram import (
 from telegram.ext import (
 	ApplicationBuilder,
 	ContextTypes,
-	CommandHandler,
-	CallbackContext,
-	JobQueue
+	CommandHandler
 )
 from Services import (
 	ReviewParserService,
@@ -34,7 +32,7 @@ logger = logging.getLogger(__name__)
 
 BOT_TOKEN = os.getenv('BOT_TOKEN')
 LIST_OF_ADMINS = os.getenv('ADMINS').split(',')
-MUSIC_CHAT_ID = os.getenv('DEBUG_CHAT_ID') #os.getenv('MUSIC_CHAT_ID')
+MUSIC_CHAT_ID = os.getenv('MUSIC_CHAT_ID')
 DEBUG_CHAT_ID = os.getenv('DEBUG_CHAT_ID')
 CONNECTION_STRING = os.getenv('CONNECTION_STRING')
 REVIEWS_FOLDER = os.getenv('REVIEWS_FOLDER') or '/Music'
@@ -76,8 +74,7 @@ async def GetGroupID(update: Update,context: ContextTypes.DEFAULT_TYPE) -> None:
 	chat_id = update.effective_chat.id
 	await context.bot.send_message(chat_id=DEBUG_CHAT_ID, text="Group \"{0}\": {1}".format(chat_name, chat_id))
 
-@restricted
-async def ScrapeReviews(context: ContextTypes.DEFAULT_TYPE) -> None:
+async def ScrapeReviews(context: ContextTypes.DEFAULT_TYPE):
 	"""
 	Restricted to Admins
 
@@ -112,6 +109,7 @@ async def ScrapeReviews(context: ContextTypes.DEFAULT_TYPE) -> None:
 			insertedReviews += 1
 
 			review = ReviewParserService.ParseReviewMd(lines, fullName)
+			service.InsertArtist(review.artist)
 			reviewId = service.SaveReview(review)
 			for song in review.trackList:
 				success = service.InsertSong(reviewId,song)
@@ -203,7 +201,7 @@ async def SendReview(update: Update, context: ContextTypes.DEFAULT_TYPE):
 	review: Review.Review = service.GetNextInQueue()
 
 	try:
-		photo = open(file=review.albumArt,mode='rb')
+		photo = base64.b64decode(review.albumArt)
 		await context.bot.sendPhoto(chat_id=update.message.chat_id, photo=photo)
 	except:
 		await context.bot.send_message(chat_id=DEBUG_CHAT_ID, text="Uh Oh Can't find the image", parse_mode='Markdown')
@@ -211,7 +209,6 @@ async def SendReview(update: Update, context: ContextTypes.DEFAULT_TYPE):
 	msgBody: str = ParseReviewToMessage(review)
 	await context.bot.send_message(chat_id=update.message.chat_id, text=msgBody, parse_mode='Markdown')
 
-@restricted
 async def SendReviewTimer(context: ContextTypes.DEFAULT_TYPE):
 	"""
 	Restricted to Admins
@@ -223,7 +220,7 @@ async def SendReviewTimer(context: ContextTypes.DEFAULT_TYPE):
 	review: Review.Review = service.GetNextInQueue()
 
 	try:
-		photo = open(file=review.albumArt,mode='rb')
+		photo = base64.b64decode(review.albumArt)
 		await context.bot.sendPhoto(chat_id=MUSIC_CHAT_ID, photo=photo)
 	except:
 		await context.bot.send_message(chat_id=DEBUG_CHAT_ID, text="Uh Oh Can't find the image", parse_mode='Markdown')
@@ -289,6 +286,8 @@ async def error(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 	await context.bot.send_message(chat_id=DEBUG_CHAT_ID, text=errorMsg)
 	logger.warning('Update "%s" caused error "%s"', update, context.error) 
 
+#async def ScrapeReviews(context: ContextTypes.DEFAULT_TYPE):
+
 def ParseReviewToMessage(review: Review.Review) -> str:
 	trackList: list[str] = []
 	for song in review.trackList:
@@ -346,15 +345,19 @@ def Main() -> None:
 	application.add_handler(CommandHandler('Juicy',SendJuicy))
 	application.add_handler(CommandHandler('sendTest',SendTest))
 
-	application.add_error_handler(error)
+	#application.add_error_handler(error)
 
 	# Sends the review at 10 am every Monday and Friday
 	tenAm = datetime.time(hour=10, tzinfo=pytz.timezone('America/Chicago'))
-	job_queue.run_daily(SendReviewTimer,tenAm,days=(1,5))
+	reviewJob = job_queue.run_daily(SendReviewTimer,tenAm,days=(1,5))
 
 	# Check the Markdown Files every night
 	midnight = datetime.time(hour=00, tzinfo=pytz.timezone('America/Chicago'))
-	job_queue.run_daily(ScrapeReviews,midnight,days=(0,1,2,3,4,5,6))
+	scrapeJob = job_queue.run_daily(ScrapeReviews,midnight,days=(0,1,2,3,4,5,6))
+
+	# # Run a test job
+	# time = datetime.time(hour=13, minute=12, tzinfo=pytz.timezone('America/Chicago'))
+	# testJob = job_queue.run_once(ScrapeReviews,30)
 
 	try:
 		application.run_polling()
