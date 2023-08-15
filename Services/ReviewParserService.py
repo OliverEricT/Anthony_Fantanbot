@@ -3,6 +3,7 @@ import os
 import re
 import datetime
 import sys
+import base64
 
 sys.path.append(os.path.dirname(sys.path[0]))
 from Objects import (
@@ -14,7 +15,7 @@ from Objects import (
 
 SQL_MIN_DATE: datetime.datetime = datetime.datetime.strptime('1753-01-01','%Y-%m-%d')
 
-def ParseReviewMd(lines: list[str]) -> Review.Review:
+def ParseReviewMd(lines: list[str], path: str) -> Review.Review:
 	"""
 	Takes a link and then tries to parse the result into a
 	Review object
@@ -26,7 +27,7 @@ def ParseReviewMd(lines: list[str]) -> Review.Review:
 	feelingRating: int = 0
 	songAvg: float = 0
 	trackList: list[Song.Song] = []
-	albumArt: str = ''
+	albumArt: bytes = b''
 	genre: list[str] = []
 	blurb: str = ''
 	listenDate1: datetime.datetime | None = None
@@ -38,7 +39,7 @@ def ParseReviewMd(lines: list[str]) -> Review.Review:
 	genreFlag: bool = False
 	blurbFlag: bool = False
 
-	if lines[0][-3:-1] == "IP":
+	if not IsReadyToParse(lines[0]):
 		return Review.Review()
 
 	for line in lines:
@@ -58,7 +59,9 @@ def ParseReviewMd(lines: list[str]) -> Review.Review:
 
 			artistAlbum = os.path.dirname(path)
 
-			albumArt = os.path.join(artistAlbum,cover)
+			albumArtPath = os.path.join(artistAlbum,cover)
+			photo = open(file=albumArtPath,mode='rb')
+			albumArt = base64.b64encode(photo.read())
 			continue
 		
 		# notify that we are in a thoughts block and the next
@@ -227,6 +230,12 @@ def ParseReviewObj(review: Review.Review) -> list[str]:
 	lines.append('[Return to Index](../../Index.md)\n')
 
 	return lines
+
+def IsReadyToParse(line: str) -> bool:
+	if line[-3:-1] == "IP":
+		return False
+	
+	return True
 
 def _ParseMdLink(mdLink: str) -> tuple[str, str]:
 	"""

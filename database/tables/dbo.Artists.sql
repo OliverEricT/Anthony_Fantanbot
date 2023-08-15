@@ -12,6 +12,8 @@ GO
     - Debug Commands
         SELECT * FROM [Music].[dbo].[Artists]
 
+        SELECT * FROM [Music].[dbo].[Artists] WHERE ArtistId = 114
+
 ######################*/
 
 CREATE TABLE [dbo].[Artists](

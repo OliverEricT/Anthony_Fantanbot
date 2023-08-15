@@ -2,6 +2,7 @@ FROM python:3.11
 
 VOLUME /.env
 VOLUME /Media
+VOLUME /Music
 
 # install Microsoft SQL Server requirements.
 ENV ACCEPT_EULA=Y

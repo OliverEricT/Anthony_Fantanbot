@@ -15,26 +15,6 @@ load_dotenv()
 CONNECTION_STRING = os.getenv('CONNECTION_STRING')
 REVIEWS_FOLDER = os.getenv('REVIEWS_FOLDER')
 
-# reviews: list[str] = []
-
-service = SQLService.SQLService(CONNECTION_STRING)
-
-service.UpdateAlbumArt()
-
-# //192.168.69.16/Media/Music/+44/When Your Heart Stops Beating/Cover.jpg
-
-# photo = open(file='//DEEPTHOUGHT/Media/Music/+44/When Your Heart Stops Beating/Cover.jpg',mode='rb')
-# encodedString = base64.b64encode(photo.read())
-# print(encodedString)
-
-# for line in photo.readlines():
-# 	print(base64.decodebytes(line))
-# print()
-
-
-
-
-
 for path, subdirs, files in os.walk(REVIEWS_FOLDER):
 	for name in files:
 		
@@ -42,7 +22,16 @@ for path, subdirs, files in os.walk(REVIEWS_FOLDER):
 		if name[-16:].lower() == 'album_review2.md':
 			os.remove(fullName)
 		if name[-15:].lower() == 'album_review.md':
-			print(f'{fullName}: {time.ctime(os.path.getctime(fullName))}')
+			reviewFile = open(file=fullName,mode='r')
+			try:
+				lines = reviewFile.readlines()
+			except:
+				continue
+			part = lines[0][-3:-1]
+			reviewFile.close()
+			if part == "IP":
+				continue
+			os.remove(fullName)
 			#review: Review.Review = ReviewParserService.ParseReviewMd(fullName)
 
 service = SQLService.SQLService(CONNECTION_STRING)

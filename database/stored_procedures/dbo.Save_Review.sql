@@ -133,6 +133,6 @@ AS
 
 	END
 
-	SELECT @ReviewId	
+	SELECT @ReviewId AS ReviewId
 
 GO
