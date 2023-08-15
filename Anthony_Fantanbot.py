@@ -40,7 +40,7 @@ REVIEWS_FOLDER = os.getenv('REVIEWS_FOLDER') or '/Music'
 service: SQLService.SQLService
 
 #########################
-#   Telegram Commands   #
+#   Security Commands   #
 #########################
 
 def restricted(func):
@@ -55,6 +55,20 @@ def restricted(func):
 			return
 		return await func(update, context, *args, **kwargs)
 	return wrapped
+
+async def error(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+	"""
+	Log Errors caused by Updates.
+	"""
+
+	errorMsg = "Update\n `{0}`\n\n caused error\n `{1}`".format(update, context.error)
+
+	await context.bot.send_message(chat_id=DEBUG_CHAT_ID, text=errorMsg)
+	logger.warning('Update "%s" caused error "%s"', update, context.error) 
+
+#########################
+#   Telegram Commands   #
+#########################
 
 @restricted
 async def GetUserID(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -73,64 +87,6 @@ async def GetGroupID(update: Update,context: ContextTypes.DEFAULT_TYPE) -> None:
 	chat_name = update.effective_chat.effective_name
 	chat_id = update.effective_chat.id
 	await context.bot.send_message(chat_id=DEBUG_CHAT_ID, text="Group \"{0}\": {1}".format(chat_name, chat_id))
-
-async def ScrapeReviews(context: ContextTypes.DEFAULT_TYPE):
-	"""
-	Restricted to Admins
-
-	Function to scrape the provided folder path for reviews and to dump them into
-	the database
-	"""
-	global service
-	totalReviews: int = 0
-	insertedReviews: int = 0
-	insertedReviewLines: str = ''
-
-	for path, subdirs, files in os.walk(REVIEWS_FOLDER):
-		for name in files:
-			fullName = os.path.join(path,name)
-			
-			if name[-15:].lower() != 'album_review.md':
-				continue
-
-			totalReviews += 1
-			
-			reviewFile = open(file=fullName,mode='r')
-			try:
-				lines = reviewFile.readlines()
-				reviewFile.close()
-			except:
-				await context.bot.send_message(chat_id=DEBUG_CHAT_ID, text=f'Encountered an issue with: {fullName}')
-				continue
-
-			if not ReviewParserService.IsReadyToParse(lines[0]):
-				continue
-
-			insertedReviews += 1
-
-			review = ReviewParserService.ParseReviewMd(lines, fullName)
-			service.InsertArtist(review.artist)
-			reviewId = service.SaveReview(review)
-			for song in review.trackList:
-				success = service.InsertSong(reviewId,song)
-			for genre in review.genre:
-				success = service.InsertGenre(reviewId,genre)
-			insertedReviewLines = f'{insertedReviewLines}\n{review.title}'
-
-			if reviewId:
-				os.remove(fullName)
-
-	message: str = f"""
-**Scrape Report**
-
-**Found:** {totalReviews}
-
-**Inserted:** {insertedReviews}
-
-**Albums Inserted:**{insertedReviewLines}
-"""
-
-	await context.bot.send_message(chat_id=DEBUG_CHAT_ID, text=message, parse_mode='Markdown')
 
 @restricted
 async def ParseQueue(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -191,7 +147,7 @@ async def ParseQueue(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None
 	await context.bot.send_message(chat_id=DEBUG_CHAT_ID, text=message, parse_mode='Markdown')
 
 @restricted
-async def SendReview(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def SendReview(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 	"""
 	Restricted to Admins
 
@@ -209,31 +165,12 @@ async def SendReview(update: Update, context: ContextTypes.DEFAULT_TYPE):
 	msgBody: str = ParseReviewToMessage(review)
 	await context.bot.send_message(chat_id=update.message.chat_id, text=msgBody, parse_mode='Markdown')
 
-async def SendReviewTimer(context: ContextTypes.DEFAULT_TYPE):
-	"""
-	Restricted to Admins
-
-	Function that is missing an update since it is called via a timer.
-	but this function takes the next review in the queue and then posts it
-	"""
-	global service
-	review: Review.Review = service.GetNextInQueue()
-
-	try:
-		photo = base64.b64decode(review.albumArt)
-		await context.bot.sendPhoto(chat_id=MUSIC_CHAT_ID, photo=photo)
-	except:
-		await context.bot.send_message(chat_id=DEBUG_CHAT_ID, text="Uh Oh Can't find the image", parse_mode='Markdown')
-
-	msgBody: str = ParseReviewToMessage(review)
-	await context.bot.send_message(chat_id=MUSIC_CHAT_ID, text=msgBody, parse_mode='Markdown')
-
 @restricted
 async def SendReviewById(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 	"""
 	Restricted to Admins
 
-	Sends a specific review by the review Id	
+	Sends a specific review by the review Id
 	"""
 	global service
 	review: Review.Review = service.GetReviewById(int(context.args[0]))
@@ -269,24 +206,97 @@ async def SendNut(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 async def SendJuicy(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 	await PhotoSender(update, context, 'Media/Grapefruit.mp4')
 
+######################
+#   Timer Commands   #
+######################
+
+async def ScrapeReviews(context: ContextTypes.DEFAULT_TYPE):
+	"""
+	Restricted to Admins
+
+	Function to scrape the provided folder path for reviews and to dump them into
+	the database
+	"""
+	global service
+	totalReviews: int = 0
+	insertedReviews: int = 0
+	insertedReviewLines: str = ''
+
+	for path, subdirs, files in os.walk(REVIEWS_FOLDER):
+		for name in files:
+			fullName = os.path.join(path,name)
+			
+			if name[-15:].lower() != 'album_review.md':
+				continue
+
+			totalReviews += 1
+			
+			reviewFile = open(file=fullName,mode='r')
+			try:
+				lines = reviewFile.readlines()
+				reviewFile.close()
+			except:
+				await context.bot.send_message(chat_id=DEBUG_CHAT_ID, text=f'Encountered an issue with: {fullName}')
+				continue
+
+			if not ReviewParserService.IsReadyToParse(lines[0]):
+				continue
+
+			insertedReviews += 1
+
+			review = ReviewParserService.ParseReviewMd(lines, fullName)
+			service.InsertArtist(review.artist)
+			reviewId = service.SaveReview(review)
+			for song in review.trackList:
+				success = service.InsertSong(reviewId,song)
+			for genre in review.genre:
+				success = service.InsertGenre(reviewId,genre)
+			insertedReviewLines = f'{insertedReviewLines}\n{review.title}'
+
+			if reviewId:
+				os.remove(fullName)
+
+	message: str = f"""
+**Scrape Report**
+
+**Found:** {totalReviews}
+
+**Inserted:** {insertedReviews}
+
+**Albums Inserted:**{insertedReviewLines}
+"""
+
+	await context.bot.send_message(chat_id=DEBUG_CHAT_ID, text=message, parse_mode='Markdown')
+
+async def SendReviewTimer(context: ContextTypes.DEFAULT_TYPE):
+	"""
+	Restricted to Admins
+
+	Function that is missing an update since it is called via a timer.
+	but this function takes the next review in the queue and then posts it
+	"""
+	global service
+	review: Review.Review = service.GetNextInQueue()
+
+	try:
+		photo = base64.b64decode(review.albumArt)
+		await context.bot.sendPhoto(chat_id=MUSIC_CHAT_ID, photo=photo)
+	except:
+		await context.bot.send_message(chat_id=DEBUG_CHAT_ID, text="Uh Oh Can't find the image", parse_mode='Markdown')
+
+	msgBody: str = ParseReviewToMessage(review)
+	await context.bot.send_message(chat_id=MUSIC_CHAT_ID, text=msgBody, parse_mode='Markdown')
+
+########################
+#   Helper Functions   #
+########################
+
 async def PhotoSender(update: Update, context: ContextTypes.DEFAULT_TYPE, imagePath: str) -> None:
 	"""
 	Helper function to send a photo by path
 	"""
 	photo = open(file=imagePath,mode='rb')
 	await context.bot.sendAnimation(chat_id=update.message.chat_id, animation=photo)
-
-async def error(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-	"""
-	Log Errors caused by Updates.
-	"""
-
-	errorMsg = "Update\n `{0}`\n\n caused error\n `{1}`".format(update, context.error)
-
-	await context.bot.send_message(chat_id=DEBUG_CHAT_ID, text=errorMsg)
-	logger.warning('Update "%s" caused error "%s"', update, context.error) 
-
-#async def ScrapeReviews(context: ContextTypes.DEFAULT_TYPE):
 
 def ParseReviewToMessage(review: Review.Review) -> str:
 	trackList: list[str] = []
@@ -326,6 +336,10 @@ def ParseReviewToMessage(review: Review.Review) -> str:
 {nextText}
 """
 	return msgBody
+
+############
+#   MAIN   #
+############
 
 def Main() -> None:
 	global service
