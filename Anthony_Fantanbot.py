@@ -301,7 +301,7 @@ async def PhotoSender(update: Update, context: ContextTypes.DEFAULT_TYPE, imageP
 def ParseReviewToMessage(review: Review.Review) -> str:
 	trackList: list[str] = []
 	for song in review.trackList:
-		trackList.append(f'{song.TrackNo:02} - {song.Name} - {song.Rating}/5')
+		trackList.append(f'{song.TrackNo:02} - {song.Name} - {song.Rating}/5\n')
 
 	nextSplits = review.nextUp.split('\\n\\n')
 	nextAlbum = nextSplits[0]
