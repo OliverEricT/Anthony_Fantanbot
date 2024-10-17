@@ -233,7 +233,7 @@ SELECT
     ,a.Name AS ArtistName
     ,r.Title
     ,r.SortTitle
-    ,r.AlbumArt
+    --,r.AlbumArt
     ,r.Body
     ,r.FeelingRating
     ,s.TotalRatings / s.NumberTracks AS SongAvg
@@ -275,7 +275,8 @@ INNER JOIN SongScores s ON r.ReviewId = s.ReviewId
 				Artist.Artist(row.ArtistName,'','',[]),
 				row.Title,
 				row.SortTitle,
-				row.AlbumArt,
+                '',
+				#row.AlbumArt,
 				row.Body,
 				row.FeelingRating,
 				row.SongAvg,

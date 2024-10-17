@@ -29,6 +29,7 @@ logging.basicConfig(
 	level=logging.INFO
 )
 logger = logging.getLogger(__name__)
+logging.getLogger("httpx").setLevel(logging.WARNING)
 
 BOT_TOKEN = os.getenv('BOT_TOKEN')
 LIST_OF_ADMINS = os.getenv('ADMINS').split(',')
@@ -72,18 +73,20 @@ async def error(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
 @restricted
 async def GetUserID(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-	"""
+    """
 	Restricted. Sends the current users id
 	"""
-	user_name = update.effective_user.name
-	user_id = update.effective_user.id
-	await context.bot.send_message(chat_id=DEBUG_CHAT_ID, text="User \"{0}\": {1}".format(user_name, user_id))
+    logger.warning("Call to GetUserID registered")
+    user_name = update.effective_user.name
+    user_id = update.effective_user.id
+    await context.bot.send_message(chat_id=DEBUG_CHAT_ID, text="User \"{0}\": {1}".format(user_name, user_id))
 
 @restricted
 async def GetGroupID(update: Update,context: ContextTypes.DEFAULT_TYPE) -> None:
 	"""
 	Restricted. Sends the current users id
 	"""
+	logger.warning("Call to GetGroupID registered")
 	chat_name = update.effective_chat.effective_name
 	chat_id = update.effective_chat.id
 	await context.bot.send_message(chat_id=DEBUG_CHAT_ID, text="Group \"{0}\": {1}".format(chat_name, chat_id))
@@ -96,55 +99,8 @@ async def ParseQueue(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None
 	Function to scrape the provided folder path for reviews and to dump them into
 	the database
 	"""
-	global service
-	totalReviews: int = 0
-	insertedReviews: int = 0
-	insertedReviewLines: str = ''
-
-	for path, subdirs, files in os.walk(REVIEWS_FOLDER):
-		for name in files:
-			fullName = os.path.join(path,name)
-			
-			if name[-15:].lower() != 'album_review.md':
-				continue
-
-			totalReviews += 1
-			
-			reviewFile = open(file=fullName,mode='r')
-			try:
-				lines = reviewFile.readlines()
-				reviewFile.close()
-			except:
-				await context.bot.send_message(chat_id=DEBUG_CHAT_ID, text=f'Encountered an issue with: {fullName}')
-				continue
-
-			if not ReviewParserService.IsReadyToParse(lines[0]):
-				continue
-
-			insertedReviews += 1
-
-			review = ReviewParserService.ParseReviewMd(lines, fullName)
-			reviewId = service.SaveReview(review)
-			for song in review.trackList:
-				success = service.InsertSong(reviewId,song)
-			for genre in review.genre:
-				success = service.InsertGenre(reviewId,genre)
-			insertedReviewLines = f'{insertedReviewLines}\n{review.title}'
-
-			if reviewId:
-				os.remove(fullName)
-
-	message: str = f"""
-**Scrape Report**
-
-**Found:** {totalReviews}
-
-**Inserted:** {insertedReviews}
-
-**Albums Inserted:**{insertedReviewLines}
-"""
-
-	await context.bot.send_message(chat_id=DEBUG_CHAT_ID, text=message, parse_mode='Markdown')
+	logger.warning("Call to ParseQueue registered")
+	await ScrapeReviews(context)
 
 @restricted
 async def SendReview(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -153,6 +109,7 @@ async def SendReview(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None
 
 	Function that is callable by telegram command to get another review and post it	
 	"""
+	logger.warning("Call to SendReview registered")
 	global service
 	review: Review.Review = service.GetNextInQueue()
 
@@ -166,12 +123,46 @@ async def SendReview(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None
 	await context.bot.send_message(chat_id=update.message.chat_id, text=msgBody, parse_mode='Markdown')
 
 @restricted
+async def WriteReviewsToFiles(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """
+    Restricted to admins
+
+    Function to take all the reviews and then write them to a file
+    """
+    logger.warning("Call to WriteReviewsToFiles registered")
+    global service
+
+    reviews: list[Review.Review] = service.GetAllReviews()
+
+    for review in reviews:
+        print(f"Reading review: {review.title} by {review.artist.name}")
+        lines = ReviewParserService.ParseReviewObj(review)
+        fileName = f"{review.title} album review.md".replace(" ","_").replace("/","")
+        sortArtist = ReviewParserService._Sortify(review.artist.name)
+        path = f"{REVIEWS_FOLDER}/{sortArtist}/{review.sortTitle}"
+
+        if not os.path.exists(path):
+            print("Folder does not exist, placing in root folder")
+            path = REVIEWS_FOLDER
+
+        try:
+            file = open(f"{path}/{fileName}","w")
+            file.write(''.join(lines))
+            print(f"Wrote {fileName}")
+        except:
+            print(f"Could not write {fileName}")
+
+    
+    await context.bot.send_message(chat_id=DEBUG_CHAT_ID, text=f"Done!")
+
+@restricted
 async def SendReviewById(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 	"""
 	Restricted to Admins
 
 	Sends a specific review by the review Id
 	"""
+	logger.warning("Call to SendReviewById registered")
 	global service
 	review: Review.Review = service.GetReviewById(int(context.args[0]))
 
@@ -198,12 +189,15 @@ async def SendTest(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 	await context.bot.sendPhoto(chat_id=DEBUG_CHAT_ID, photo=photo2)
 
 async def SendThicc(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+	logger.warning("Call to SendThicc registered")
 	await PhotoSender(update, context, 'Media/THICC.mp4')
 
 async def SendNut(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+	logger.warning("Call to SendNut registered")
 	await PhotoSender(update, context, 'Media/Nutt.mp4')
 
 async def SendJuicy(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+	logger.warning("Call to SendJuicy registered")
 	await PhotoSender(update, context, 'Media/Grapefruit.mp4')
 
 ######################
@@ -229,6 +223,8 @@ async def ScrapeReviews(context: ContextTypes.DEFAULT_TYPE):
 			if name[-15:].lower() != 'album_review.md':
 				continue
 
+			logger.warning(f'Parsing {name}')
+
 			totalReviews += 1
 			
 			reviewFile = open(file=fullName,mode='r')
@@ -239,6 +235,10 @@ async def ScrapeReviews(context: ContextTypes.DEFAULT_TYPE):
 				await context.bot.send_message(chat_id=DEBUG_CHAT_ID, text=f'Encountered an issue with: {fullName}')
 				continue
 
+			if lines is None or len(lines) < 1:
+				logging.warning('File is empty')
+				continue
+			
 			if not ReviewParserService.IsReadyToParse(lines[0]):
 				continue
 
@@ -253,8 +253,8 @@ async def ScrapeReviews(context: ContextTypes.DEFAULT_TYPE):
 				success = service.InsertGenre(reviewId,genre)
 			insertedReviewLines = f'{insertedReviewLines}\n{review.title}'
 
-			if reviewId:
-				os.remove(fullName)
+			#if reviewId:
+				#os.remove(fullName)
 
 	message: str = f"""
 **Scrape Report**
@@ -342,6 +342,7 @@ def ParseReviewToMessage(review: Review.Review) -> str:
 ############
 
 def Main() -> None:
+	logger.warning("Due to a change in httpx, warn is the new information level")
 	global service
 	service = SQLService.SQLService(CONNECTION_STRING)
 
@@ -358,6 +359,7 @@ def Main() -> None:
 	application.add_handler(CommandHandler('Nut',SendNut))
 	application.add_handler(CommandHandler('Juicy',SendJuicy))
 	application.add_handler(CommandHandler('sendTest',SendTest))
+	application.add_handler(CommandHandler('writeReviews',WriteReviewsToFiles))
 
 	#application.add_error_handler(error)
 
@@ -376,8 +378,8 @@ def Main() -> None:
 	try:
 		application.run_polling()
 	except:
-		print('An Error has occurred.')
-	print('Stopped')
+		logger.warning("An unhandled exception has occured")
+	logger.warning("Stopping the application")
 
 if __name__ == '__main__':
 	Main()

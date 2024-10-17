@@ -59,9 +59,9 @@ def ParseReviewMd(lines: list[str], path: str) -> Review.Review:
 
 			artistAlbum = os.path.dirname(path)
 
-			albumArtPath = os.path.join(artistAlbum,cover)
-			photo = open(file=albumArtPath,mode='rb')
-			albumArt = base64.b64encode(photo.read())
+			albumArt = os.path.join(artistAlbum,cover)
+			#photo = open(file=albumArtPath,mode='rb')
+			#albumArt = base64.b64encode(photo.read())
 			continue
 		
 		# notify that we are in a thoughts block and the next
@@ -92,7 +92,6 @@ def ParseReviewMd(lines: list[str], path: str) -> Review.Review:
 			continue
 
 		if genreFlag:
-			
 			genre = line[:-1].replace(',',';').split('; ')
 			genreFlag = False
 			continue
@@ -193,9 +192,10 @@ def ParseReviewObj(review: Review.Review) -> list[str]:
 
 	image = os.path.basename(os.path.normpath(review.albumArt))
 	
-	lines.append(f'# {review.title} Album Review\n')
+	lines.append(f'# {review.title} Album Review CP\n')
 	lines.append('\n')
 	lines.append(f'![]({image})\n')
+	#lines.append(f'![](./Cover.png)\n')
 	lines.append('\n')
 	lines.append('## Thoughts\n')
 	lines.append('\n')
@@ -235,6 +235,9 @@ def IsReadyToParse(line: str) -> bool:
 	if line[-3:-1] == "IP":
 		return False
 	
+	if line[-3:-1] == "CP":
+		return False
+
 	return True
 
 def _ParseMdLink(mdLink: str) -> tuple[str, str]:

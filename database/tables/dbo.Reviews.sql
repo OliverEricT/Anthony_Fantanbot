@@ -37,7 +37,8 @@ CREATE TABLE [dbo].[Reviews](
     ,ArtistId INT NOT NULL
     ,Title VARCHAR(250) NOT NULL
     ,SortTitle VARCHAR(250)
-    ,Body varchar(max)
+    ,AlbumArtPath VARCHAR(250)
+		,Body varchar(max)
     ,FeelingRating int
     ,Blurb varchar(1000) NOT NULL DEFAULT ''
     ,NumberPosted int
