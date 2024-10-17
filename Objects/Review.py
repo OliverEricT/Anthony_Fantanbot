@@ -343,11 +343,13 @@ class Review:
 		"""
 		To String overload for the review object
 		"""
-		genreText = self.genre.join(", ")
+		#genreText = ''
+		if self.genre is not None:
+			genreText = ", ".join(self.genre)
 
 		trackList: str = ""
-		for pair in self.trackList:
-			trackList += "{0} - {1} - {2}/5\n".format(0,pair[0],pair[1])
+		for track in self.trackList:
+			trackList += "{0} - {1} - {2}/5\n".format(track.TrackNo,track.Name,track.Rating)
 
 		text = """
 #AlbumReview No. {0}

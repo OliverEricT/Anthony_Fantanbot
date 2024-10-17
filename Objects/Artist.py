@@ -44,3 +44,6 @@ class Artist:
 			self.sortName = argv[1]
 			self.fileLocation = argv[2]
 			self.albums = argv[3]
+
+	def __str__(self):
+		return self.name 

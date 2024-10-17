@@ -233,7 +233,7 @@ SELECT
     ,a.Name AS ArtistName
     ,r.Title
     ,r.SortTitle
-    --,r.AlbumArt
+    ,r.AlbumArt
     ,r.Body
     ,r.FeelingRating
     ,s.TotalRatings / s.NumberTracks AS SongAvg
@@ -275,8 +275,7 @@ INNER JOIN SongScores s ON r.ReviewId = s.ReviewId
 				Artist.Artist(row.ArtistName,'','',[]),
 				row.Title,
 				row.SortTitle,
-                '',
-				#row.AlbumArt,
+				row.AlbumArt,
 				row.Body,
 				row.FeelingRating,
 				row.SongAvg,
@@ -305,6 +304,18 @@ EXEC [Music].[dbo].[Select_ReviewById]
 		cursor.execute(queryStr,(reviewId,))
 
 		for row in cursor.fetchall():
+			genres = row.Genres.split('; ')
+			tracks = row.Tracks.split('; ')
+			songs: list[Song.Song] = []
+			
+			for track in tracks:
+				splits = track.split('|')
+				songs.append(Song.Song(
+					splits[0],
+					splits[1],
+					splits[2]
+				))
+
 			review = Review.Review(
 				row.Id,
 				Artist.Artist(row.Artist,'','',[]),
@@ -314,8 +325,8 @@ EXEC [Music].[dbo].[Select_ReviewById]
 				row.Body,
 				row.FeelingRating,
 				row.SongAvg,
-				[],
-				row.Genre,
+				songs,
+				genres,
 				'',
 				row.NextUp,
 				row.NumberPosted,

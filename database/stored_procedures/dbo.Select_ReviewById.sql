@@ -82,7 +82,7 @@ AS
         ,r.ReviewId AS Id
         ,r.Title AS Title
         ,a.Name AS Artist
-        ,aa.AlbumArt AS AlbumArt
+        ,r.AlbumArt AS AlbumArt
         ,g.Genres AS Genre
         ,r.Body AS Body
         ,r.FeelingRating AS FeelingRating
@@ -91,7 +91,7 @@ AS
     FROM [Music].[dbo].[Reviews] r
     INNER JOIN #ReviewsWithProposedNumbers p ON r.ReviewId = p.ReviewId
     INNER JOIN #ReviewsWithProposedNumbers p2 ON p.NumberPosted + 1 = p2.NumberPosted
-    INNER JOIN [Music].[dbo].[AlbumArt] aa ON r.ReviewId = aa.ReviewId
+    --INNER JOIN [Music].[dbo].[AlbumArt] aa ON r.ReviewId = aa.ReviewId
     LEFT JOIN ConcatedGenres g ON r.ReviewId = g.ReviewId
     INNER JOIN [Music].[dbo].[Artists] a ON r.ArtistId = a.ArtistId
     LEFT JOIN SongScores s ON r.ReviewId = s.ReviewId

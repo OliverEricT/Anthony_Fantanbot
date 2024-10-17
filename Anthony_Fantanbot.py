@@ -114,7 +114,9 @@ async def SendReview(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None
 	review: Review.Review = service.GetNextInQueue()
 
 	try:
-		photo = base64.b64decode(review.albumArt)
+		albumArtPath: str = f'{REVIEWS_FOLDER}'
+		photo = open(review.albumArt,'rb')
+		#photo = base64.b64decode(review.albumArt)
 		await context.bot.sendPhoto(chat_id=update.message.chat_id, photo=photo)
 	except:
 		await context.bot.send_message(chat_id=DEBUG_CHAT_ID, text="Uh Oh Can't find the image", parse_mode='Markdown')
@@ -135,22 +137,22 @@ async def WriteReviewsToFiles(update: Update, context: ContextTypes.DEFAULT_TYPE
     reviews: list[Review.Review] = service.GetAllReviews()
 
     for review in reviews:
-        print(f"Reading review: {review.title} by {review.artist.name}")
+        logger.warning(f"Reading review: {review.title} by {review.artist.name}")
         lines = ReviewParserService.ParseReviewObj(review)
         fileName = f"{review.title} album review.md".replace(" ","_").replace("/","")
         sortArtist = ReviewParserService._Sortify(review.artist.name)
         path = f"{REVIEWS_FOLDER}/{sortArtist}/{review.sortTitle}"
 
         if not os.path.exists(path):
-            print("Folder does not exist, placing in root folder")
+            logger.warning("Folder does not exist, placing in root folder")
             path = REVIEWS_FOLDER
 
         try:
             file = open(f"{path}/{fileName}","w")
             file.write(''.join(lines))
-            print(f"Wrote {fileName}")
+            logger.warning(f"Wrote {fileName}")
         except:
-            print(f"Could not write {fileName}")
+            logger.warning(f"Could not write {fileName}")
 
     
     await context.bot.send_message(chat_id=DEBUG_CHAT_ID, text=f"Done!")
@@ -223,14 +225,13 @@ async def ScrapeReviews(context: ContextTypes.DEFAULT_TYPE):
 			if name[-15:].lower() != 'album_review.md':
 				continue
 
-			logger.warning(f'Parsing {name}')
+			logger.warning(f'Grabbing {name}')
 
 			totalReviews += 1
 			
-			reviewFile = open(file=fullName,mode='r')
+			reviewFile = open(file=fullName,mode='r+')
 			try:
 				lines = reviewFile.readlines()
-				reviewFile.close()
 			except:
 				await context.bot.send_message(chat_id=DEBUG_CHAT_ID, text=f'Encountered an issue with: {fullName}')
 				continue
@@ -242,9 +243,12 @@ async def ScrapeReviews(context: ContextTypes.DEFAULT_TYPE):
 			if not ReviewParserService.IsReadyToParse(lines[0]):
 				continue
 
+			logger.warning(f'Starting to process review: {name}')
+
 			insertedReviews += 1
 
 			review = ReviewParserService.ParseReviewMd(lines, fullName)
+			logger.warning(f'{review}')
 			service.InsertArtist(review.artist)
 			reviewId = service.SaveReview(review)
 			for song in review.trackList:
@@ -252,6 +256,13 @@ async def ScrapeReviews(context: ContextTypes.DEFAULT_TYPE):
 			for genre in review.genre:
 				success = service.InsertGenre(reviewId,genre)
 			insertedReviewLines = f'{insertedReviewLines}\n{review.title}'
+
+			lines[0] += ' CP'
+
+			reviewFile.write('\n'.join(lines))
+			reviewFile.close()
+
+			break
 
 			#if reviewId:
 				#os.remove(fullName)

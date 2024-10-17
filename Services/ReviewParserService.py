@@ -27,7 +27,7 @@ def ParseReviewMd(lines: list[str], path: str) -> Review.Review:
 	feelingRating: int = 0
 	songAvg: float = 0
 	trackList: list[Song.Song] = []
-	albumArt: bytes = b''
+	albumArt: str = ''
 	genre: list[str] = []
 	blurb: str = ''
 	listenDate1: datetime.datetime | None = None
@@ -189,12 +189,14 @@ def ParseReviewObj(review: Review.Review) -> list[str]:
 
 	if review.numberPosted != None and review.postedDate != None:
 		parsedDates.append(f'| {review.numberPosted} | {review.postedDate.strftime("%Y-%m-%d")} |\n')
+		lines.append(f'# {review.title} Album Review CP\n')
+	else:
+		lines.append(f'# {review.title} Album Review\n')
 
 	image = os.path.basename(os.path.normpath(review.albumArt))
 	
-	lines.append(f'# {review.title} Album Review CP\n')
 	lines.append('\n')
-	lines.append(f'![]({image})\n')
+	lines.append(f'![](./{image})\n')
 	#lines.append(f'![](./Cover.png)\n')
 	lines.append('\n')
 	lines.append('## Thoughts\n')
